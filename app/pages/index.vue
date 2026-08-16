@@ -1,6 +1,35 @@
 <script setup lang="ts">
-const songTitle = ref('');
-const artistName = ref('');
+import * as v from 'valibot';
+import type { FormSubmitEvent } from '@nuxt/ui';
+
+const state = reactive({
+  songTitle: '',
+  artistName: ''
+});
+
+const schema = v.object({
+  artistName: v.pipe(v.string(), v.minLength(1, 'Campo requerido')),
+  songTitle: v.pipe(v.string(), v.minLength(1, 'Campo requerido'))
+});
+
+type Schema = v.InferOutput<typeof schema>;
+const form = useTemplateRef('form');
+
+function submitSuggestion(newArtistName: string, newSongTitle: string) {
+  state.artistName = newArtistName;
+  state.songTitle = newSongTitle;
+  form.value?.submit();
+}
+
+function resetForm() {
+  state.artistName = '';
+  state.songTitle = '';
+  form.value?.clear();
+}
+
+async function onSubmit(event: FormSubmitEvent<Schema>) {
+  console.log('Datos enviados:', event.data);
+}
 </script>
 
 <template>
@@ -17,30 +46,33 @@ const artistName = ref('');
           <UIcon name="i-lucide-disc-3" class="size-5 animate-spin [animation-duration:3s]" />
         </div>
         <span class="text-sm">Decodifica el ADN de cualquier pista. Ingresa las coordenadas de audio para extraer sus etiquetas.</span>
-        <div class="flex flex-col sm:flex-row sm:items-end gap-4">
-          <UFormField label="Artista" class="w-full sm:flex-1">
-            <UInput v-model="artistName" placeholder="Dua Lipa" class="min-w-36 w-full h-8" />
-          </UFormField>
-          <UFormField label="Canción" class="w-full sm:flex-1">
-            <UInput v-model="songTitle" placeholder="Whatcha Doing" class="min-w-36 w-full h-8" />
-          </UFormField>
-        </div>
-        <div class="flex items-center gap-4">
-          <UButton 
-            @click=""
-            label="Buscar track" 
-            color="primary"
-            icon="i-lucide-search"
-            class="flex justify-center w-full sm:w-auto h-8 cursor-pointer"
-          />
-          <UButton 
-            @click=""
-            label="Limpiar" 
-            color="neutral"
-            icon="i-lucide-eraser"
-            class="flex justify-center w-full sm:w-auto h-8 cursor-pointer"
-          />
-        </div>
+        <UForm :schema="schema" :state="state" ref="form" @submit="onSubmit" class="flex flex-col gap-4">
+          <div class="flex flex-col sm:flex-row sm:items-end gap-4">
+            <UFormField label="Artista" name="artistName" class="w-full sm:flex-1">
+              <UInput v-model="state.artistName" placeholder="Dua Lipa" class="min-w-36 w-full h-8" />
+            </UFormField>
+            <UFormField label="Canción" name="songTitle" class="w-full sm:flex-1">
+              <UInput v-model="state.songTitle" placeholder="Whatcha Doing" class="min-w-36 w-full h-8" />
+            </UFormField>
+          </div>
+          <div class="flex items-center gap-4">
+            <UButton 
+              type="submit"
+              label="Buscar track" 
+              color="primary"
+              icon="i-lucide-search"
+              class="flex justify-center h-8 cursor-pointer"
+            />
+            <UButton 
+              @click="resetForm"
+              type="reset"
+              label="Limpiar" 
+              color="neutral"
+              icon="i-lucide-eraser"
+              class="flex justify-center h-8 cursor-pointer"
+            />
+          </div>
+        </UForm>
       </div>
     </div>
     <USeparator
@@ -57,25 +89,25 @@ const artistName = ref('');
           <span class="text-sm">Para iniciar la consulta, proporcione los valores requeridos en los campos superiores. El sistema se encargará de interceptar la pista y formatear la información encontrada.</span>
           <div class="flex gap-4 flex-wrap">
             <UButton
-              @click=""
+              @click="submitSuggestion('Dua Lipa', 'Whatcha Doing')"
               label="Dua Lipa - Whatcha Doing"
               trailing-icon="i-lucide-arrow-up-right"
               class="flex justify-center sm:w-auto h-8 cursor-pointer"
             />
             <UButton
-              @click=""
+              @click="submitSuggestion('Trueno', 'X UNAS LLANTAS')"
               label="Trueno - X UNAS LLANTAS"
               trailing-icon="i-lucide-arrow-up-right"
               class="flex justify-center sm:w-auto h-8 cursor-pointer"
             />
             <UButton
-              @click=""
+              @click="submitSuggestion('Djo', 'Link')"
               label="Djo - Link"
               trailing-icon="i-lucide-arrow-up-right"
               class="flex justify-center sm:w-auto h-8 cursor-pointer"
             />
             <UButton
-              @click=""
+              @click="submitSuggestion('Balu Brigada', 'Sideways')"
               label="Balu Brigada - Sideways"
               trailing-icon="i-lucide-arrow-up-right"
               class="flex justify-center sm:w-auto h-8 cursor-pointer"
