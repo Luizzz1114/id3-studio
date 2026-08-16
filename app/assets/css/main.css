@@ -1,0 +1,104 @@
+@import "tailwindcss";
+@import "@nuxt/ui";
+
+/* =========================================
+   Importación de Google Sans
+   ========================================= */
+
+/* Google Sans Variable (Soporta múltiples grosores) */
+@font-face {
+  font-family: 'JetBrains_Mono';
+  src: url('../fonts/JetBrainsMono.ttf') format('truetype');
+  font-weight: 100 900; /* Indica que la fuente variable soporta este rango de grosores */
+  font-style: normal;
+}
+
+/* Google Sans Italic */
+@font-face {
+  font-family: 'JetBrains_Mono';
+  src: url('../fonts/JetBrainsMono-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* =========================================
+   Importación de Silkscreen
+   ========================================= */
+
+/* Silkscreen Regular */
+@font-face {
+  font-family: 'Silkscreen';
+  src: url('../fonts/Silkscreen-Regular.ttf') format('truetype');
+  font-weight: 400; /* Peso normal */
+  font-style: normal;
+}
+
+/* Silkscreen Bold */
+@font-face {
+  font-family: 'Silkscreen';
+  src: url('../fonts/Silkscreen-Bold.ttf') format('truetype');
+  font-weight: 700; /* Peso negrita */
+  font-style: normal;
+}
+
+html {
+  font-family: 'Jetbrains_Mono' !important;
+  font-size: 16px !important;
+}
+
+input {
+  font-size: 14px;
+}
+ 
+@theme static {
+  --font-sans: 'Public Sans', sans-serif;
+}
+
+body {
+  background-color: var(--color-neutral-200);
+  background-image: 
+    linear-gradient(var(--color-neutral-300) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-neutral-300) 1px, transparent 1px);
+  background-size: 20px 20px;
+  margin: 0;
+  height: 100vh;
+}
+
+.dark body {
+  background-color: var(--color-neutral-950);
+  background-image: 
+    linear-gradient(var(--color-neutral-900) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-neutral-900) 1px, transparent 1px);
+  background-size: 24px 24px;
+  margin: 0;
+  height: 100vh;
+}
+
+.shadow-3d {
+  box-shadow:
+    4px 4px 0px var(--color-neutral-700);
+}
+
+.dark .shadow-3d {
+  box-shadow:
+    4px 4px 0px var(--color-neutral-200);
+}
+
+.text-3d {
+  color: var(--color-neutral-800);
+  text-shadow: 
+    3px 3px 0px var(--color-primary-500),
+    6px 6px 0px var(--color-secondary-500);
+}
+
+.text-3d-md {
+  color: var(--color-neutral-800);
+  text-shadow: 
+    2px 2px 0px var(--color-primary-500),
+    4px 4px 0px var(--color-secondary-500);
+}
+
+.dark .text-3d,
+.dark .text-3d-md {
+  color: var(--color-neutral-200);
+}
