@@ -18,7 +18,11 @@ export default defineAppConfig({
           }
         },
       }
-    }
-    
+    },
+    formField: {
+      slots: {
+        error: 'text-xs',
+      },
+    }    
   }
 })
