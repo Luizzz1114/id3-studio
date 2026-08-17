@@ -27,7 +27,14 @@ function resetForm() {
   form.value?.clear();
 }
 
+const loading = ref<boolean>(false);
+
 async function onSubmit(event: FormSubmitEvent<Schema>) {
+  loading.value = true;
+  setTimeout(() => {
+    loading.value = false;
+  }, 2000);
+
   console.log('Datos enviados:', event.data);
 }
 </script>
@@ -62,6 +69,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
               color="primary"
               icon="i-lucide-search"
               class="flex justify-center h-8 cursor-pointer"
+              :loading="loading"
             />
             <UButton 
               @click="resetForm"
@@ -70,12 +78,13 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
               color="neutral"
               icon="i-lucide-eraser"
               class="flex justify-center h-8 cursor-pointer"
+              :disabled="loading"
             />
           </div>
         </UForm>
       </section>
     </div>
-    <USeparator label="Esperando consulta" size="sm" />
+    <USeparator :label="loading ? 'Consultando...' : 'Esperando consulta'" size="sm" />
     <section class="flex flex-col md:flex-row w-full gap-6 p-6 bg-white border-2 shadow-3d dark:bg-neutral-900">
       <div class="flex flex-col gap-6 flex-2">
         <span class="flex flex-col items-start m-0">
