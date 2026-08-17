@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { footer } from '#build/ui';
-
 const title = 'ID3 Studio'
 const description = 'Herramienta para consultar metadatos de archivos de audio.'
 
@@ -30,7 +28,7 @@ useSeoMeta({
     <UHeader :toggle="false">
       <template #left>
         <div class="flex items-center gap-4">
-          <div class="size-8 bg-amber-500 border-2 shadow-3d grid place-items-center">
+          <div class="size-8 bg-indigo-500 border-2 shadow-3d grid place-items-center">
             <UIcon name="i-lucide-turntable" class="size-5 text-white" />
           </div>
           <h1 class="font-bold text-2xl font-['Silkscreen']">ID3 Studio</h1>
