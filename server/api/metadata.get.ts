@@ -1,11 +1,16 @@
-export default defineEventHandler(async(event): Promise<MetadataResponse | ErrorResponse> => {
+import { Response } from "~~/shared/types/metadata";
+
+export default defineEventHandler(async(event): Promise<Response> => {
   const query = getQuery(event);
 
-  const artist = typeof query.artist === 'string' ? query.artist : undefined;
-  const track = typeof query.track === 'string' ? query.track : undefined;  
+  const artist = typeof query.artist === 'string' ? query.artist.trim() : '';
+  const track = typeof query.track === 'string' ? query.track.trim() : '';  
 
   if (!artist || !track) {
-    return { error: 'Faltan los pámetros artist y track.' };
+    return {
+      success: false, 
+      error: 'Faltan los pámetros artist y track.'
+    };
   }
 
   try {
@@ -16,7 +21,10 @@ export default defineEventHandler(async(event): Promise<MetadataResponse | Error
     const firstResult = dzSearch.data[0] || null;
 
     if (!firstResult) {
-      return { error: 'Canción no encontrada' };
+      return {
+        success: false,
+        error: 'Canción no encontrada'
+      };
     }
 
     const trackId = firstResult.id;
@@ -63,26 +71,29 @@ export default defineEventHandler(async(event): Promise<MetadataResponse | Error
       : '';
 
     return {
-      ALBUM: dzAlbum.title,
-      ALBUMARTIST: dzAlbum.artist.name,
-      ARTIST: allArtists, 
-      BPM: dzTrack.bpm || null,
-      COMPOSER: finalComposer, 
-      DISCNUMBER: discPos,
-      ISRC: dzTrack.isrc || '',
-      TITLE: dzTrack.title,
-      LABEL: dzAlbum.label || '',
-      COPYRIGHT: copyrightStr,
-      LENGTH: dzTrack.duration,
-      UNSYNCEDLYRICS: lyricsData?.plainLyrics || '',
-      TRACK: trackFormatted,
-      YEAR: dzAlbum.release_date || '',
-      GENRE: primaryGenre,
-      ALBUMART: albumArt
+      success: true,
+      data: {
+        ALBUM: dzAlbum.title,
+        ALBUMARTIST: dzAlbum.artist.name,
+        ARTIST: allArtists, 
+        BPM: dzTrack.bpm || null,
+        COMPOSER: finalComposer, 
+        DISCNUMBER: discPos,
+        ISRC: dzTrack.isrc || '',
+        TITLE: dzTrack.title,
+        LABEL: dzAlbum.label || '',
+        COPYRIGHT: copyrightStr,
+        LENGTH: dzTrack.duration,
+        UNSYNCEDLYRICS: lyricsData?.plainLyrics || '',
+        TRACK: trackFormatted,
+        YEAR: dzAlbum.release_date || '',
+        GENRE: primaryGenre,
+        ALBUMART: albumArt
+      }
     }
 
   } catch (error: unknown) {
     const errorMessage = error instanceof Error ? error.message : 'Error desconocido';
-    return { error: 'Falló la recolección de metadatos', details: errorMessage };
+    return { success: false, error: 'Falló la recolección de metadatos', details: errorMessage };
   }
 });

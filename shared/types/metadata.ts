@@ -52,7 +52,9 @@ export interface MetadataResponse {
   ALBUMART: string;
 }
 
-export interface ErrorResponse {
-  error: string;
+export interface Response {
+  success: boolean;
+  data?: MetadataResponse;
+  error?: string;
   details?: string;
 }
