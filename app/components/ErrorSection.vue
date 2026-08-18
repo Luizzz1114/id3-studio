@@ -1,3 +1,19 @@
+<script setup lang="ts">
+const props = withDefaults(defineProps<{
+  title?: string
+  message?: string
+  retryLabel?: string
+}>(), {
+  title: 'Algo salió mal...',
+  message: 'Ocurrió un error al realizar la consulta, compruebe los datos e intente nuevamente.',
+  retryLabel: 'Reintentar'
+})
+
+const emit = defineEmits<{
+  retry: []
+}>()
+</script>
+
 <template>
   <section class="flex flex-col md:flex-row w-full gap-6 p-6 bg-white border-2 shadow-3d dark:bg-neutral-900">
     <div class="flex flex-col gap-6 flex-2">
@@ -8,6 +24,7 @@
         <p class="text-sm m-0">Ocurrió un error al realizar la consulta, compruebe los datos e intente nuevamente.</p>
         <div class="flex gap-4 flex-wrap">
           <UButton
+            :click="emit('retry')"
             label="Reintentar"
             color="secondary"
             icon="i-lucide-rotate-ccw"

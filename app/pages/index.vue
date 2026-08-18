@@ -1,41 +1,73 @@
 <script setup lang="ts">
 import * as v from 'valibot';
-import type { FormSubmitEvent } from '@nuxt/ui';
 
 const state = reactive({
-  songTitle: '',
-  artistName: ''
+  track: '',
+  artist: ''
 });
 
 const schema = v.object({
-  artistName: v.pipe(v.string(), v.minLength(1, 'Campo requerido')),
-  songTitle: v.pipe(v.string(), v.minLength(1, 'Campo requerido'))
+  artist: v.pipe(v.string(), v.minLength(1, 'Campo requerido')),
+  track: v.pipe(v.string(), v.minLength(1, 'Campo requerido'))
 });
 
-type Schema = v.InferOutput<typeof schema>;
 const form = useTemplateRef('form');
+const loading = ref<boolean>(false);
+const result = ref<MetadataResponse | null >(null);
+const errorMessage = ref<string | null>(null);
+const lastQuery = reactive({
+  artist: '',
+  track: ''
+});
 
-function submitSuggestion(newArtistName: string, newSongTitle: string) {
-  state.artistName = newArtistName;
-  state.songTitle = newSongTitle;
+function submitSuggestion(newArtist: string, newTrack: string) {
+  state.artist = newArtist;
+  state.track = newTrack;
   form.value?.submit();
 }
 
 function resetForm() {
-  state.artistName = '';
-  state.songTitle = '';
+  state.artist = '';
+  state.track = '';
+  result.value = null;
+  errorMessage.value = null;
+  lastQuery.artist = '';
+  lastQuery.track = '';
   form.value?.clear();
 }
 
-const loading = ref<boolean>(false);
+async function onSubmit() {
 
-async function onSubmit(event: FormSubmitEvent<Schema>) {
+  if (lastQuery.artist === state.artist && lastQuery.track === state.track) {
+    return;
+  }
+
   loading.value = true;
-  setTimeout(() => {
-    loading.value = false;
-  }, 2000);
+  result.value = null;
+  errorMessage.value = null;
+  
+  try {
+    const data = await $fetch('/api/metadata', {
+      query: {
+        artist: state.artist,
+        track: state.track
+      }
+    });
 
-  console.log('Datos enviados:', event.data);
+    if (data && typeof data === 'object' && 'error' in data && data.error) {
+      throw new Error(String(data.error));
+    }
+
+    result.value = data as MetadataResponse;
+    
+  } catch (error: any) {
+    console.log(error);
+    errorMessage.value = error?.message || 'No se pudo consultar la canción.'
+  } finally {
+    loading.value = false;
+    lastQuery.artist = state.artist;
+    lastQuery.track = state.track;
+  }
 }
 </script>
 
@@ -55,11 +87,11 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         <p class="text-sm m-0">Decodifica el ADN de cualquier pista. Ingresa las coordenadas de audio para extraer sus etiquetas.</p>
         <UForm :schema="schema" :state="state" ref="form" @submit="onSubmit" class="flex flex-col gap-4">
           <div class="flex flex-col sm:flex-row sm:items-end gap-4">
-            <UFormField label="Artista" name="artistName" class="w-full sm:flex-1">
-              <UInput v-model="state.artistName" placeholder="Dua Lipa" class="min-w-36 w-full h-8" />
+            <UFormField label="Artista" name="artist" class="w-full sm:flex-1">
+              <UInput v-model="state.artist" placeholder="Dua Lipa" class="min-w-36 w-full h-8" />
             </UFormField>
-            <UFormField label="Canción" name="songTitle" class="w-full sm:flex-1">
-              <UInput v-model="state.songTitle" placeholder="Whatcha Doing" class="min-w-36 w-full h-8" />
+            <UFormField label="Canción" name="track" class="w-full sm:flex-1">
+              <UInput v-model="state.track" placeholder="Whatcha Doing" class="min-w-36 w-full h-8" />
             </UFormField>
           </div>
           <div class="flex items-center gap-4">
@@ -84,8 +116,17 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         </UForm>
       </section>
     </div>
-    <USeparator :label="loading ? 'Consultando...' : 'Esperando consulta'" size="sm" />
-    <section class="flex flex-col md:flex-row w-full gap-6 p-6 bg-white border-2 shadow-3d dark:bg-neutral-900">
+    <USeparator size="sm" />
+
+    <ResultSection v-if="result" :data="result" />
+
+    <ErrorSection
+      v-else-if="errorMessage"
+      :message="errorMessage"
+      @retry="onSubmit"
+    />
+
+    <section v-else class="flex flex-col md:flex-row w-full gap-6 p-6 bg-white border-2 shadow-3d dark:bg-neutral-900">
       <div class="flex flex-col gap-6 flex-2">
         <span class="flex flex-col items-start m-0">
           <span class="font-['Silkscreen'] text-4xl sm:text-5xl font-bold leading-none text-3d-md">Sistema en espera...</span>
@@ -136,5 +177,6 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         >
       </div>
     </section>
+
   </div>
 </template>

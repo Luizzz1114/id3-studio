@@ -1,19 +1,46 @@
 <script setup lang="ts">
-const metadatos = ref([
-  { label: 'ALBUM', value: 'Radical Optimism' },
-  { label: 'ALBUMARTIST', value: 'Dua Lipa' },
-  { label: 'ARTIST', value: 'Dua Lipa' },
-  { label: 'BPM', value: '112' },
-  { label: 'COMPOSER', value: 'Dua Lipa, Caroline Ailin, Kevin Parker & Danny L Harle' },
-  { label: 'COPYRINGHT', value: '© 2024 Warner Music UK Limited' },
-  { label: 'DISCNUMBER', value: '1/5' },
-  { label: 'GENRE', value: 'Pop' },
-  { label: 'ISRC', value: 'GBAHT2300012' },
-  { label: 'LABEL', value: 'Warner Records' },
-  { label: 'LENGHT', value: '198000' },
-  { label: 'TRACK', value: '05/11' },
-  { label: 'YEAR', value: '2024-05-03' },
-]);
+interface MetadataRecord {
+  label: string
+  value: string | number | null
+}
+
+const props = withDefaults(defineProps<{ data?: Record<string, string | number | null> }>(), {
+  data: () => ({})
+});
+
+const metadata = computed<MetadataRecord[]>(() => {
+  const data = props.data ?? {}
+
+  const entries: MetadataRecord[] = [
+    { label: 'ALBUM', value: data.ALBUM ?? null },
+    { label: 'ALBUMARTIST', value: data.ALBUMARTIST ?? null },
+    { label: 'ARTIST', value: data.ARTIST ?? null },
+    { label: 'BPM', value: data.BPM ?? null },
+    { label: 'COMPOSER', value: data.COMPOSER ?? null },
+    { label: 'COPYRIGHT', value: data.COPYRIGHT ?? null },
+    { label: 'DISCNUMBER', value: data.DISCNUMBER ?? null },
+    { label: 'GENRE', value: data.GENRE ?? null },
+    { label: 'ISRC', value: data.ISRC ?? null },
+    { label: 'LABEL', value: data.LABEL ?? null },
+    { label: 'LENGTH', value: data.LENGTH ?? null },
+    { label: 'TRACK', value: data.TRACK ?? null },
+    { label: 'YEAR', value: data.YEAR ?? null }
+  ];
+
+  return entries.filter((item) => item.value !== null && item.value !== undefined && item.value !== '');
+});
+
+const normalizeYear = (value: string | number | null | undefined) => {
+  if (!value) return ''
+  const text = String(value)
+  return text.length >= 4 ? text.slice(0, 4) : text
+}
+
+const title = computed(() => props.data?.TITLE || 'Título no disponible');
+const artist = computed(() => props.data?.ARTIST || props.data?.ALBUMARTIST || 'Artista no disponible');
+const album = computed(() => props.data?.ALBUM || 'Álbum no disponible');
+const year = computed(() => normalizeYear(props.data?.YEAR));
+const coverUrl = computed(() => (props.data?.ALBUMART as string) || undefined);
 </script>
 
 <template>
@@ -25,18 +52,18 @@ const metadatos = ref([
             ALBUM COVER
           </span>
           <img 
-            src="../assets/img/cover.jpg" 
-            alt="Portada del álbum Radical Optimism de Dua Lipa" 
+            :src="coverUrl" 
+            :alt="`Portada del álbum ${album} de ${artist}`"
             class="w-full h-full object-cover block"
           >
         </figure>
         <div class="flex items-center gap-4 w-full bg-neutral-100 p-1.5 border-2 border-neutral-200 dark:border-neutral-700 dark:bg-neutral-800">
           <div class="flex flex-col flex-1 min-w-0">
             <span class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Fuente de portada</span>
-            <span class="text-xs truncate">url.com/ashjashjhjashjhjhjsahjaasasasasas</span>
+            <span class="text-xs truncate">{{ coverUrl }}</span>
           </div>
           <UButton
-            to="https://is1-ssl.mzstatic.com/imag..."
+            :to="coverUrl"
             target="_blank"
             icon="i-lucide-arrow-up-right"
             color="neutral"
@@ -48,20 +75,20 @@ const metadatos = ref([
       </div>
       <div class="flex flex-col gap-4 flex-2">
         <span id="result-heading" class="font-['Silkscreen'] text-4xl sm:text-5xl font-bold leading-none text-3d-md m-0">
-          Whatcha Doing (Live From Mexico)
+          {{ title }}
         </span>
         <dl class="flex flex-col gap-4 m-0">
           <div class="flex flex-col pb-2 border-b-2 border-neutral-200 dark:border-neutral-800">
             <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Artista</dt>
-            <dd class="m-0">Dua Lipa</dd>
+            <dd class="m-0">{{ artist }}</dd>
           </div>
           <div class="flex flex-col pb-2 border-b-2 border-neutral-200 dark:border-neutral-800">
             <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Álbum</dt>
-            <dd class="m-0">Radical Optimism</dd>
+            <dd class="m-0">{{ album }}</dd>
           </div>
           <div class="flex flex-col pb-2 border-b-2 border-neutral-200 dark:border-neutral-800">
             <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Año</dt>
-            <dd class="m-0">2024</dd>
+            <dd class="m-0">{{ year }}</dd>
           </div>
         </dl>
       </div>
@@ -73,7 +100,7 @@ const metadatos = ref([
       </header>
       <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
         <div 
-          v-for="(campo, index) in metadatos" 
+          v-for="(campo, index) in metadata" 
           :key="index"
           class="flex flex-col pb-2 min-w-0 border-b-2 border-neutral-200 dark:border-neutral-800"
         >

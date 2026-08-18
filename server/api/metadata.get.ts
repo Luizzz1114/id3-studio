@@ -1,12 +1,3 @@
-import type { 
-  DeezerTrack, 
-  DeezerAlbum, 
-  ItunesResponse, 
-  LrcLibResponse, 
-  MetadataResponse, 
-  ErrorResponse 
-} from '../types/metadata';
-
 export default defineEventHandler(async(event): Promise<MetadataResponse | ErrorResponse> => {
   const query = getQuery(event);
 
@@ -22,12 +13,7 @@ export default defineEventHandler(async(event): Promise<MetadataResponse | Error
     const searchUrl = `https://api.deezer.com/search?q=${searchQuery}`;
 
     const dzSearch = await $fetch<{ data: DeezerTrack[] }>(searchUrl);
-
-    if (!dzSearch.data || dzSearch.data.length === 0) {
-      return { error: 'Canción no encontrada' };
-    }
-
-    const firstResult = dzSearch.data[0];
+    const firstResult = dzSearch.data[0] || null;
 
     if (!firstResult) {
       return { error: 'Canción no encontrada' };
