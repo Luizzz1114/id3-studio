@@ -49,7 +49,7 @@ const apis = ref([
           icon="i-lucide-square-arrow-out-up-right"
           color="neutral"
           variant="ghost"
-          class="ml-auto mr-2 grid size-8 shrink-0 place-items-center"
+          class="mr-2 ml-auto grid size-8 shrink-0 place-items-center"
         />
       </div>
     </div>
