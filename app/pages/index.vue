@@ -25,8 +25,9 @@ function handleSuggestion(artist: string, track: string) {
     </div>
     <USeparator size="sm" />
     <TrackMetadata
-      v-if="result"
-      :data="result"
+      v-if="loading || result"
+      :loading="loading"
+      :data="result ?? undefined"
     />
     <ErrorSection
       v-else-if="errorMessage"

@@ -1,9 +1,11 @@
 <script setup lang="ts">
 interface Props {
+  loading?: boolean
   data?: Record<string, string | number | null>
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  loading: true,
   data: () => ({})
 })
 
@@ -42,7 +44,42 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
 </script>
 
 <template>
-  <article class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-6 text-sm lg:flex-row">
+  <!-- ESQUELETO -->
+  <div v-if="loading" class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-6 lg:flex-row">
+    <div class="flex flex-1 flex-col gap-6">
+      <div class="flex w-full flex-col gap-6 sm:flex-row">
+        <USkeleton class="aspect-square w-full max-w-72" />
+        <div class="flex w-full min-w-0 flex-1 flex-col gap-4">
+          <USkeleton class="h-10 w-3/4 sm:h-12 lg:h-14" />
+          <div class="flex flex-col gap-4">
+            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 border-b-2 border-neutral-200 pb-2 dark:border-neutral-800">
+              <USkeleton class="h-3 w-16" />
+              <USkeleton class="h-4 w-1/2" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <USeparator size="sm" class="mt-2 mb-0 hidden sm:block" />
+      <section class="flex flex-col gap-6">
+        <header class="flex items-center justify-between gap-4 pb-2">
+          <USkeleton class="h-7 w-32" />
+        </header>
+        <dl class="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div
+            v-for="i in 9"
+            :key="i"
+            class="flex min-w-0 flex-col gap-2 border-b-2 border-neutral-200 pb-2 dark:border-neutral-800"
+          >
+            <USkeleton class="h-3 w-20" />
+            <USkeleton class="h-4 w-4/5" />
+          </div>
+        </dl>
+      </section>
+    </div>
+    <USkeleton class="min-h-96 w-full lg:h-auto lg:w-80 xl:w-96 lg:self-stretch" />
+  </div>
+  
+  <article v-else class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-6 text-sm lg:flex-row">
     <div class="flex flex-1 flex-col gap-6">
       <div class="flex w-full flex-col gap-6 sm:flex-row">
         <div class="flex w-fit max-w-72 min-w-0 flex-col gap-4">
