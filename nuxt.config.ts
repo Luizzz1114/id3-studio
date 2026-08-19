@@ -26,7 +26,4 @@ export default defineNuxtConfig({
     }
   },
   
-  runtimeConfig: {
-    geniusApiKey: '', // camelCase y sin el prefijo NUXT_
-  }
 })

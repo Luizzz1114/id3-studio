@@ -44,7 +44,7 @@ useSeoMeta({
     <footer class="flex justify-center p-6 w-full">
       <div class="flex flex-col items-center justify-center flex-1 gap-6 max-w-7xl">
         <USeparator size="sm" />
-        <span class="text-sm">Hecho por Luis Cortesía, 2025.</span>
+        <span class="text-sm">Hecho por Luis Cortesía, 2026.</span>
       </div>
     </footer>
   </UApp>

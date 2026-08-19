@@ -1,0 +1,27 @@
+# Dependencias
+node_modules/
+
+# Archivos autogenerados por Nuxt
+.nuxt/
+.output/
+dist/
+
+# Archivos de bloqueo de paquetes (Lockfiles)
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+bun.lockb
+
+# Variables de entorno y Logs
+.env
+.env.*
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Cobertura de tests
+coverage/
+
+# Archivos de la carpeta public que no quieres formatear (como fuentes o minificados)
+public/**/*.min.js
+public/**/*.min.css

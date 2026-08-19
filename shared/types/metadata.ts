@@ -52,6 +52,11 @@ export interface MetadataResponse {
   ALBUMART: string;
 }
 
+export interface MetadataRecord {
+  label: string
+  value: string | number | null
+}
+
 export interface Response {
   success: boolean;
   data?: MetadataResponse;

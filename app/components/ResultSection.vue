@@ -1,16 +1,14 @@
 <script setup lang="ts">
-interface MetadataRecord {
-  label: string
-  value: string | number | null
+interface Props {
+  data?: Record<string, string | number | null>
 }
 
-const props = withDefaults(defineProps<{ data?: Record<string, string | number | null> }>(), {
+const props = withDefaults(defineProps<Props>(), {
   data: () => ({})
-});
+})
 
 const metadata = computed<MetadataRecord[]>(() => {
   const data = props.data ?? {}
-
   const entries: MetadataRecord[] = [
     { label: 'ALBUM', value: data.ALBUM ?? null },
     { label: 'ALBUMARTIST', value: data.ALBUMARTIST ?? null },
@@ -25,89 +23,96 @@ const metadata = computed<MetadataRecord[]>(() => {
     { label: 'LENGTH', value: data.LENGTH ?? null },
     { label: 'TRACK', value: data.TRACK ?? null },
     { label: 'YEAR', value: data.YEAR ?? null }
-  ];
-
-  return entries.filter((item) => item.value !== null && item.value !== undefined && item.value !== '');
-});
+  ]
+  return entries.filter((item) => item.value != null && item.value !== '')
+})
 
 const normalizeYear = (value: string | number | null | undefined) => {
-  if (!value) return ''
+  if (!value) return 'Año no disponible'
   const text = String(value)
   return text.length >= 4 ? text.slice(0, 4) : text
 }
 
-const title = computed(() => props.data?.TITLE || 'Título no disponible');
-const artist = computed(() => props.data?.ARTIST || props.data?.ALBUMARTIST || 'Artista no disponible');
-const album = computed(() => props.data?.ALBUM || 'Álbum no disponible');
-const year = computed(() => normalizeYear(props.data?.YEAR));
-const coverUrl = computed(() => (props.data?.ALBUMART as string) || undefined);
+const title = computed(() => props.data?.TITLE || 'Título no disponible')
+const artist = computed(() => props.data?.ARTIST || 'Artista no disponible')
+const album = computed(() => props.data?.ALBUM || 'Álbum no disponible')
+const year = computed(() => normalizeYear(props.data?.YEAR))
+const coverUrl = computed(() => (props.data?.ALBUMART as string) || undefined)
+const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible')
 </script>
 
 <template>
-  <article aria-labelledby="result-heading" class="flex flex-col w-full flex-1 gap-6 p-6 text-sm bg-white border-2 shadow-3d dark:bg-neutral-900">
-    <div class="flex flex-col sm:flex-row w-full gap-6">
-      <div class="flex flex-col gap-4 w-full max-w-72 shrink-0">
-        <figure class="w-full aspect-square border-2 border-neutral-900 shadow-3d relative m-0 dark:border-neutral-200">
-          <span class="absolute top-2 inset-s-2 text-xs bg-indigo-500 text-white px-1.5 py-0.5 z-10 font-medium">
-            ALBUM COVER
-          </span>
-          <img 
-            :src="coverUrl" 
-            :alt="`Portada del álbum ${album} de ${artist}`"
-            class="w-full h-full object-cover block"
-          >
-        </figure>
-        <div class="flex items-center gap-4 w-full bg-neutral-100 p-1.5 border-2 border-neutral-200 dark:border-neutral-700 dark:bg-neutral-800">
-          <div class="flex flex-col flex-1 min-w-0">
-            <span class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Fuente de portada</span>
-            <span class="text-xs truncate">{{ coverUrl }}</span>
+  <article class="shadow-3d flex w-full flex-1 flex-col gap-6 border-2 bg-white p-6 text-sm lg:flex-row dark:bg-neutral-900">
+    <div class="flex flex-1 flex-col gap-6">
+      <div class="flex w-full flex-col gap-6 sm:flex-row">
+        <div class="flex w-fit max-w-72 flex-col gap-4">
+          <figure class="shadow-3d relative m-0 aspect-square w-full border-2">
+            <span class="absolute inset-s-2 top-2 z-10 bg-indigo-500 px-1.5 py-0.5 text-xs font-medium text-white uppercase">Album cover</span>
+            <img
+              :src="coverUrl"
+              :title="`Portada del álbum ${album} de ${artist}`"
+              :alt="`Portada del álbum ${album} de ${artist}`"
+              class="block h-full w-full object-cover"
+            />
+          </figure>
+          <div class="shadow-3d--b flex w-full items-center gap-4 border-2 border-neutral-200 bg-neutral-100 p-1.5 dark:border-neutral-700 dark:bg-neutral-800">
+            <div class="flex min-w-0 flex-1 flex-col">
+              <span class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Fuente de portada</span>
+              <span class="truncate text-xs">{{ coverUrl }}</span>
+            </div>
+            <UButton
+              :to="coverUrl"
+              target="_blank"
+              icon="i-lucide-arrow-up-right"
+              color="neutral"
+              variant="outline"
+              class="grid size-8 shrink-0 place-items-center"
+            />
           </div>
-          <UButton
-            :to="coverUrl"
-            target="_blank"
-            icon="i-lucide-arrow-up-right"
-            color="neutral"
-            variant="outline"
-            class="shrink-0 size-8 grid place-items-center"
-            aria-label="Abrir enlace de la fuente original"
-          />
+        </div>
+        <div class="flex w-full min-w-0 flex-1 flex-col gap-4">
+          <h2 class="text-3d-md m-0 font-['Silkscreen'] text-3xl font-bold hyphens-auto sm:text-4xl lg:text-5xl">{{ title }}</h2>
+          <dl class="m-0 flex flex-col gap-4">
+            <div class="flex flex-col border-b-2 border-neutral-200 pb-2 dark:border-neutral-800">
+              <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Artista</dt>
+              <dd class="m-0 hyphens-auto">{{ artist }}</dd>
+            </div>
+            <div class="flex flex-col border-b-2 border-neutral-200 pb-2 dark:border-neutral-800">
+              <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Álbum</dt>
+              <dd class="m-0 hyphens-auto">{{ album }}</dd>
+            </div>
+            <div class="flex flex-col border-b-2 border-neutral-200 pb-2 dark:border-neutral-800">
+              <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Año</dt>
+              <dd class="m-0 hyphens-auto">{{ year }}</dd>
+            </div>
+          </dl>
         </div>
       </div>
-      <div class="flex flex-col gap-4 flex-2">
-        <span id="result-heading" class="font-['Silkscreen'] text-4xl sm:text-5xl font-bold leading-none text-3d-md m-0">
-          {{ title }}
-        </span>
-        <dl class="flex flex-col gap-4 m-0">
-          <div class="flex flex-col pb-2 border-b-2 border-neutral-200 dark:border-neutral-800">
-            <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Artista</dt>
-            <dd class="m-0">{{ artist }}</dd>
-          </div>
-          <div class="flex flex-col pb-2 border-b-2 border-neutral-200 dark:border-neutral-800">
-            <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Álbum</dt>
-            <dd class="m-0">{{ album }}</dd>
-          </div>
-          <div class="flex flex-col pb-2 border-b-2 border-neutral-200 dark:border-neutral-800">
-            <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Año</dt>
-            <dd class="m-0">{{ year }}</dd>
+      <USeparator
+        size="sm"
+        class="mt-2 mb-0 hidden sm:block"
+      />
+      <section class="flex flex-col gap-6">
+        <header class="flex items-center justify-between gap-4 pb-2">
+          <h3 class="m-0 font-['Silkscreen'] text-xl font-bold">Metadatos</h3>
+        </header>
+        <dl class="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 xl:grid-cols-3">
+          <div
+            v-for="(campo, index) in metadata"
+            :key="index"
+            class="flex min-w-0 flex-col border-b-2 border-neutral-200 pb-2 dark:border-neutral-800"
+          >
+            <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">{{ campo.label }}</dt>
+            <dd class="m-0 text-sm hyphens-auto">{{ campo.value }}</dd>
           </div>
         </dl>
-      </div>
+      </section>
     </div>
-    <USeparator size="sm" class="mt-4 mb-2" />
-    <section aria-labelledby="form-heading" class="flex flex-col gap-6">
-      <header class="flex items-center justify-between gap-4 pb-2">
-        <h2 id="form-heading" class="text-xl font-bold font-['Silkscreen'] m-0">Metadatos</h2>
+    <aside class="shadow-3d bg-primary-400/35 flex w-full flex-col gap-4 border-2 p-4 pr-2.5 lg:w-80 lg:contain-size xl:w-96">
+      <header class="flex items-center justify-between gap-4">
+        <h3 class="m-0 font-['Silkscreen'] text-xl font-bold">Letra</h3>
       </header>
-      <dl class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
-        <div 
-          v-for="(campo, index) in metadata" 
-          :key="index"
-          class="flex flex-col pb-2 min-w-0 border-b-2 border-neutral-200 dark:border-neutral-800"
-        >
-          <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">{{ campo.label }}</dt>
-          <dd class="text-sm m-0 wrap-break-word">{{ campo.value }}</dd>
-        </div>
-      </dl>
-    </section>
+      <div class="lyrics-simple custom-scrollbar min-h-0 flex-1 overflow-y-auto pr-4 text-sm leading-relaxed">{{ lyrics }}</div>
+    </aside>
   </article>
 </template>
