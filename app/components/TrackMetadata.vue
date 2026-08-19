@@ -98,7 +98,7 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
             <UButton
               :to="coverUrl"
               target="_blank"
-              icon="i-lucide-arrow-up-right"
+              icon="i-lucide-square-arrow-out-up-right"
               color="neutral"
               variant="outline"
               class="grid size-8 shrink-0 place-items-center"

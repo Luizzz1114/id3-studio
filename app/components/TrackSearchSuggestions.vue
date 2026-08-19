@@ -55,7 +55,7 @@ function suggest(artist: string, track: string) {
     </div>
     <div class="flex flex-1 items-center justify-center">
       <img
-        src="../assets/img/vinilo.svg"
+        src="/img/vinilo.svg"
         alt="vinilo_pixelart"
         title="Vinilo pixelart"
         class="max-w-65 sm:max-w-xs md:max-w-sm lg:max-w-80"
