@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const searchFormRef = useTemplateRef('searchFormRef')
 
-const { loading, result, errorMessage, lastQuery, fetchMetadata, resetData } = useTrackMetadata()
+const { loading, result, errorData, lastQuery, fetchMetadata, resetData } = useTrackMetadata()
 
 function handleSuggestion(artist: string, track: string) {
   searchFormRef.value?.injectAndSubmit(artist, track)
@@ -29,9 +29,9 @@ function handleSuggestion(artist: string, track: string) {
       :loading="loading"
       :data="result ?? undefined"
     />
-    <ErrorSection
-      v-else-if="errorMessage"
-      :message="errorMessage"
+    <TrackSearchError
+      v-else-if="errorData"
+      :error="errorData"
       @retry="fetchMetadata(lastQuery)"
     />
     <TrackSearchSuggestions

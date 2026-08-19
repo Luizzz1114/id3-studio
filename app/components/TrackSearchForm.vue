@@ -46,10 +46,6 @@ function onReset() {
   <section class="shadow-3d bg-default flex flex-1 flex-col gap-4 border-2 p-4">
     <header class="flex items-center justify-between gap-4 border-b-2 pb-4">
       <h2 class="m-0 font-['Silkscreen'] text-xl font-bold">Buscar canción</h2>
-      <UIcon
-        name="i-lucide-disc-3"
-        class="size-5 animate-spin [animation-duration:3s]"
-      />
     </header>
     <p class="m-0 text-sm">Decodifica el ADN de cualquier pista. Ingresa las coordenadas de audio para extraer sus etiquetas.</p>
     <UForm

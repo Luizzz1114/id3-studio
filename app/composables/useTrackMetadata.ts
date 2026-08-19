@@ -1,53 +1,58 @@
 export const useTrackMetadata = () => {
-
-  const loading = ref<boolean>(false);
-  const result = ref<TrackMetadata | null>(null);
-  const errorMessage = ref<string | null>(null);
+  const loading = ref<boolean>(false)
+  const result = ref<TrackMetadata | null>(null)
+  const errorData = ref<ErrorState | null>(null)
   const lastQuery = reactive({
-    artist: '', track: ''
-  });
+    artist: '',
+    track: ''
+  })
 
   const resetData = () => {
-    result.value = null;
-    errorMessage.value = null;
-    lastQuery.artist = '';
-    lastQuery.track = '';
-  };
+    result.value = null
+    errorData.value = null
+    lastQuery.artist = ''
+    lastQuery.track = ''
+  }
 
   const fetchMetadata = async (query: { artist: string; track: string }) => {
-
     if (lastQuery.artist === query.artist && lastQuery.track === query.track) {
-      return;
+      return
     }
 
-    loading.value = true;
-    result.value = null;
-    errorMessage.value = null;
-    
-    try {
-      const response = await $fetch('/api/metadata', { query });
+    loading.value = true
+    resetData()
 
-      if (!response.success) {
-        throw new Error(response.error);
+    try {
+      const response = await $fetch('/api/metadata', { query })
+
+      if (response && !response.success) {
+        throw {
+          statusCode: 'CUSTOM_ERROR',
+          message: response.error || 'Error en la petición'
+        }
       }
 
-      result.value = response.data as TrackMetadata;
-      
+      result.value = response.data as TrackMetadata
     } catch (error: any) {
-      errorMessage.value = error?.message || 'No se pudo consultar la canción.';
+      const statusCode = error.data?.statusCode || error.statusCode || 500
+      const message = error.data?.message || error.message || 'Ha ocurrido un error inesperado'
+      errorData.value = {
+        type: statusCode,
+        message: message
+      }
     } finally {
-      loading.value = false;
-      lastQuery.artist = query.artist;
-      lastQuery.track = query.track;
+      loading.value = false
+      lastQuery.artist = query.artist
+      lastQuery.track = query.track
     }
-  };
+  }
 
   return {
     loading,
     result,
-    errorMessage,
+    errorData,
     lastQuery,
     fetchMetadata,
     resetData
-  };
-};
+  }
+}

@@ -44,7 +44,6 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
 </script>
 
 <template>
-  <!-- ESQUELETO -->
   <div v-if="loading" class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-6 lg:flex-row">
     <div class="flex flex-1 flex-col gap-6">
       <div class="flex w-full flex-col gap-6 sm:flex-row">
@@ -78,7 +77,6 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
     </div>
     <USkeleton class="min-h-96 w-full lg:h-auto lg:w-80 xl:w-96 lg:self-stretch" />
   </div>
-  
   <article v-else class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-6 text-sm lg:flex-row">
     <div class="flex flex-1 flex-col gap-6">
       <div class="flex w-full flex-col gap-6 sm:flex-row">
