@@ -1,7 +1,7 @@
 export const useTrackMetadata = () => {
 
   const loading = ref<boolean>(false);
-  const result = ref<MetadataResponse | null>(null);
+  const result = ref<TrackMetadata | null>(null);
   const errorMessage = ref<string | null>(null);
   const lastQuery = reactive({
     artist: '', track: ''
@@ -31,7 +31,7 @@ export const useTrackMetadata = () => {
         throw new Error(response.error);
       }
 
-      result.value = response.data as MetadataResponse;
+      result.value = response.data as TrackMetadata;
       
     } catch (error: any) {
       errorMessage.value = error?.message || 'No se pudo consultar la canción.';

@@ -1,17 +1,12 @@
 <script setup lang="ts">
-import * as v from 'valibot'
+import { metadataQuerySchema, type MetadataQuery } from '~~/shared/schemas/metadata.schema'
 
 defineProps<{
   loading: boolean
 }>()
 
 const emit = defineEmits<{
-  submit: [
-    query: {
-      artist: string
-      track: string
-    }
-  ]
+  submit: [query: MetadataQuery]
   reset: []
 }>()
 
@@ -22,10 +17,7 @@ const state = reactive({
 
 const formRef = useTemplateRef('form')
 
-const schema = v.object({
-  artist: v.pipe(v.string(), v.minLength(1, 'Campo requerido')),
-  track: v.pipe(v.string(), v.minLength(1, 'Campo requerido'))
-})
+const schema = metadataQuerySchema
 
 function injectAndSubmit(newArtist: string, newTrack: string) {
   state.artist = newArtist
@@ -45,6 +37,7 @@ function onSubmit() {
 function onReset() {
   state.artist = ''
   state.track = ''
+  formRef.value?.clear()
   emit('reset')
 }
 </script>

@@ -33,7 +33,7 @@ export interface LrcLibResponse {
   plainLyrics?: string;
 }
 
-export interface MetadataResponse {
+export interface TrackMetadata {
   ALBUM: string;
   ALBUMARTIST: string;
   ARTIST: string;
@@ -57,9 +57,9 @@ export interface MetadataRecord {
   value: string | number | null
 }
 
-export interface Response {
+export interface MetadataResponse {
   success: boolean;
-  data?: MetadataResponse;
+  data?: TrackMetadata;
   error?: string;
   details?: string;
 }
