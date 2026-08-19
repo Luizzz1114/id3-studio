@@ -31,7 +31,7 @@ function handleSuggestion(artist: string, track: string) {
       />
     </div>
     <USeparator size="sm" />
-    <ResultSection
+    <TrackMetadata
       v-if="result"
       :data="result"
     />
