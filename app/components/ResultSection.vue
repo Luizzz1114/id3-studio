@@ -113,6 +113,7 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
         <h3 class="m-0 font-['Silkscreen'] text-xl font-bold">Letra</h3>
       </header>
       <div class="lyrics-simple custom-scrollbar min-h-0 flex-1 overflow-y-auto pr-4 text-sm leading-relaxed">{{ lyrics }}</div>
+      <span class="text-xs text-neutral-600 dark:text-neutral-300">Fuente: LRCLIB</span>
     </aside>
   </article>
 </template>
