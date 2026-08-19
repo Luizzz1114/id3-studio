@@ -11,10 +11,10 @@ function suggest(artist: string, track: string) {
 <template>
   <section class="shadow-3d bg-default flex w-full flex-col gap-6 border-2 p-6 md:flex-row">
     <div class="flex flex-2 flex-col gap-6">
-      <span class="m-0 flex flex-col items-start">
+      <h2 class="m-0 flex flex-col items-start">
         <span class="text-3d-md font-['Silkscreen'] text-4xl leading-none font-bold sm:text-5xl">Sistema en espera...</span>
         <span class="text-3d-md font-['Silkscreen'] text-4xl leading-none font-bold sm:text-5xl">Requiere input del usuario.</span>
-      </span>
+      </h2>
       <div class="flex flex-col gap-6">
         <p class="m-0 text-sm">
           Para iniciar la consulta, proporcione los valores requeridos en los campos superiores. El sistema se encargará de interceptar la pista y formatear la información encontrada.
@@ -56,8 +56,8 @@ function suggest(artist: string, track: string) {
     <div class="flex flex-1 items-center justify-center">
       <img
         src="../assets/img/vinilo.svg"
-        alt=""
-        aria-hidden="true"
+        alt="vinilo_pixelart"
+        title="Vinilo pixelart"
         class="max-w-65 sm:max-w-xs md:max-w-sm lg:max-w-80"
       />
     </div>
