@@ -42,10 +42,10 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
 </script>
 
 <template>
-  <article class="shadow-3d flex w-full flex-1 flex-col gap-6 border-2 bg-white p-6 text-sm lg:flex-row dark:bg-neutral-900">
+  <article class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-6 text-sm lg:flex-row">
     <div class="flex flex-1 flex-col gap-6">
       <div class="flex w-full flex-col gap-6 sm:flex-row">
-        <div class="flex w-fit max-w-72 flex-col gap-4">
+        <div class="flex w-fit max-w-72 min-w-0 flex-col gap-4">
           <figure class="shadow-3d relative m-0 aspect-square w-full border-2">
             <span class="absolute inset-s-2 top-2 z-10 bg-indigo-500 px-1.5 py-0.5 text-xs font-medium text-white uppercase">Album cover</span>
             <img

@@ -1,13 +1,16 @@
 <script setup lang="ts">
-const props = withDefaults(defineProps<{
-  title?: string
-  message?: string
-  retryLabel?: string
-}>(), {
-  title: 'Algo salió mal...',
-  message: 'Ocurrió un error al realizar la consulta, compruebe los datos e intente nuevamente.',
-  retryLabel: 'Reintentar'
-})
+const props = withDefaults(
+  defineProps<{
+    title?: string
+    message?: string
+    retryLabel?: string
+  }>(),
+  {
+    title: 'Algo salió mal...',
+    message: 'Ocurrió un error al realizar la consulta, compruebe los datos e intente nuevamente.',
+    retryLabel: 'Reintentar'
+  }
+)
 
 const emit = defineEmits<{
   retry: []
@@ -15,24 +18,24 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <section class="flex flex-col md:flex-row w-full gap-6 p-6 bg-white border-2 shadow-3d dark:bg-neutral-900">
-    <div class="flex flex-col gap-6 flex-2">
+  <section class="shadow-3d bg-default flex w-full flex-col gap-6 border-2 p-6 md:flex-row">
+    <div class="flex flex-2 flex-col gap-6">
       <header class="flex flex-col justify-center">
-        <span class="font-['Silkscreen'] text-4xl sm:text-5xl font-bold leading-none text-3d-md m-0">Algo salió mal...</span>
+        <span class="text-3d-md m-0 font-['Silkscreen'] text-4xl leading-none font-bold sm:text-5xl">Algo salió mal...</span>
       </header>
-      <div class="flex flex-col gap-6">      
-        <p class="text-sm m-0">Ocurrió un error al realizar la consulta, compruebe los datos e intente nuevamente.</p>
-        <div class="flex gap-4 flex-wrap">
+      <div class="flex flex-col gap-6">
+        <p class="m-0 text-sm">Ocurrió un error al realizar la consulta, compruebe los datos e intente nuevamente.</p>
+        <div class="flex flex-wrap gap-4">
           <UButton
             :click="emit('retry')"
             label="Reintentar"
             color="secondary"
             icon="i-lucide-rotate-ccw"
-            class="flex justify-center sm:w-auto h-8 cursor-pointer"
+            class="flex h-8 cursor-pointer justify-center sm:w-auto"
           />
         </div>
       </div>
     </div>
-    <div class="flex-1 hidden sm:block"></div>
+    <div class="hidden flex-1 sm:block"></div>
   </section>
 </template>

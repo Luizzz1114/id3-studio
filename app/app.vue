@@ -4,12 +4,8 @@ const description = 'Herramienta para consultar metadatos de archivos de audio.'
 
 useHead({
   title,
-  meta: [
-    { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-  ],
-  link: [
-    { rel: 'icon', href: '/favicon.svg' }
-  ],
+  meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+  link: [{ rel: 'icon', href: '/favicon.svg' }],
   htmlAttrs: {
     lang: 'es'
   }
@@ -19,7 +15,7 @@ useSeoMeta({
   title,
   description,
   ogTitle: title,
-  ogDescription: description,
+  ogDescription: description
 })
 </script>
 
@@ -28,10 +24,13 @@ useSeoMeta({
     <UHeader :toggle="false">
       <template #left>
         <div class="flex items-center gap-4">
-          <div class="size-8 bg-indigo-500 border-2 shadow-3d grid place-items-center">
-            <UIcon name="i-lucide-turntable" class="size-5 text-white" />
+          <div class="shadow-3d grid size-8 place-items-center border-2 bg-indigo-500">
+            <UIcon
+              name="i-lucide-turntable"
+              class="size-5 text-white"
+            />
           </div>
-          <h1 class="font-bold text-2xl font-['Silkscreen']">ID3 Studio</h1>
+          <h1 class="font-['Silkscreen'] text-2xl font-bold">ID3 Studio</h1>
         </div>
       </template>
       <template #right>
@@ -41,8 +40,8 @@ useSeoMeta({
     <UMain class="flex flex-col items-center">
       <NuxtPage />
     </UMain>
-    <footer class="flex justify-center p-6 w-full">
-      <div class="flex flex-col items-center justify-center flex-1 gap-6 max-w-7xl">
+    <footer class="flex w-full justify-center p-6">
+      <div class="flex max-w-7xl flex-1 flex-col items-center justify-center gap-6">
         <USeparator size="sm" />
         <span class="text-sm">Hecho por Luis Cortesía, 2026.</span>
       </div>
