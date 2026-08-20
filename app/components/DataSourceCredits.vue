@@ -30,7 +30,7 @@ const apis = ref([
       <div
         v-for="api in apis"
         :key="api.name"
-        class="shadow-3d bg-default flex items-center gap-6 border-2 p-2"
+        class="shadow-3d bg-default flex items-center gap-2.5 overflow-hidden border-2 p-2"
       >
         <div class="flex size-12 shrink-0 items-center justify-center border-2 border-neutral-200 bg-neutral-100 p-1.5 dark:border-neutral-700 dark:bg-neutral-800">
           <img
@@ -39,9 +39,9 @@ const apis = ref([
             class="h-10 w-10 object-contain"
           />
         </div>
-        <div class="flex flex-col">
-          <span class="font-['Silkscreen'] text-xl font-bold tracking-wider uppercase">{{ api.name }}</span>
-          <span class="text-xs text-slate-500">{{ api.description }}</span>
+        <div class="flex min-w-0 flex-1 flex-col">
+          <span class="truncate font-['Silkscreen'] text-xl font-bold tracking-wider uppercase">{{ api.name }}</span>
+          <span class="truncate text-xs text-slate-500">{{ api.description }}</span>
         </div>
         <UButton
           :to="api.url"
