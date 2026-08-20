@@ -44,21 +44,31 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
 </script>
 
 <template>
-  <div v-if="loading" class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-6 lg:flex-row">
+  <div
+    v-if="loading"
+    class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-6 lg:flex-row"
+  >
     <div class="flex flex-1 flex-col gap-6">
       <div class="flex w-full flex-col gap-6 sm:flex-row">
         <USkeleton class="aspect-square w-full max-w-72" />
         <div class="flex w-full min-w-0 flex-1 flex-col gap-4">
           <USkeleton class="h-10 w-3/4 sm:h-12 lg:h-14" />
           <div class="flex flex-col gap-4">
-            <div v-for="i in 3" :key="i" class="flex flex-col gap-2 border-b-2 border-neutral-200 pb-2 dark:border-neutral-800">
+            <div
+              v-for="i in 3"
+              :key="i"
+              class="flex flex-col gap-2 border-b-2 border-neutral-200 pb-2 dark:border-neutral-800"
+            >
               <USkeleton class="h-3 w-16" />
               <USkeleton class="h-4 w-1/2" />
             </div>
           </div>
         </div>
       </div>
-      <USeparator size="sm" class="mt-2 mb-0 hidden sm:block" />
+      <USeparator
+        size="sm"
+        class="mt-2 mb-0 hidden sm:block"
+      />
       <section class="flex flex-col gap-6">
         <header class="flex items-center justify-between gap-4 pb-2">
           <USkeleton class="h-7 w-32" />
@@ -75,12 +85,15 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
         </dl>
       </section>
     </div>
-    <USkeleton class="min-h-96 w-full lg:h-auto lg:w-80 xl:w-96 lg:self-stretch" />
+    <USkeleton class="min-h-96 w-full lg:h-auto lg:w-80 lg:self-stretch xl:w-96" />
   </div>
-  <article v-else class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-6 text-sm lg:flex-row">
+  <article
+    v-else
+    class="shadow-3d bg-default flex w-full min-w-0 flex-1 flex-col gap-6 border-2 p-6 text-sm lg:flex-row"
+  >
     <div class="flex flex-1 flex-col gap-6">
       <div class="flex w-full flex-col gap-6 sm:flex-row">
-        <div class="flex w-fit max-w-72 min-w-0 flex-col gap-4">
+        <div class="flex w-full max-w-72 min-w-0 flex-col gap-4">
           <figure class="shadow-3d relative m-0 aspect-square w-full border-2">
             <span class="absolute inset-s-2 top-2 z-10 bg-indigo-500 px-1.5 py-0.5 text-xs font-medium text-white uppercase">Album cover</span>
             <img
@@ -90,7 +103,7 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
               class="block h-full w-full object-cover"
             />
           </figure>
-          <div class="shadow-3d--b flex w-full items-center gap-4 border-2 border-neutral-200 bg-neutral-100 p-1.5 dark:border-neutral-700 dark:bg-neutral-800">
+          <div class="shadow-3d--b flex w-full min-w-0 items-center gap-4 overflow-hidden border-2 border-neutral-200 bg-neutral-100 p-1.5 dark:border-neutral-700 dark:bg-neutral-800">
             <div class="flex min-w-0 flex-1 flex-col">
               <span class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Fuente de portada</span>
               <span class="truncate text-xs">{{ coverUrl }}</span>

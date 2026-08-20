@@ -8,7 +8,7 @@ const apis = ref([
   },
   {
     name: 'iTunes API',
-    description: 'Metadatos de Audio',
+    description: 'Metadatos de audio',
     img: '/img/itunes-logo.png',
     url: 'https://performance-partners.apple.com/search-api'
   },

@@ -40,8 +40,8 @@ useSeoMeta({
     <UMain class="flex flex-col items-center">
       <NuxtPage />
     </UMain>
-    <footer class="flex w-full justify-center p-6">
-      <div class="flex max-w-7xl flex-1 flex-col items-center justify-center gap-6">
+    <footer class="flex w-full justify-center py-6">
+      <div class="flex max-w-7xl flex-1 flex-col items-center justify-center gap-6 px-6">
         <USeparator size="sm" />
         <span class="text-sm">Hecho por Luis Cortesía, 2026.</span>
       </div>

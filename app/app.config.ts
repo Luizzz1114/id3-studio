@@ -7,7 +7,7 @@ export default defineAppConfig({
     },
     header: {
       slots: {
-        root: 'bg-default border-b-2 border-neutral-700 dark:border-neutral-200',
+        root: 'bg-default border-b-2 border-neutral-700 dark:border-neutral-200'
       }
     },
     separator: {
@@ -16,13 +16,13 @@ export default defineAppConfig({
           neutral: {
             border: 'border-neutral-700 dark:border-neutral-200'
           }
-        },
+        }
       }
     },
     formField: {
       slots: {
-        error: 'text-xs',
-      },
-    }    
+        error: 'text-xs'
+      }
+    }
   }
 })
