@@ -24,11 +24,8 @@ useSeoMeta({
     <UHeader :toggle="false">
       <template #left>
         <div class="flex items-center gap-4">
-          <div class="shadow-3d grid size-8 place-items-center border-2 bg-indigo-500">
-            <UIcon
-              name="i-lucide-turntable"
-              class="size-5 text-white"
-            />
+          <div class="shadow-3d grid size-8 p-0.5 place-items-center border-2 bg-indigo-500">
+            <img src="/favicon.svg" alt="icono-id3-studio" title="Icono ID3 Studio" />
           </div>
           <h1 class="font-['Silkscreen'] text-2xl font-bold">ID3 Studio</h1>
         </div>

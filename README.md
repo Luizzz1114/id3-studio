@@ -15,7 +15,7 @@
 
 ## Sobre el proyecto
 
-ID3 Studio es una aplicación web para buscar una canción y obtener sus metadatos en un formato útil para etiquetar archivos de audio. La página recibe el nombre del artista y de la canción, consulta distintas fuentes y presenta la información reunida en una sola vista.
+ID3 Studio es una aplicación web para buscar una canción y obtener sus metadatos para etiquetar archivos de audio. La página recibe el nombre del artista y de la canción, consulta distintas fuentes y presenta la información reunida en una sola vista.
 
 La incrustación de los metadatos directamente en archivos de audio es una idea prevista para una siguiente etapa y todavía no forma parte de la aplicación.
 
