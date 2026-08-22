@@ -164,4 +164,5 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
       <span class="text-xs text-neutral-600 dark:text-neutral-300">Fuente: LRCLIB</span>
     </aside>
   </article>
+  <DownloadMetadata v-if="!loading" />
 </template>
