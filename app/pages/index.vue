@@ -21,7 +21,7 @@ function handleSuggestion(artist: string, track: string) {
         <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold sm:text-6xl md:text-[76px]">Busca,</span>
         <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold sm:text-6xl md:text-[76px]">Descubre,</span>
         <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold sm:text-6xl md:text-[76px]">Etiqueta.</span>
-        <span class="sr-only">ID3 Studio — Buscador y editor de metadatos de canciones</span>
+        <span class="sr-only">ID3 Studio - Buscador y Etiquetador de Música</span>
       </h1>
       <TrackSearchForm
         ref="searchFormRef"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const title = 'ID3 Studio — Buscador y Editor de Metadatos ID3'
+const title = 'ID3 Studio - Buscador y Etiquetador de Música'
 const description = 'Busca carátulas, letras y metadatos de audio, e inyecta tags ID3 en tus archivos de música.'
 
 useHead({
