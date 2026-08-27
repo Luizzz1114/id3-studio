@@ -93,17 +93,18 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
   >
     <div class="flex flex-1 flex-col gap-6">
       <div class="flex w-full flex-col gap-6 sm:flex-row">
-        <div class="flex w-full max-w-72 min-w-0 flex-col gap-4">
-          <figure class="shadow-3d relative m-0 aspect-square w-full border-2">
-            <span class="absolute inset-s-2 top-2 z-10 bg-indigo-500 px-1.5 py-0.5 text-xs font-medium text-white uppercase">Album cover</span>
+        <figure class="m-0 flex w-full max-w-72 min-w-0 flex-col gap-4">
+          <div class="shadow-3d relative m-0 aspect-square w-full border-2">
+            <span class="absolute inset-s-2 top-2 z-10 bg-indigo-500 px-1.5 py-0.5 text-xs font-medium text-white uppercase"> Album cover </span>
             <img
               :src="coverUrl"
-              :title="`Portada del álbum ${album} de ${artist}`"
               :alt="`Portada del álbum ${album} de ${artist}`"
+              width="288"
+              height="288"
               class="block h-full w-full object-cover"
             />
-          </figure>
-          <div class="shadow-3d--b flex w-full min-w-0 items-center gap-4 overflow-hidden border-2 border-neutral-200 bg-neutral-100 p-1.5 dark:border-neutral-700 dark:bg-neutral-800">
+          </div>
+          <figcaption class="shadow-3d--b flex w-full min-w-0 items-center gap-4 overflow-hidden border-2 border-neutral-200 bg-neutral-100 p-1.5 dark:border-neutral-700 dark:bg-neutral-800">
             <div class="flex min-w-0 flex-1 flex-col">
               <span class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Fuente de portada</span>
               <span class="truncate text-xs">{{ coverUrl }}</span>
@@ -111,27 +112,33 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
             <UButton
               :to="coverUrl"
               target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Ver carátula en tamaño completo"
               icon="i-lucide-square-arrow-out-up-right"
               color="neutral"
               variant="outline"
               class="grid size-8 shrink-0 place-items-center"
             />
-          </div>
-        </div>
+          </figcaption>
+        </figure>
         <div class="flex w-full min-w-0 flex-1 flex-col gap-4">
-          <h2 class="text-3d-md m-0 font-['Silkscreen'] text-3xl font-bold hyphens-auto sm:text-4xl lg:text-5xl">{{ title }}</h2>
+          <h2 class="text-3d-md m-0 font-['Silkscreen'] text-3xl font-bold hyphens-auto sm:text-4xl lg:text-5xl">
+            {{ title }}
+          </h2>
           <dl class="m-0 flex flex-col gap-4">
             <div class="flex flex-col border-b-2 border-neutral-200 pb-2 dark:border-neutral-800">
               <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Artista</dt>
-              <dd class="m-0 hyphens-auto">{{ artist }}</dd>
+              <dd class="m-0 font-medium hyphens-auto">{{ artist }}</dd>
             </div>
             <div class="flex flex-col border-b-2 border-neutral-200 pb-2 dark:border-neutral-800">
               <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Álbum</dt>
-              <dd class="m-0 hyphens-auto">{{ album }}</dd>
+              <dd class="m-0 font-medium hyphens-auto">{{ album }}</dd>
             </div>
             <div class="flex flex-col border-b-2 border-neutral-200 pb-2 dark:border-neutral-800">
               <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Año</dt>
-              <dd class="m-0 hyphens-auto">{{ year }}</dd>
+              <dd class="m-0 font-medium hyphens-auto">
+                <time :datetime="String(year)">{{ year }}</time>
+              </dd>
             </div>
           </dl>
         </div>
@@ -140,9 +147,17 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
         size="sm"
         class="mt-2 mb-0 hidden sm:block"
       />
-      <section class="flex flex-col gap-6">
-        <header class="flex items-center justify-between gap-4 pb-2">
-          <h3 class="m-0 font-['Silkscreen'] text-xl font-bold">Metadatos</h3>
+      <section
+        class="flex flex-col gap-6"
+        aria-labelledby="metadata-subheading"
+      >
+        <header class="flex items-center justify-between gap-4 border-b-2 border-neutral-200 pb-2 dark:border-neutral-800">
+          <h3
+            id="metadata-subheading"
+            class="m-0 font-['Silkscreen'] text-xl font-bold"
+          >
+            Metadatos
+          </h3>
         </header>
         <dl class="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 xl:grid-cols-3">
           <div
@@ -151,17 +166,27 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
             class="flex min-w-0 flex-col border-b-2 border-neutral-200 pb-2 dark:border-neutral-800"
           >
             <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">{{ campo.label }}</dt>
-            <dd class="m-0 text-sm hyphens-auto">{{ campo.value }}</dd>
+            <dd class="m-0 text-sm font-medium hyphens-auto">{{ campo.value }}</dd>
           </div>
         </dl>
       </section>
     </div>
-    <aside class="shadow-3d bg-primary-400/35 flex w-full flex-col gap-4 border-2 p-4 pr-2.5 lg:w-80 lg:contain-size xl:w-96">
+    <aside
+      class="shadow-3d bg-primary-400/35 flex w-full flex-col gap-4 border-2 p-4 pr-2.5 lg:w-80 lg:contain-size xl:w-96"
+      aria-labelledby="lyrics-subheading"
+    >
       <header class="flex items-center justify-between gap-4">
-        <h3 class="m-0 font-['Silkscreen'] text-xl font-bold">Letra</h3>
+        <h3
+          id="lyrics-subheading"
+          class="m-0 font-['Silkscreen'] text-xl font-bold"
+        >
+          Letra
+        </h3>
       </header>
-      <div class="lyrics-simple custom-scrollbar min-h-0 flex-1 overflow-y-auto pr-4 text-sm leading-relaxed">{{ lyrics }}</div>
-      <span class="text-xs text-neutral-600 dark:text-neutral-300">Fuente: LRCLIB</span>
+      <div class="lyrics-simple custom-scrollbar min-h-0 flex-1 overflow-y-auto pr-4 text-sm leading-relaxed whitespace-pre-line">
+        {{ lyrics }}
+      </div>
+      <span class="text-xs text-neutral-600 dark:text-neutral-300"> Fuente: <cite class="font-semibold not-italic">LRCLIB</cite> </span>
     </aside>
   </article>
   <DownloadMetadata v-if="!loading" />

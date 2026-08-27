@@ -43,24 +43,38 @@ const errorContent = computed(() => {
 </script>
 
 <template>
-  <section class="shadow-3d bg-default flex w-full flex-col gap-6 border-2 p-6 md:flex-row">
+  <div
+    role="alert"
+    aria-labelledby="error-title"
+    class="shadow-3d bg-default flex w-full flex-col gap-6 border-2 p-6 md:flex-row"
+  >
     <div class="flex flex-1 flex-col gap-6">
       <header class="flex flex-col justify-center">
-        <h2 class="text-3d-md m-0 font-['Silkscreen'] text-4xl leading-none font-bold hyphens-auto sm:text-5xl">{{ errorContent.title }}</h2>
+        <h2
+          id="error-title"
+          class="text-3d-md m-0 font-['Silkscreen'] text-4xl leading-none font-bold hyphens-auto sm:text-5xl"
+        >
+          {{ errorContent.title }}
+        </h2>
       </header>
       <div class="flex flex-col gap-6">
-        <p class="m-0 text-sm">{{ errorContent.message }}</p>
+        <p class="m-0 text-sm">
+          {{ errorContent.message }}
+        </p>
         <div class="flex flex-wrap gap-4">
           <UButton
-            @click="emit('retry')"
             label="Reintentar"
             color="secondary"
             icon="i-lucide-rotate-ccw"
             class="flex h-8 cursor-pointer justify-center sm:w-auto"
+            @click="emit('retry')"
           />
         </div>
       </div>
     </div>
-    <div class="hidden flex-1 lg:block"></div>
-  </section>
+    <div
+      class="hidden flex-1 lg:block"
+      aria-hidden="true"
+    ></div>
+  </div>
 </template>

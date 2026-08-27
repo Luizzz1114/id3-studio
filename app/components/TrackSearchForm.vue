@@ -43,17 +43,27 @@ function onReset() {
 </script>
 
 <template>
-  <section class="shadow-3d bg-default flex flex-1 flex-col gap-4 border-2 p-4">
+  <section
+    aria-labelledby="search-form-title"
+    class="shadow-3d bg-default flex flex-1 flex-col gap-4 border-2 p-4"
+  >
     <header class="flex items-center justify-between gap-4 border-b-2 pb-4">
-      <h2 class="m-0 font-['Silkscreen'] text-xl font-bold">Buscar canción</h2>
+      <h2
+        id="search-form-title"
+        class="m-0 font-['Silkscreen'] text-xl font-bold"
+      >
+        Buscar canción
+      </h2>
     </header>
     <p class="m-0 text-sm">Decodifica el ADN de cualquier pista. Ingresa las coordenadas de audio para extraer sus etiquetas.</p>
     <UForm
+      ref="form"
+      role="search"
+      aria-label="Buscador de pistas y metadatos"
       :schema="schema"
       :state="state"
-      ref="form"
-      @submit="onSubmit"
       class="flex flex-col gap-4"
+      @submit="onSubmit"
     >
       <div class="flex flex-col gap-4 sm:flex-row sm:items-end">
         <UFormField
@@ -64,6 +74,7 @@ function onReset() {
           <UInput
             v-model="state.artist"
             placeholder="Dua Lipa"
+            autocomplete="off"
             class="h-8 w-full min-w-36"
           />
         </UFormField>
@@ -75,6 +86,7 @@ function onReset() {
           <UInput
             v-model="state.track"
             placeholder="Whatcha Doing"
+            autocomplete="off"
             class="h-8 w-full min-w-36"
           />
         </UFormField>
@@ -89,13 +101,13 @@ function onReset() {
           :loading="loading"
         />
         <UButton
-          @click="onReset"
           type="reset"
           label="Limpiar"
           color="neutral"
           icon="i-lucide-eraser"
           class="flex h-8 cursor-pointer justify-center"
           :disabled="loading"
+          @click="onReset"
         />
       </div>
     </UForm>
