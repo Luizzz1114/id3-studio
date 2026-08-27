@@ -19,7 +19,7 @@ function suggest(artist: string, track: string) {
 <template>
   <div
     aria-labelledby="suggestions-title"
-    class="shadow-3d bg-default flex w-full flex-col gap-6 border-2 p-6 md:flex-row"
+    class="shadow-3d bg-default flex w-full flex-col gap-4 border-2 p-4 sm:gap-6 sm:p-6 md:flex-row"
   >
     <div class="flex flex-2 flex-col gap-6">
       <h2

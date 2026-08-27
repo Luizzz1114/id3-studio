@@ -9,10 +9,10 @@ function handleSuggestion(artist: string, track: string) {
 </script>
 
 <template>
-  <div class="flex w-full max-w-7xl min-w-0 flex-col gap-12 px-6 py-10">
+  <div class="flex w-full max-w-7xl min-w-0 flex-col gap-10 px-4 py-8 sm:gap-12 sm:px-6 sm:py-12">
     <section
       aria-labelledby="hero-title"
-      class="mx-auto flex w-full flex-wrap items-start justify-between gap-12 lg:items-center"
+      class="mx-auto flex w-full flex-wrap items-start justify-between gap-10 sm:gap-12 lg:items-center"
     >
       <h1
         id="hero-title"
@@ -34,7 +34,7 @@ function handleSuggestion(artist: string, track: string) {
       id="consulta"
       aria-live="polite"
       aria-label="Resultados de la consulta"
-      class="flex flex-col gap-12"
+      class="flex flex-col gap-10 sm:gap-12"
     >
       <USeparator
         label="Consulta"
@@ -59,7 +59,7 @@ function handleSuggestion(artist: string, track: string) {
     <section
       id="atribuciones"
       aria-label="Fuentes de datos y atribuciones"
-      class="flex flex-col gap-12"
+      class="flex flex-col gap-10 sm:gap-12"
     >
       <USeparator
         label="Atribuciones"

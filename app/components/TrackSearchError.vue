@@ -46,9 +46,9 @@ const errorContent = computed(() => {
   <div
     role="alert"
     aria-labelledby="error-title"
-    class="shadow-3d bg-default flex w-full flex-col gap-6 border-2 p-6 md:flex-row"
+    class="shadow-3d bg-default flex w-full flex-col gap-4 border-2 p-4 sm:gap-6 sm:p-6 md:flex-row"
   >
-    <div class="flex flex-1 flex-col gap-6">
+    <div class="flex flex-1 flex-col gap-4 sm:gap-6">
       <header class="flex flex-col justify-center">
         <h2
           id="error-title"
@@ -57,7 +57,7 @@ const errorContent = computed(() => {
           {{ errorContent.title }}
         </h2>
       </header>
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-4 sm:gap-6">
         <p class="m-0 text-sm">
           {{ errorContent.message }}
         </p>

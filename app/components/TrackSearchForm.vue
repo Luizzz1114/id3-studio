@@ -45,9 +45,9 @@ function onReset() {
 <template>
   <section
     aria-labelledby="search-form-title"
-    class="shadow-3d bg-default flex flex-1 flex-col gap-4 border-2 p-4"
+    class="shadow-3d bg-default flex flex-1 flex-col gap-4 border-2 p-4 sm:gap-6 sm:p-6"
   >
-    <header class="flex items-center justify-between gap-4 border-b-2 pb-4">
+    <header class="flex items-center justify-between border-b-2 pb-4 sm:pb-6">
       <h2
         id="search-form-title"
         class="m-0 font-['Silkscreen'] text-xl font-bold"
@@ -62,10 +62,10 @@ function onReset() {
       aria-label="Buscador de pistas y metadatos"
       :schema="schema"
       :state="state"
-      class="flex flex-col gap-4"
+      class="flex flex-col gap-4 sm:gap-6"
       @submit="onSubmit"
     >
-      <div class="flex flex-col gap-4 sm:flex-row sm:items-end">
+      <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:gap-6">
         <UFormField
           label="Artista"
           name="artist"
@@ -91,7 +91,7 @@ function onReset() {
           />
         </UFormField>
       </div>
-      <div class="flex items-center gap-4">
+      <div class="flex items-center gap-4 sm:gap-6">
         <UButton
           type="submit"
           label="Buscar track"

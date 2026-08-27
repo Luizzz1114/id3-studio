@@ -1,8 +1,7 @@
 <template>
-  <!-- Sección funcional principal -->
   <section
     aria-labelledby="actions-title"
-    class="shadow-3d bg-default flex w-full min-w-0 flex-1 flex-col gap-6 border-2 p-6 text-sm"
+    class="shadow-3d bg-default flex w-full min-w-0 flex-1 flex-col gap-6 border-2 p-4 text-sm sm:p-6"
   >
     <header class="flex flex-col gap-4">
       <h3
@@ -13,9 +12,7 @@
       </h3>
       <p class="m-0 text-sm">Elige cómo quieres llevarte la información de este track.</p>
     </header>
-
     <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
-      <!-- Tarjeta 1: Inyectar metadatos -->
       <section
         aria-labelledby="inject-title"
         class="shadow-3d--b flex flex-col gap-4 border-2 border-neutral-200 p-4 dark:border-neutral-700"
@@ -40,7 +37,6 @@
             <p class="m-0 text-xs text-neutral-500 dark:text-neutral-400">Selecciona un MP3 para escribirle estos metadatos.</p>
           </div>
         </div>
-
         <div class="flex flex-1 items-end">
           <UForm
             aria-label="Formulario para inyectar metadatos en archivo de audio"
@@ -65,8 +61,6 @@
           </UForm>
         </div>
       </section>
-
-      <!-- Tarjeta 2: Descargar ficha TXT -->
       <section
         aria-labelledby="download-title"
         class="shadow-3d--b flex flex-col gap-4 border-2 border-neutral-200 p-4 dark:border-neutral-700"
@@ -91,7 +85,6 @@
             <p class="m-0 text-xs text-neutral-500 dark:text-neutral-400">Guarda todos los metadatos en un archivo de texto.</p>
           </div>
         </div>
-
         <div class="flex flex-1 items-end">
           <UButton
             label="Descargar TXT"

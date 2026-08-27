@@ -46,11 +46,11 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
 <template>
   <div
     v-if="loading"
-    class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-6 lg:flex-row"
+    class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-4 sm:p-6 lg:flex-row"
   >
     <div class="flex flex-1 flex-col gap-6">
       <div class="flex w-full flex-col gap-6 sm:flex-row">
-        <USkeleton class="aspect-square w-full max-w-72" />
+        <USkeleton class="aspect-square w-full max-w-80" />
         <div class="flex w-full min-w-0 flex-1 flex-col gap-4">
           <USkeleton class="h-10 w-3/4 sm:h-12 lg:h-14" />
           <div class="flex flex-col gap-4">
@@ -89,13 +89,13 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
   </div>
   <article
     v-else
-    class="shadow-3d bg-default flex w-full min-w-0 flex-1 flex-col gap-6 border-2 p-6 text-sm lg:flex-row"
+    class="shadow-3d bg-default flex w-full min-w-0 flex-1 flex-col gap-6 border-2 p-4 text-sm sm:p-6 lg:flex-row"
   >
     <div class="flex flex-1 flex-col gap-6">
       <div class="flex w-full flex-col gap-6 sm:flex-row">
-        <figure class="m-0 flex w-full max-w-72 min-w-0 flex-col gap-4">
+        <figure class="m-0 flex w-full max-w-80 min-w-0 flex-col gap-4">
           <div class="shadow-3d relative m-0 aspect-square w-full border-2">
-            <span class="absolute inset-s-2 top-2 z-10 bg-indigo-500 px-1.5 py-0.5 text-xs font-medium text-white uppercase"> Album cover </span>
+            <span class="absolute inset-s-2 top-2 z-10 bg-indigo-500 px-1.5 py-0.5 text-xs font-medium text-white uppercase">Album cover</span>
             <img
               :src="coverUrl"
               :alt="`Portada del álbum ${album} de ${artist}`"
