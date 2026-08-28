@@ -40,7 +40,7 @@ const artist = computed(() => props.data?.ARTIST || 'Artista no disponible')
 const album = computed(() => props.data?.ALBUM || 'Álbum no disponible')
 const year = computed(() => normalizeYear(props.data?.YEAR))
 const coverUrl = computed(() => (props.data?.ALBUMART as string) || undefined)
-const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible')
+const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra no disponible')
 </script>
 
 <template>
@@ -189,5 +189,11 @@ const lyrics = computed(() => props.data?.UNSYNCEDLYRICS || 'Letra no disponible
       <span class="text-xs text-neutral-600 dark:text-neutral-300"> Fuente: <cite class="font-semibold not-italic">LRCLIB</cite> </span>
     </aside>
   </article>
-  <DownloadMetadata v-if="!loading" />
+  <DownloadMetadata
+    v-if="!loading"
+    :metadata="metadata"
+    :cover-url="coverUrl"
+    :lyrics="lyrics"
+    :file-name="`${artist} - ${title}.txt`"
+  />
 </template>

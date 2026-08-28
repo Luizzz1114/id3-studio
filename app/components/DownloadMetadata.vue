@@ -1,3 +1,33 @@
+<script setup lang="ts">
+interface Props {
+  metadata?: MetadataRecord[]
+  coverUrl?: string | null
+  lyrics?: string | null
+  fileName?: string
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  metadata: () => [],
+  coverUrl: '',
+  lyrics: '',
+  fileName: 'metadata.txt'
+})
+
+const downloadTxt = async () => {
+  const { saveAs } = await import('file-saver')
+  const metaRows = props.metadata.filter((item) => item.value != null && item.value !== '').map((item) => `${item.label}: ${item.value}`)
+  if (props.coverUrl && props.coverUrl !== '') {
+    metaRows.push(`COVER: ${props.coverUrl}`)
+  }
+  if (props.lyrics && props.lyrics !== 'Letra no disponible') {
+    metaRows.push(`LYRICS:\n${props.lyrics}`)
+  }
+  const content = metaRows.join('\n\n')
+  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
+  saveAs(blob, props.fileName)
+}
+</script>
+
 <template>
   <section
     aria-labelledby="actions-title"
@@ -86,6 +116,7 @@
         </div>
         <div class="flex flex-1 items-end">
           <UButton
+            @click="downloadTxt"
             label="Descargar TXT"
             icon="i-lucide-arrow-down-to-line"
             color="neutral"

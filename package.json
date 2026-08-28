@@ -14,12 +14,14 @@
     "@iconify-json/lucide": "^1.2.121",
     "@iconify-json/simple-icons": "^1.2.92",
     "@nuxt/ui": "^4.10.0",
+    "file-saver": "^2.0.5",
     "nuxt": "^4.5.1",
     "tailwindcss": "^4.3.3",
     "zod": "^4.4.3"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.16.0",
+    "@types/file-saver": "^2.0.7",
     "eslint": "^10.8.0",
     "prettier": "^3.9.6",
     "prettier-plugin-tailwindcss": "^0.8.1",

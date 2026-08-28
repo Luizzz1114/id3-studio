@@ -26,7 +26,7 @@ const apis = ref([
     <div class="min-w-75 flex-1">
       <h2
         id="credits-title"
-        class="text-3d-md m-0 font-['Silkscreen'] text-3xl leading-tight font-bold sm:text-4xl lg:text-5xl"
+        class="text-3d-md m-0 font-['Silkscreen'] text-3xl leading-tight font-bold text-pretty md:text-4xl lg:text-5xl"
       >
         Información de metadatos y letras extraída gracias a:
       </h2>
