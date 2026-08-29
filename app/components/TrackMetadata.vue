@@ -151,7 +151,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
         class="flex flex-col gap-6"
         aria-labelledby="metadata-subheading"
       >
-        <header class="flex items-center justify-between gap-4 border-b-2 border-neutral-200 pb-2 dark:border-neutral-800">
+        <header class="flex items-center justify-between gap-4">
           <h3
             id="metadata-subheading"
             class="m-0 font-['Silkscreen'] text-xl font-bold"
