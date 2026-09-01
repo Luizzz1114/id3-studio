@@ -158,6 +158,9 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
           >
             Metadatos
           </h3>
+          <MetadataEditSlideover
+            :data="data"
+          />
         </header>
         <dl class="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 xl:grid-cols-3">
           <div
