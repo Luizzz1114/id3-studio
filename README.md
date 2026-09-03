@@ -85,8 +85,8 @@ id3-studio/
 │   ├── pages/           # vista principal
 │   └── assets/css/      # estilos globales
 ├── server/
-│   ├── api/             # endpoint /api/metadata
-│   └── utils/           # integración con fuentes externas
+│   ├── api/             # endpoints /api/metadata y /api/cover
+│   └── utils/           # lógica de negocio y consultas externas
 ├── shared/
 │   ├── schemas/         # validación de entrada
 │   └── types/           # tipos compartidos
