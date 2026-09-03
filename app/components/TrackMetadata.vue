@@ -54,7 +54,10 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
   >
     <div class="flex flex-1 flex-col gap-6">
       <div class="flex w-full flex-col gap-6 sm:flex-row">
-        <USkeleton class="aspect-square w-full max-w-80" />
+        <div class="flex w-full max-w-80 min-w-0 shrink-0 flex-col gap-4 sm:w-80">
+          <USkeleton class="aspect-square w-full" />
+          <USkeleton class="h-12 w-full" />
+        </div>
         <div class="flex w-full min-w-0 flex-1 flex-col gap-4">
           <USkeleton class="h-10 w-3/4 sm:h-12 lg:h-14" />
           <div class="flex flex-col gap-4">
