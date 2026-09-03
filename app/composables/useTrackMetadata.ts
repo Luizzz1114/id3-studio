@@ -1,4 +1,5 @@
 export const useTrackMetadata = () => {
+  const notify = useAppToast()
   const loading = ref<boolean>(false)
   const result = ref<TrackMetadataPayload | null>(null)
   const errorData = ref<ErrorState | null>(null)
@@ -32,6 +33,8 @@ export const useTrackMetadata = () => {
         }
       }
 
+      notify.success('Consulta exitosa', 'Se encontró la información de la pista.')
+
       result.value = response.data as TrackMetadataPayload
     } catch (error: any) {
       const statusCode = error.data?.statusCode || error.statusCode || 500
@@ -39,6 +42,13 @@ export const useTrackMetadata = () => {
       errorData.value = {
         type: statusCode,
         message: message
+      }
+      if (statusCode === 404) {
+        notify.warning('Pista no encontrada', 'Comprueba que el nombre y artista sean correctos.')
+      } else if (statusCode === 429) {
+        notify.warning('Demasiadas peticiones', 'Por favor, espera un momento antes de buscar otra vez.')
+      } else {
+        notify.error('Error inesperado', 'Ocurrió un problema en el servidor al consultar la pista.')
       }
     } finally {
       loading.value = false

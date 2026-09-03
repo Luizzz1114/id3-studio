@@ -86,7 +86,7 @@ const handleSave = () => {
         </header>
         <UForm
           id="edit-metadata-form"
-          class="custom-scrollbar flex flex-1 flex-col gap-6 overflow-y-auto pr-4 pl-1 sm:pr-6"
+          class="custom-scrollbar flex flex-1 flex-col gap-6 overflow-y-auto pr-4 pl-1 pb-1 sm:pr-6"
           @submit.prevent="handleSave"
         >
           <fieldset class="m-0 flex flex-col border-0 p-0 pt-4">
