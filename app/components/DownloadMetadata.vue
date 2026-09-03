@@ -9,6 +9,8 @@ const props = withDefaults(defineProps<Props>(), {
   metadata: () => ({})
 })
 
+const notify = useAppToast()
+
 const selectedFiles = ref<File[]>([])
 const isInjecting = ref(false)
 
@@ -79,10 +81,10 @@ const injectAudioMetadata = async () => {
             description: ''
           })
         } else {
-          console.log('No se pudo inyectar la carátula desde la URL')
+          notify.warning('Advertencia', 'No se pudo inyectar la carátula desde la URL.')
         }
       } catch (coverErr) {
-        console.log('No se pudo procesar la carátula:', coverErr)
+        notify.warning('Carátula omitida', 'Ocurrió un problema procesando la imagen.')
       }
     }
 
@@ -91,24 +93,28 @@ const injectAudioMetadata = async () => {
     const finalTitle = m.TITLE
     const finalArtist = m.ARTIST
     saveAs(finalBlob, `${finalArtist} - ${finalTitle}.mp3`)
+    notify.success('Archivo procesado', 'El audio con los metadatos se descargó correctamente.')
   } catch (error) {
-    console.error('Error al inyectar metadatos:', error)
+    notify.error('Error al procesar', 'No se pudieron inyectar los metadatos al archivo de audio.')
   } finally {
     isInjecting.value = false
   }
 }
 
 const downloadTxt = async () => {
-  const { saveAs } = await import('file-saver')
-  const m = props.metadata
-  const metaRows = Object.entries(m)
-    .filter(([_, value]) => value != null && value !== '')
-    .map(([key, value]) => `${key}: ${value}`)
-  const content = metaRows.join('\n\n')
-  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
-  const finalTitle = m.TITLE
-  const finalArtist = m.ARTIST
-  saveAs(blob, `${finalArtist} - ${finalTitle}.txt`)
+  try {
+    const { saveAs } = await import('file-saver')
+    const m = props.metadata
+    const metaRows = Object.entries(m)
+      .filter(([_, value]) => value != null && value !== '')
+      .map(([key, value]) => `${key}: ${value}`)
+    const content = metaRows.join('\n\n')
+    const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
+    saveAs(blob, `${m.ARTIST} - ${m.TITLE}.txt`)
+    notify.success('Descarga lista', 'La ficha de texto se generó con éxito.')
+  } catch (error) {
+    notify.error('Error', 'No se pudo generar el archivo TXT.')
+  }
 }
 </script>
 
