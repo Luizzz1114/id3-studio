@@ -1,30 +1,114 @@
 <script setup lang="ts">
+import { ID3Writer } from 'browser-id3-writer'
+
 interface Props {
-  metadata?: MetadataRecord[]
-  coverUrl?: string | null
-  lyrics?: string | null
-  fileName?: string
+  metadata?: TrackMetadataPayload
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  metadata: () => [],
-  coverUrl: '',
-  lyrics: '',
-  fileName: 'metadata.txt'
+  metadata: () => ({})
 })
+
+const selectedFiles = ref<File[]>([])
+const isInjecting = ref(false)
+
+const injectAudioMetadata = async () => {
+  const file = selectedFiles.value?.[0]
+  if (!file) return
+  isInjecting.value = true
+  try {
+    const { saveAs } = await import('file-saver')
+    const arrayBuffer = await file.arrayBuffer()
+    const writer = new ID3Writer(arrayBuffer)
+    const m = props.metadata
+
+    writer.setFrame('TIT2', String(m.TITLE))
+    writer.setFrame('TPE1', [m.ARTIST || ''])
+    writer.setFrame('TALB', String(m.ALBUM))
+    writer.setFrame('TPE2', String(m.ALBUMARTIST))
+    writer.setFrame('TCOM', [m.COMPOSER || ''])
+    writer.setFrame('TCON', [m.GENRE || ''])
+    writer.setFrame('TPUB', String(m.LABEL))
+    writer.setFrame('TCOP', String(m.COPYRIGHT))
+    writer.setFrame('TSRC', String(m.ISRC))
+    writer.setFrame('TRCK', String(m.TRACK))
+    writer.setFrame('TPOS', String(m.DISCNUMBER))
+
+    if (m.BPM) {
+      const bpmNumber = Number.parseInt(String(m.BPM), 0)
+      if (!Number.isNaN(bpmNumber)) {
+        writer.setFrame('TBPM', bpmNumber)
+      }
+    }
+
+    if (m.LENGTH) {
+      const lengthMs = Number.parseInt(String(m.LENGTH), 10)
+      if (!Number.isNaN(lengthMs)) {
+        writer.setFrame('TLEN', lengthMs)
+      }
+    }
+
+    if (m.YEAR) {
+      const [yearStr, monthStr, dayStr] = String(m.YEAR).split('-')
+      const year = Number.parseInt(String(yearStr), 10)
+      if (!Number.isNaN(year)) {
+        writer.setFrame('TYER', year)
+      }
+      if (dayStr && monthStr) {
+        writer.setFrame('TDAT', `${dayStr}${monthStr}`)
+      }
+    }
+
+    const lyricsContent = m.UNSYNCEDLYRICS
+    if (lyricsContent && lyricsContent !== 'Letra no disponible') {
+      writer.setFrame('USLT', {
+        description: '',
+        lyrics: String(lyricsContent),
+        language: 'xxx'
+      })
+    }
+
+    if (m.ALBUMART) {
+      try {
+        const coverRes = await fetch(`/api/cover?url=${encodeURIComponent(m.ALBUMART)}`)
+        if (coverRes.ok) {
+          const coverBuffer = await coverRes.arrayBuffer()
+          writer.setFrame('APIC', {
+            type: 3,
+            data: coverBuffer,
+            description: ''
+          })
+        } else {
+          console.log('No se pudo inyectar la carátula desde la URL')
+        }
+      } catch (coverErr) {
+        console.log('No se pudo procesar la carátula:', coverErr)
+      }
+    }
+
+    writer.addTag()
+    const finalBlob = writer.getBlob()
+    const finalTitle = m.TITLE
+    const finalArtist = m.ARTIST
+    saveAs(finalBlob, `${finalArtist} - ${finalTitle}.mp3`)
+  } catch (error) {
+    console.error('Error al inyectar metadatos:', error)
+  } finally {
+    isInjecting.value = false
+  }
+}
 
 const downloadTxt = async () => {
   const { saveAs } = await import('file-saver')
-  const metaRows = props.metadata.filter((item) => item.value != null && item.value !== '').map((item) => `${item.label}: ${item.value}`)
-  if (props.coverUrl && props.coverUrl !== '') {
-    metaRows.push(`COVER: ${props.coverUrl}`)
-  }
-  if (props.lyrics && props.lyrics !== 'Letra no disponible') {
-    metaRows.push(`LYRICS:\n${props.lyrics}`)
-  }
+  const m = props.metadata
+  const metaRows = Object.entries(m)
+    .filter(([_, value]) => value != null && value !== '')
+    .map(([key, value]) => `${key}: ${value}`)
   const content = metaRows.join('\n\n')
   const blob = new Blob([content], { type: 'text/plain;charset=utf-8' })
-  saveAs(blob, props.fileName)
+  const finalTitle = m.TITLE
+  const finalArtist = m.ARTIST
+  saveAs(blob, `${finalArtist} - ${finalTitle}.txt`)
 }
 </script>
 
@@ -70,13 +154,15 @@ const downloadTxt = async () => {
           <UForm
             aria-label="Formulario para inyectar metadatos en archivo de audio"
             class="w-full space-y-4"
+            @submit.prevent="injectAudioMetadata"
           >
             <UFileUpload
+              v-model="selectedFiles"
               position="inside"
               layout="list"
               size="md"
               multiple
-              accept="audio/*"
+              accept="audio/mp3,audio/mpeg"
               label="Elegir audio"
               class="w-full cursor-pointer"
             />
@@ -86,6 +172,8 @@ const downloadTxt = async () => {
               label="Procesar"
               color="primary"
               class="w-full cursor-pointer justify-center"
+              :loading="isInjecting"
+              :disabled="!selectedFiles?.length || isInjecting"
             />
           </UForm>
         </div>

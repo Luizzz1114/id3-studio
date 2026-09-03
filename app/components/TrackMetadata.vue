@@ -201,9 +201,6 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
   </article>
   <DownloadMetadata
     v-if="!loading"
-    :metadata="metadata"
-    :cover-url="coverUrl"
-    :lyrics="lyrics"
-    :file-name="`${artist} - ${title}.txt`"
+    :metadata="data"
   />
 </template>

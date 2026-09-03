@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
 export const metadataQuerySchema = z.object({
-  artist: z.string().trim().min(1, 'El parámetro artist es requerido'),
-  track: z.string().trim().min(1, 'El parámetro track es requerido')
+  artist: z.string().trim().min(1, 'Falta el parámetro "artist"'),
+  track: z.string().trim().min(1, 'Falta el parámetro "track"')
 })
 
 export const metadataFormSchema = z.object({
