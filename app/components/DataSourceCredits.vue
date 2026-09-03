@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const apis = ref([
+const apis = [
   {
     name: 'Deezer API',
     description: 'Metadatos de audio',
@@ -18,11 +18,14 @@ const apis = ref([
     img: '/img/lrclib-logo.png',
     url: 'https://lrclib.net/'
   }
-])
+]
 </script>
 
 <template>
-  <div class="mx-auto flex w-full flex-wrap items-start justify-between gap-12 lg:items-center">
+  <section
+    aria-labelledby="credits-title"
+    class="mx-auto flex w-full flex-wrap items-start justify-between gap-12 lg:items-center"
+  >
     <div class="min-w-75 flex-1">
       <h2
         id="credits-title"
@@ -44,6 +47,8 @@ const apis = ref([
           <img
             :src="api.img"
             :alt="`Logo de ${api.name}`"
+            loading="lazy"
+            decoding="async"
             width="40"
             height="40"
             class="h-10 w-10 object-contain"
@@ -69,5 +74,5 @@ const apis = ref([
         />
       </li>
     </ul>
-  </div>
+  </section>
 </template>

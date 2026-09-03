@@ -101,7 +101,7 @@ function onReset() {
           :loading="loading"
         />
         <UButton
-          type="reset"
+          type="button"
           label="Limpiar"
           color="neutral"
           icon="i-lucide-eraser"

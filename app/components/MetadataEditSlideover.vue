@@ -67,12 +67,12 @@ const handleSave = () => {
       >
         <header class="flex items-center justify-between border-b-2 pb-4 sm:pb-6">
           <div class="flex items-center gap-2">
-            <h2
+            <h3
               id="edit-metadata-title"
               class="m-0 font-['Silkscreen'] text-xl font-bold"
             >
               Editar metadatos
-            </h2>
+            </h3>
           </div>
           <UButton
             icon="i-lucide-x"
@@ -119,8 +119,7 @@ const handleSave = () => {
               <UFormField label="YEAR">
                 <UInput
                   v-model="formData.YEAR"
-                  inputmode="numeric"
-                  placeholder="YYYY"
+                  autocomplete="off"
                   class="w-full"
                 />
               </UFormField>
@@ -140,27 +139,28 @@ const handleSave = () => {
               <UFormField label="BPM">
                 <UInput
                   v-model="formData.BPM"
-                  inputmode="numeric"
+                  autocomplete="off"
                   class="w-full"
                 />
               </UFormField>
               <UFormField label="LENGTH">
                 <UInput
                   v-model="formData.LENGTH"
+                  autocomplete="off"
                   class="w-full"
                 />
               </UFormField>
               <UFormField label="TRACK">
                 <UInput
                   v-model="formData.TRACK"
-                  inputmode="numeric"
+                  autocomplete="off"
                   class="w-full"
                 />
               </UFormField>
               <UFormField label="DISCNUMBER">
                 <UInput
                   v-model="formData.DISCNUMBER"
-                  inputmode="numeric"
+                  autocomplete="off"
                   class="w-full"
                 />
               </UFormField>

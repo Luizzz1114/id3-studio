@@ -23,6 +23,11 @@ export default defineAppConfig({
       slots: {
         error: 'text-xs'
       }
+    },
+    toast: {
+      slots: {
+        description: 'text-xs text-muted'
+      }
     }
   }
 })

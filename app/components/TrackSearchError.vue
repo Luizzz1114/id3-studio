@@ -43,7 +43,7 @@ const errorContent = computed(() => {
 </script>
 
 <template>
-  <div
+  <section
     role="alert"
     aria-labelledby="error-title"
     class="shadow-3d bg-default flex w-full flex-col gap-4 border-2 p-4 sm:gap-6 sm:p-6 md:flex-row"
@@ -76,5 +76,5 @@ const errorContent = computed(() => {
       class="hidden flex-1 lg:block"
       aria-hidden="true"
     ></div>
-  </div>
+  </section>
 </template>

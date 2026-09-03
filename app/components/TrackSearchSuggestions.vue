@@ -17,7 +17,7 @@ function suggest(artist: string, track: string) {
 </script>
 
 <template>
-  <div
+  <section
     aria-labelledby="suggestions-title"
     class="shadow-3d bg-default flex w-full flex-col gap-4 border-2 p-4 sm:gap-6 sm:p-6 md:flex-row"
   >
@@ -61,5 +61,5 @@ function suggest(artist: string, track: string) {
         class="h-auto max-w-65 sm:max-w-xs md:max-w-sm lg:max-w-80"
       />
     </div>
-  </div>
+  </section>
 </template>

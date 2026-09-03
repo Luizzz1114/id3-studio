@@ -104,12 +104,24 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
           <div class="shadow-3d relative m-0 aspect-square w-full border-2">
             <span class="absolute inset-s-2 top-2 z-10 bg-indigo-500 px-1.5 py-0.5 text-xs font-medium text-white uppercase">Album cover</span>
             <img
+              v-if="coverUrl"
               :src="coverUrl"
               :alt="`Portada del álbum ${album} de ${artist}`"
               width="288"
               height="288"
+              fetchpriority="high"
+              decoding="async"
               class="block h-full w-full object-cover"
             />
+            <div
+              v-else
+              class="flex h-full w-full items-center justify-center bg-neutral-200 dark:bg-neutral-800"
+            >
+              <UIcon
+                name="i-lucide-disc"
+                class="size-16 text-neutral-400"
+              />
+            </div>
           </div>
           <figcaption class="shadow-3d--b flex w-full min-w-0 items-center gap-4 overflow-hidden border-2 border-neutral-200 bg-neutral-100 p-1.5 dark:border-neutral-700 dark:bg-neutral-800">
             <div class="flex min-w-0 flex-1 flex-col">
@@ -144,7 +156,12 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
             <div class="flex flex-col border-b-2 border-neutral-200 pb-2 dark:border-neutral-800">
               <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">Año</dt>
               <dd class="m-0 font-medium hyphens-auto">
-                <time :datetime="String(year)">{{ year }}</time>
+                <time
+                  v-if="data?.YEAR"
+                  :datetime="String(year)"
+                  >{{ year }}</time
+                >
+                <span v-else>{{ year }}</span>
               </dd>
             </div>
           </dl>
