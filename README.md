@@ -1,6 +1,6 @@
-# ID3 Studio
-
 <div align="center">
+
+# ID3 Studio
 
 **Consulta metadatos de canciones y prepara la información para tus archivos de audio.**
 
@@ -13,52 +13,48 @@
 
 </div>
 
-## Sobre el proyecto
+Aplicación web para buscar una canción, recopilar sus metadatos y preparar la información para etiquetar archivos de audio.
 
-ID3 Studio es una aplicación web para buscar una canción y obtener sus metadatos para etiquetar archivos de audio. La página recibe el nombre del artista y de la canción, consulta distintas fuentes y presenta la información reunida en una sola vista.
+## ¿Qué hace?
 
-La incrustación de los metadatos directamente en archivos de audio es una idea prevista para una siguiente etapa y todavía no forma parte de la aplicación.
+ID3 Studio reúne información de varias fuentes para mostrar una vista clara de los datos de una pista:
 
-## Funcionalidades
-
-- Búsqueda por artista y título de canción.
-- Visualización de título, artistas, álbum, género, año, duración, pista, disco, BPM, ISRC, compositor, sello y copyright.
-- Obtención de letras no sincronizadas cuando están disponibles.
-- Visualización de la portada del álbum.
-- Sugerencias de búsqueda para probar la aplicación rápidamente.
-- Estados de carga, errores y opción para reintentar una consulta.
-- Validación de los parámetros de búsqueda en el servidor.
+- búsqueda por artista y título
+- datos del álbum, artista, género, año, duración, pista, disco, BPM, ISRC y copyright
+- portada del álbum
+- letra no sincronizada cuando está disponible
+- edición rápida de metadatos desde la interfaz
+- inyección de metadatos directamente en un archivo MP3
+- descarga de una ficha TXT con los datos de la canción
 
 ## Cómo funciona
 
-1. El usuario introduce un artista y una canción en la interfaz.
-2. Nuxt envía la consulta a `GET /api/metadata`.
-3. El servidor busca la coincidencia en Deezer.
-4. Con el resultado encontrado, consulta los detalles de la pista y el álbum en Deezer.
-5. Apple iTunes aporta información de copyright y LRCLIB aporta letras cuando existen.
-6. La aplicación combina y muestra los metadatos resultantes.
+1. El usuario escribe artista y canción.
+2. La app consulta la API interna de Nuxt en `GET /api/metadata`.
+3. El servidor busca la canción en Deezer.
+4. Se obtienen detalles del álbum, artistas, copyright y letra.
+5. La interfaz muestra la información y permite editarla.
+6. Luego puedes:
+   - guardar la información localmente en un archivo TXT
+   - o inyectar esos metadatos en un MP3 seleccionado
 
 ## Fuentes de datos
 
-- [Deezer API](https://developers.deezer.com/api): búsqueda, pista, álbum, artistas, portada y datos principales.
-- [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/): copyright del álbum.
-- [LRCLIB](https://lrclib.net/): letras no sincronizadas, cuando están disponibles.
+- [Deezer API](https://developers.deezer.com/api): búsqueda, pista, álbum, artistas, portada y metadatos principales
+- [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/): copyright del álbum
+- [LRCLIB](https://lrclib.net/): letras no sincronizadas
 
 ## Requisitos
 
-- Node.js 20 o superior.
-- pnpm 11 o superior.
-
-Puedes comprobar las versiones instaladas con:
+- Node.js 20+
+- pnpm 11+
 
 ```bash
 node --version
 pnpm --version
 ```
 
-## Instalación y desarrollo
-
-Clona el repositorio, instala las dependencias y arranca el servidor de desarrollo:
+## Instalación
 
 ```bash
 git clone https://github.com/Luizzz1114/id3-studio
@@ -67,45 +63,54 @@ pnpm install
 pnpm dev
 ```
 
-La aplicación estará disponible en la URL que indique Nuxt, normalmente `http://localhost:3000`.
+La aplicación normalmente se abre en `http://localhost:3000`.
 
-## Scripts disponibles
+## Scripts
 
-| Comando | Descripción |
-| --- | --- |
-| `pnpm dev` | Inicia el servidor de desarrollo. |
-| `pnpm build` | Genera la aplicación para producción. |
-| `pnpm preview` | Sirve localmente la compilación de producción. |
-| `pnpm lint` | Ejecuta ESLint. |
-| `pnpm typecheck` | Comprueba los tipos de TypeScript. |
+```bash
+pnpm dev        # inicia la app en modo desarrollo
+pnpm build      # genera la versión de producción
+pnpm preview    # sirve la build localmente
+pnpm lint       # ejecuta ESLint
+pnpm typecheck  # comprueba los tipos de TypeScript
+```
 
 ## Estructura principal
 
 ```text
 id3-studio/
-│
 ├── app/
-│   ├── components/       # Componentes de búsqueda, resultados, errores y créditos
-│   ├── composables/      # Estado y lógica de consulta de metadatos
-│   ├── pages/index.vue   # Página principal
-│   └── assets/css/       # Estilos globales
-│
-├──server/
-│   ├── api/              # Endpoint `/api/metadata`
-│   └── utils/            # Integración con las fuentes externas
-│
-└── shared/
-    ├── schemas/          # Validación de consultas
-    └── types/            # Tipos compartidos
+│   ├── components/      # UI de búsqueda, resultados, edición y descarga
+│   ├── composables/     # lógica de consulta y estado
+│   ├── pages/           # vista principal
+│   └── assets/css/      # estilos globales
+├── server/
+│   ├── api/             # endpoint /api/metadata
+│   └── utils/           # integración con fuentes externas
+├── shared/
+│   ├── schemas/         # validación de entrada
+│   └── types/           # tipos compartidos
+├── package.json
+├── nuxt.config.ts
+├── LICENSE
+└── README.md
 ```
 
 ## Estado del proyecto
 
-La consulta y visualización de metadatos está implementada. Como siguiente paso se contempla permitir la selección de un archivo de audio y escribir los campos obtenidos en sus etiquetas ID3, probablemente desde el navegador o mediante una capa de procesamiento en el servidor.
+La app ya está funcionando como herramienta práctica para:
+
+- buscar metadatos de canciones
+- editar la información antes de usarla
+- inyectar etiquetas ID3 en MP3
+- guardar una ficha TXT con los datos
+
+A futuro, se puede seguir mejorando la experiencia: más formatos de audio, validaciones avanzadas, exportación más flexible o mejoras visuales.
 
 ## Licencia
 
 Este proyecto se distribuye bajo la licencia indicada en [LICENSE](LICENSE).
 
-## Autores
+## Autor
+
 Luis Reinaldo Cortesía Henríquez
