@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { metadataQuerySchema, type MetadataQuery } from '~~/shared/schemas/metadata.schema'
+import { metadataFormSchema, type MetadataForm } from '~~/shared/schemas/metadata.schema'
 
 defineProps<{
   loading: boolean
 }>()
 
 const emit = defineEmits<{
-  submit: [query: MetadataQuery]
+  submit: [query: MetadataForm]
   reset: []
 }>()
 
@@ -17,7 +17,7 @@ const state = reactive({
 
 const formRef = useTemplateRef('form')
 
-const schema = metadataQuerySchema
+const schema = metadataFormSchema
 
 function injectAndSubmit(newArtist: string, newTrack: string) {
   state.artist = newArtist
@@ -63,7 +63,7 @@ function onReset() {
       :schema="schema"
       :state="state"
       class="flex flex-col gap-4 sm:gap-6"
-      @submit="onSubmit"
+      @submit.prevent="onSubmit"
     >
       <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:gap-6">
         <UFormField
