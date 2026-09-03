@@ -188,7 +188,7 @@ const handleSave = () => {
             </div>
           </fieldset>
         </UForm>
-        <footer class="flex items-center justify-between gap-2 border-t-2 border-neutral-200 bg-neutral-50 pt-4 sm:pt-6 dark:border-neutral-800 dark:bg-neutral-900/40">
+        <footer class="flex items-center justify-between gap-2 border-t-2 border-neutral-200 pt-4 sm:pt-6 dark:border-neutral-800">
           <UButton
             icon="i-lucide-rotate-ccw"
             variant="outline"
@@ -199,7 +199,6 @@ const handleSave = () => {
           >
             <span class="hidden sm:inline">Restablecer</span>
           </UButton>
-
           <div class="flex shrink-0 items-center gap-4">
             <UButton
               label="Cancelar"
