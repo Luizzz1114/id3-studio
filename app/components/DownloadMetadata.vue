@@ -35,7 +35,7 @@ const injectAudioMetadata = async () => {
     writer.setFrame('TPOS', String(m.DISCNUMBER))
 
     if (m.BPM) {
-      const bpmNumber = Number.parseInt(String(m.BPM), 0)
+      const bpmNumber = Number.parseInt(String(m.BPM), 10)
       if (!Number.isNaN(bpmNumber)) {
         writer.setFrame('TBPM', bpmNumber)
       }
@@ -168,7 +168,7 @@ const downloadTxt = async () => {
             />
             <UButton
               type="submit"
-              icon="i-lucide-file-up"
+              icon="i-lucide-file-cog"
               label="Procesar"
               color="primary"
               class="w-full cursor-pointer justify-center"
