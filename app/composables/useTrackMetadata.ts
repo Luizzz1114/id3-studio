@@ -1,6 +1,6 @@
 export const useTrackMetadata = () => {
   const loading = ref<boolean>(false)
-  const result = ref<TrackMetadata | null>(null)
+  const result = ref<TrackMetadataPayload | null>(null)
   const errorData = ref<ErrorState | null>(null)
   const lastQuery = reactive({
     artist: '',
@@ -32,7 +32,7 @@ export const useTrackMetadata = () => {
         }
       }
 
-      result.value = response.data as TrackMetadata
+      result.value = response.data as TrackMetadataPayload
     } catch (error: any) {
       const statusCode = error.data?.statusCode || error.statusCode || 500
       const message = error.data?.message || error.message || 'Ha ocurrido un error inesperado'

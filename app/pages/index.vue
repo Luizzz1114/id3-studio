@@ -44,6 +44,7 @@ function handleSuggestion(artist: string, track: string) {
         v-if="loading || result"
         :loading="loading"
         :data="result ?? undefined"
+        @update:data="result = $event"
       />
       <TrackSearchError
         v-else-if="errorData"

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 interface Props {
-  data?: Record<string, string | number | null>
+  data?: TrackMetadataPayload
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -8,11 +8,11 @@ const props = withDefaults(defineProps<Props>(), {
 })
 
 const emit = defineEmits<{
-  (e: 'update:data', value: Record<string, string | number | null>): void
+  (e: 'update:data', value: TrackMetadataPayload): void
 }>()
 
 const isOpen = ref(false)
-const formData = ref<Record<string, any>>({})
+const formData = ref<TrackMetadataPayload>({})
 
 watch(
   () => [props.data, isOpen.value],
@@ -193,7 +193,7 @@ const handleSave = () => {
             icon="i-lucide-rotate-ccw"
             variant="outline"
             color="neutral"
-            class="shrink-0 cursor-pointer text-xs"
+            class="shrink-0 cursor-pointer"
             aria-label="Restablecer metadatos"
             @click="handleReset"
           >

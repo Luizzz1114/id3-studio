@@ -1,13 +1,17 @@
 <script setup lang="ts">
 interface Props {
   loading?: boolean
-  data?: Record<string, string | number | null>
+  data?: TrackMetadataPayload
 }
 
 const props = withDefaults(defineProps<Props>(), {
   loading: true,
   data: () => ({})
 })
+
+const emit = defineEmits<{
+  (e: 'update:data', value: TrackMetadataPayload): void
+}>()
 
 const metadata = computed<MetadataRecord[]>(() => {
   const data = props.data ?? {}
@@ -160,6 +164,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
           </h3>
           <MetadataEditSlideover
             :data="data"
+            @update:data="emit('update:data', $event)"
           />
         </header>
         <dl class="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 xl:grid-cols-3">
@@ -189,7 +194,6 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
       <div class="lyrics-simple custom-scrollbar min-h-0 flex-1 overflow-y-auto pr-4 text-sm leading-relaxed whitespace-pre-line">
         {{ lyrics }}
       </div>
-      <span class="text-xs text-neutral-600 dark:text-neutral-300"> Fuente: <cite class="font-semibold not-italic">LRCLIB</cite> </span>
     </aside>
   </article>
   <DownloadMetadata

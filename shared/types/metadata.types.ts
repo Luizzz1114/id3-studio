@@ -33,23 +33,24 @@ export interface LrcLibResponse {
   plainLyrics?: string
 }
 
-export interface TrackMetadata {
-  ALBUM: string
-  ALBUMARTIST: string
-  ARTIST: string
-  BPM: number | null
-  COMPOSER: string
-  DISCNUMBER: number
-  ISRC: string
-  TITLE: string
-  LABEL: string
-  COPYRIGHT: string
-  LENGTH: number
-  UNSYNCEDLYRICS: string
-  TRACK: string
-  YEAR: string
-  GENRE: string
-  ALBUMART: string
+export interface TrackMetadataPayload {
+  TITLE?: string
+  ARTIST?: string
+  ALBUM?: string
+  YEAR?: string | number
+  GENRE?: string
+  BPM?: string | number
+  LENGTH?: string | number
+  TRACK?: string | number
+  DISCNUMBER?: string | number
+  ALBUMARTIST?: string
+  COMPOSER?: string
+  LABEL?: string
+  ISRC?: string
+  COPYRIGHT?: string
+  ALBUMART?: string
+  UNSYNCEDLYRICS?: string
+  [key: string]: string | number | undefined
 }
 
 export interface MetadataRecord {
@@ -59,7 +60,7 @@ export interface MetadataRecord {
 
 export interface MetadataResponse {
   success: boolean
-  data?: TrackMetadata
+  data?: TrackMetadataPayload
   error?: string
   details?: string
 }
