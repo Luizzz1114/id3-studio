@@ -5,9 +5,9 @@ const emit = defineEmits<{
 
 const suggestions = [
   { artist: 'Dua Lipa', track: 'Whatcha Doing' },
-  { artist: 'Kendrick Lamar, Zacari', track: 'LOVE.' },
+  { artist: 'Kendrick Lamar', track: 'LOVE.' },
   { artist: 'Djo', track: 'Half Life' },
-  { artist: 'Balu Brigada', track: 'I Should Be Home' },
+  { artist: 'Balu Brigada', track: 'Backseat' },
   { artist: 'Ramma', track: 'algún día' },
   { artist: 'Rels B', track: 'yo pr1mero' }
 ]
