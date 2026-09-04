@@ -10,6 +10,7 @@ const props = withDefaults(
 
 const emit = defineEmits<{
   retry: []
+  clear: []
 }>()
 
 const errorContent = computed(() => {
@@ -63,6 +64,15 @@ const errorContent = computed(() => {
         </p>
         <div class="flex flex-wrap gap-4">
           <UButton
+            v-if="error?.type === 404"
+            label="Limpiar búsqueda"
+            color="secondary"
+            icon="i-lucide-eraser"
+            class="flex h-8 cursor-pointer justify-center sm:w-auto"
+            @click="emit('clear')"
+          />
+          <UButton
+            v-else
             label="Reintentar"
             color="secondary"
             icon="i-lucide-rotate-ccw"

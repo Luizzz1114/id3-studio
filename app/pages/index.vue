@@ -6,6 +6,10 @@ const { loading, result, errorData, lastQuery, fetchMetadata, resetData } = useT
 function handleSuggestion(artist: string, track: string) {
   searchFormRef.value?.injectAndSubmit(artist, track)
 }
+
+function handleClearError() {
+  searchFormRef.value?.onReset()
+}
 </script>
 
 <template>
@@ -50,6 +54,7 @@ function handleSuggestion(artist: string, track: string) {
         v-else-if="errorData"
         :error="errorData"
         @retry="fetchMetadata(lastQuery)"
+        @clear="handleClearError"
       />
       <TrackSearchSuggestions
         v-else

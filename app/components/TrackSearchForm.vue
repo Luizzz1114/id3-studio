@@ -25,7 +25,7 @@ function injectAndSubmit(newArtist: string, newTrack: string) {
   formRef.value?.submit()
 }
 
-defineExpose({ injectAndSubmit })
+defineExpose({ injectAndSubmit, onReset })
 
 function onSubmit() {
   emit('submit', {

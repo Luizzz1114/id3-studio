@@ -33,7 +33,7 @@ export const useTrackMetadata = () => {
         }
       }
 
-      notify.success('Consulta exitosa', 'Se encontró la información de la pista.')
+      notify.success('Consulta exitosa', 'Se encontró la información del track.')
 
       result.value = response.data as TrackMetadataPayload
     } catch (error: any) {
@@ -44,7 +44,7 @@ export const useTrackMetadata = () => {
         message: message
       }
       if (statusCode === 404) {
-        notify.warning('Pista no encontrada', 'Comprueba que el nombre y artista sean correctos.')
+        notify.warning('Track no encontrado', 'Comprueba que el nombre de la canción y artista sean correctos.')
       } else if (statusCode === 429) {
         notify.warning('Demasiadas peticiones', 'Por favor, espera un momento antes de buscar otra vez.')
       } else {
