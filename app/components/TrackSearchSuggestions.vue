@@ -5,10 +5,11 @@ const emit = defineEmits<{
 
 const suggestions = [
   { artist: 'Dua Lipa', track: 'Whatcha Doing' },
-  { artist: 'Trueno', track: 'X UNAS LLANTAS' },
-  { artist: 'Djo', track: 'Link' },
-  { artist: 'Balu Brigada', track: 'Sideways' },
-  { artist: 'Ramma', track: 'algún día' }
+  { artist: 'Kendrick Lamar, Zacari', track: 'LOVE.' },
+  { artist: 'Djo', track: 'Half Life' },
+  { artist: 'Balu Brigada', track: 'I Should Be Home' },
+  { artist: 'Ramma', track: 'algún día' },
+  { artist: 'Rels B', track: 'yo pr1mero' }
 ]
 
 function suggest(artist: string, track: string) {
@@ -43,6 +44,7 @@ function suggest(artist: string, track: string) {
           >
             <UButton
               :label="`${item.artist} - ${item.track}`"
+              type="button"
               trailing-icon="i-lucide-arrow-up-right"
               class="flex h-8 cursor-pointer justify-center sm:w-auto"
               @click="suggest(item.artist, item.track)"

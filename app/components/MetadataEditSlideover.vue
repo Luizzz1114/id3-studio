@@ -11,6 +11,7 @@ const emit = defineEmits<{
   (e: 'update:data', value: TrackMetadataPayload): void
 }>()
 
+const notify = useAppToast()
 const isOpen = ref(false)
 const formData = ref<TrackMetadataPayload>({})
 
@@ -38,6 +39,7 @@ const handleSave = () => {
   }
   emit('update:data', trimmedData)
   isOpen.value = false
+  notify.success('Cambios aplicados', 'Los metadatos se actualizaron para la descarga.')
 }
 </script>
 
@@ -52,7 +54,7 @@ const handleSave = () => {
     <UButton
       label="Editar"
       icon="i-lucide-square-pen"
-      variant="outline"
+      variant="ghost"
       color="neutral"
       class="cursor-pointer"
       aria-label="Abrir panel de edición de metadatos"
@@ -86,7 +88,7 @@ const handleSave = () => {
         </header>
         <UForm
           id="edit-metadata-form"
-          class="custom-scrollbar flex flex-1 flex-col gap-6 overflow-y-auto pr-4 pl-1 pb-1 sm:pr-6"
+          class="custom-scrollbar flex flex-1 flex-col gap-6 overflow-y-auto pr-4 pb-1 pl-1 sm:pr-6"
           @submit.prevent="handleSave"
         >
           <fieldset class="m-0 flex flex-col border-0 p-0 pt-4">
