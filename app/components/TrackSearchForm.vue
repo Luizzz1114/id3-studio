@@ -55,7 +55,6 @@ function onReset() {
         Buscar canción
       </h2>
     </header>
-    <p class="m-0 text-sm">Decodifica el ADN de cualquier pista. Ingresa las coordenadas de audio para extraer sus etiquetas.</p>
     <UForm
       ref="form"
       role="search"
