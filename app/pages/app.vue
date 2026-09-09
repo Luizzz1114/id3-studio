@@ -24,9 +24,9 @@ function handleClearError() {
           id="app-title"
           class="m-0 flex flex-1 flex-col justify-center"
         >
-          <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Busca,</span>
-          <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Descubre,</span>
-          <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Etiqueta.</span>
+          <span class="text-3d font-silkscreen  text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Busca,</span>
+          <span class="text-3d font-silkscreen  text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Descubre,</span>
+          <span class="text-3d font-silkscreen  text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Etiqueta.</span>
         </h1>
       </div>
       <TrackSearchForm

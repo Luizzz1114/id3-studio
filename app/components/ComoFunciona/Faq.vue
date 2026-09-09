@@ -44,6 +44,21 @@ const glossaryItems = ref<AccordionItem[]>([
 </script>
 
 <template>
-  <UAccordion :items="faqItems" />
-  <UAccordion :items="glossaryItems" />
+  <section
+    aria-labelledby="faq-title"
+    class="flex w-full flex-col gap-8 sm:gap-12"
+  >
+    <div class="flex flex-col items-start gap-4">
+      <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white">FAQ</span>
+      <h2
+        id="process-title"
+        class="text-3d font-silkscreen text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
+      >
+        PREGUNTAS <br />FRECUENTES.
+      </h2>
+    </div>
+    <div class="bg-default shadow-3d border-2">
+      <UAccordion :items="faqItems" />
+    </div>
+  </section>
 </template>

@@ -50,7 +50,7 @@ const handleTxtDownload = async () => {
     <header class="flex flex-col gap-4">
       <h3
         id="actions-title"
-        class="text-3d-md m-0 font-['Silkscreen'] text-3xl leading-tight font-bold text-pretty hyphens-auto sm:text-4xl sm:hyphens-none lg:text-5xl"
+        class="text-3d-md m-0 font-silkscreen  text-3xl leading-tight font-bold text-pretty hyphens-auto sm:text-4xl sm:hyphens-none lg:text-5xl"
       >
         Elige cómo quieres llevarte la información de este track.
       </h3>
@@ -73,7 +73,7 @@ const handleTxtDownload = async () => {
           <div class="flex min-w-0 flex-col">
             <h4
               id="inject-title"
-              class="m-0 font-['Silkscreen'] text-base font-bold"
+              class="m-0 font-silkscreen  text-base font-bold"
             >
               Inyectar en un audio
             </h4>
@@ -125,7 +125,7 @@ const handleTxtDownload = async () => {
           <div class="flex min-w-0 flex-col">
             <h4
               id="download-title"
-              class="m-0 font-['Silkscreen'] text-base font-bold"
+              class="m-0 font-silkscreen  text-base font-bold"
             >
               Descargar ficha TXT
             </h4>

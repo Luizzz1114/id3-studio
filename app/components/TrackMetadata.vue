@@ -141,7 +141,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
           </figcaption>
         </figure>
         <div class="flex w-full min-w-0 flex-1 flex-col gap-4">
-          <h2 class="text-3d-md m-0 font-['Silkscreen'] text-3xl font-bold hyphens-auto sm:text-4xl lg:text-5xl">
+          <h2 class="text-3d-md m-0 font-silkscreen  text-3xl font-bold hyphens-auto sm:text-4xl lg:text-5xl">
             {{ title }}
           </h2>
           <dl class="m-0 flex flex-col gap-4">
@@ -178,7 +178,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
         <header class="flex items-center justify-between gap-4">
           <h3
             id="metadata-subheading"
-            class="m-0 font-['Silkscreen'] text-xl font-bold"
+            class="m-0 font-silkscreen  text-xl font-bold"
           >
             Metadatos
           </h3>
@@ -206,7 +206,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
       <header class="flex items-center justify-between gap-4">
         <h3
           id="lyrics-subheading"
-          class="m-0 font-['Silkscreen'] text-xl font-bold"
+          class="m-0 font-silkscreen  text-xl font-bold"
         >
           Letra
         </h3>

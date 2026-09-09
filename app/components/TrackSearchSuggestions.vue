@@ -27,8 +27,8 @@ function suggest(artist: string, track: string) {
         id="suggestions-title"
         class="m-0 flex flex-col items-start"
       >
-        <span class="text-3d font-['Silkscreen'] text-4xl leading-none font-bold sm:text-5xl">Sistema en espera...</span>
-        <span class="text-3d font-['Silkscreen'] text-4xl leading-none font-bold sm:text-5xl">Requiere input del usuario.</span>
+        <span class="text-3d font-silkscreen  text-4xl leading-none font-bold sm:text-5xl">Sistema en espera...</span>
+        <span class="text-3d font-silkscreen  text-4xl leading-none font-bold sm:text-5xl">Requiere input del usuario.</span>
       </h2>
       <div class="flex flex-col gap-6">
         <p class="m-0 text-sm">

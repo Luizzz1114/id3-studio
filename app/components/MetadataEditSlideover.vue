@@ -71,7 +71,7 @@ const handleSave = () => {
           <div class="flex items-center gap-2">
             <h3
               id="edit-metadata-title"
-              class="m-0 font-['Silkscreen'] text-xl font-bold"
+              class="m-0 font-silkscreen  text-xl font-bold"
             >
               Editar metadatos
             </h3>

@@ -37,7 +37,7 @@ const engineSteps = [
       <span class="bg-secondary-500 ml-2 px-2 py-0.5 text-xs text-white">SECUENCIA DE OPERACIÓN</span>
       <h2
         id="process-title"
-        class="text-3d font-['Silkscreen'] text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
+        class="text-3d font-silkscreen  text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
       >
         EL RECORRIDO <br />DEL MOTOR.
       </h2>
@@ -49,10 +49,10 @@ const engineSteps = [
         :key="step.id"
         class="shadow-3d bg-default flex flex-col gap-4 border-2 p-4 sm:p-6"
       >
-        <div class="bg-secondary-500 grid size-9 shrink-0 place-items-center p-0.5 font-['Silkscreen'] text-base text-white">
+        <div class="bg-secondary-500 grid size-8 shrink-0 place-items-center p-0.5 font-silkscreen  text-base text-white">
           {{ step.id }}
         </div>
-        <h3 class="font-['Silkscreen'] text-xl font-bold uppercase">{{ step.label }}</h3>
+        <h3 class="font-silkscreen  text-xl font-bold uppercase">{{ step.label }}</h3>
         <p class="text-sm text-neutral-600 dark:text-neutral-300">{{ step.description }}</p>
       </div>
     </div>

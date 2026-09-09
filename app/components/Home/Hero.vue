@@ -9,7 +9,7 @@
         id="hero-title"
         class="m-0 flex flex-col justify-center"
       >
-        <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Descubre metadatos y etiqueta tu música.</span>
+        <span class="text-3d font-silkscreen  text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Descubre metadatos y etiqueta tu música.</span>
       </h1>
       <div class="shadow-3d bg-default mt-2 flex w-full flex-col gap-4 border-2 p-4 text-sm">
         <p>¿Tu colección de música es un caos? Encuentra la información exacta de tus tracks y etiqueta tus archivos de audio fácilmente con un par de clics.</p>
