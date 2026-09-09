@@ -32,7 +32,7 @@ function suggest(artist: string, track: string) {
       </h2>
       <div class="flex flex-col gap-6">
         <p class="m-0 text-sm">
-          Para iniciar la consulta, proporcione los valores requeridos en los campos superiores. El sistema se encargará de interceptar la pista y formatear la información encontrada.
+          Para iniciar la consulta, proporcione los valores requeridos en los campos superiores. El sistema se encargará de interceptar la pista y formatear la información encontrada. O si lo prefieres, inyecta una de estas consultas predefinidas para probar el motor:
         </p>
         <ul
           aria-label="Sugerencias de canciones rápidas"

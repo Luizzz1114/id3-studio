@@ -26,7 +26,8 @@ const apis = [
     aria-labelledby="credits-title"
     class="mx-auto flex w-full flex-wrap items-start justify-between gap-12 lg:items-center"
   >
-    <div class="min-w-75 flex-1">
+    <div class="flex min-w-75 flex-1 flex-col items-start gap-4">
+      <span class="bg-primary-500 ml-1 px-2 py-0.5 text-xs text-white">ATRIBUCIONES</span>
       <h2
         id="credits-title"
         class="text-3d-md m-0 font-['Silkscreen'] text-3xl leading-tight font-bold text-pretty md:text-4xl lg:text-5xl"

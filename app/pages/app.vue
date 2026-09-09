@@ -15,18 +15,20 @@ function handleClearError() {
 <template>
   <div class="flex w-full max-w-7xl min-w-0 flex-col gap-10 px-4 py-8 sm:gap-12 sm:px-6 sm:py-12">
     <section
-      aria-labelledby="hero-title"
+      aria-labelledby="app-title"
       class="mx-auto flex w-full flex-wrap items-start justify-between gap-10 sm:gap-12 lg:items-center"
     >
-      <h1
-        id="hero-title"
-        class="m-0 flex flex-1 flex-col justify-center"
-      >
-        <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold sm:text-6xl md:text-[76px]">Busca,</span>
-        <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold sm:text-6xl md:text-[76px]">Descubre,</span>
-        <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold sm:text-6xl md:text-[76px]">Etiqueta.</span>
-        <span class="sr-only">ID3 Studio | Encuentra Letras, Metadatos y Etiqueta tu Música</span>
-      </h1>
+      <div class="flex w-full flex-1 flex-col items-start gap-6 lg:w-1/2">
+        <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white">ID3 Studio v1.0</span>
+        <h1
+          id="app-title"
+          class="m-0 flex flex-1 flex-col justify-center"
+        >
+          <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold sm:text-6xl md:text-[76px]">Busca,</span>
+          <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold sm:text-6xl md:text-[76px]">Descubre,</span>
+          <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold sm:text-6xl md:text-[76px]">Etiqueta.</span>
+        </h1>
+      </div>
       <TrackSearchForm
         ref="searchFormRef"
         :loading="loading"
@@ -34,16 +36,13 @@ function handleClearError() {
         @reset="resetData"
       />
     </section>
+    <USeparator size="sm" />
     <section
       id="consulta"
       aria-live="polite"
       aria-label="Resultados de la consulta"
       class="flex flex-col gap-10 sm:gap-12"
     >
-      <USeparator
-        label="Consulta"
-        size="sm"
-      />
       <TrackMetadata
         v-if="loading || result"
         :loading="loading"
@@ -60,18 +59,6 @@ function handleClearError() {
         v-else
         @select="handleSuggestion"
       />
-    </section>
-
-    <section
-      id="atribuciones"
-      aria-label="Fuentes de datos y atribuciones"
-      class="flex flex-col gap-10 sm:gap-12"
-    >
-      <USeparator
-        label="Atribuciones"
-        size="sm"
-      />
-      <DataSourceCredits />
     </section>
   </div>
 </template>

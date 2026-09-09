@@ -1,5 +1,5 @@
 export const getTrackMetadata = async (artist: string, track: string) => {
-  const searchQuery = encodeURIComponent(`artist:"${artist}" track:"${track}"`)
+  const searchQuery = encodeURIComponent(`${artist} ${track}`)
   const searchUrl = `https://api.deezer.com/search?q=${searchQuery}`
 
   const dzSearch = await $fetch<{ data: any[] }>(searchUrl)
