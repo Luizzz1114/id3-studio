@@ -12,7 +12,7 @@
         <span class="text-3d font-['Silkscreen'] text-[45px] leading-none font-bold text-pretty sm:text-6xl md:text-[76px]"> Descubre metadatos y etiqueta tu música. </span>
       </h1>
       <div class="shadow-3d bg-default mt-2 flex w-full flex-col gap-4 border-2 p-4 text-sm">
-        <p>Encuentra la información correcta, busca las letras y etiqueta tus archivos musicales fácilmente con esta herramienta web gratuita.</p>
+        <p>Encuentra la información correcta, busca las letras y etiqueta tus archivos musicales fácilmente con esta herramienta web.</p>
         <div class="m-0 flex flex-wrap gap-4 p-0">
           <UButton
             to="/app"

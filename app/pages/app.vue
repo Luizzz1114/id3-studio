@@ -13,7 +13,7 @@ function handleClearError() {
 </script>
 
 <template>
-  <div class="flex w-full max-w-7xl min-w-0 flex-col gap-10 px-4 py-8 sm:gap-12 sm:px-6 sm:py-12">
+  <div class="mx-auto flex w-full max-w-7xl min-w-0 flex-col gap-12 px-4 pt-10 pb-20 sm:gap-16 sm:px-6 lg:gap-20 lg:px-8 lg:pt-16 lg:pb-28">
     <section
       aria-labelledby="app-title"
       class="mx-auto flex w-full flex-wrap items-start justify-between gap-10 sm:gap-12 lg:items-center"
@@ -41,7 +41,7 @@ function handleClearError() {
       id="consulta"
       aria-live="polite"
       aria-label="Resultados de la consulta"
-      class="flex flex-col gap-10 sm:gap-12"
+      class="flex flex-col gap-12 sm:gap-16 lg:gap-20"
     >
       <TrackMetadata
         v-if="loading || result"

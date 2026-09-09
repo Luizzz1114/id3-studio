@@ -28,7 +28,7 @@ const features = [
     class="w-full"
   >
     <div class="shadow-3d grid grid-cols-1 gap-0.5 border-2 bg-neutral-200 md:grid-cols-2 dark:bg-neutral-700">
-      <div class="bg-default flex flex-col items-start justify-center gap-2 px-4 py-6 sm:px-6">
+      <div class="bg-default flex flex-col items-start justify-center gap-4 px-4 py-6 sm:px-6">
         <span class="bg-secondary-500 ml-1 px-2 py-0.5 text-xs text-white">FLUJO DEL SISTEMA</span>
         <h2
           id="features-title"
