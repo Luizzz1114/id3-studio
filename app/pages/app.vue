@@ -19,7 +19,7 @@ function handleClearError() {
       class="mx-auto flex w-full flex-wrap items-start justify-between gap-10 sm:gap-12 lg:items-center"
     >
       <div class="flex w-full flex-1 flex-col items-start gap-6 lg:w-1/2">
-        <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white">ID3 Studio v1.0</span>
+        <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white">BUSCADOR</span>
         <h1
           id="app-title"
           class="m-0 flex flex-1 flex-col justify-center"
