@@ -22,13 +22,13 @@
           Motor en línea / v1.0
         </div>
       </div>
-      <nav class="flex flex-col flex-wrap justify-center gap-2 text-xs font-bold text-neutral-500 uppercase dark:text-neutral-400">
+      <nav class="flex flex-col flex-wrap justify-center gap-2 text-sm font-bold text-neutral-500 uppercase dark:text-neutral-400">
         <a
           href="https://github.com/Luizzz1114/id3-studio"
           target="_black"
           class="border-b-2 border-neutral-200 pb-0.5 transition-colors hover:text-indigo-500 dark:border-neutral-800"
         >
-          Documentación
+          Código Fuente
         </a>
         <a
           href="https://github.com/Luizzz1114/id3-studio/issues"
@@ -41,7 +41,7 @@
     </div>
     <div class="border-t-2 border-neutral-200 bg-neutral-100 dark:border-neutral-700 dark:bg-neutral-800">
       <div class="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-4 px-4 py-4 sm:flex-row sm:px-6 lg:px-8">
-        <p class="text-xs font-bold tracking-widest text-neutral-600 uppercase dark:text-neutral-400">
+        <p class="text-sm font-bold tracking-widest text-neutral-600 uppercase dark:text-neutral-300">
           Hecho por <span class="text-indigo-500 dark:text-indigo-400">Luis Cortesia</span>, <time datetime="2026">2026</time>.
         </p>
         <div class="flex items-center gap-5">
