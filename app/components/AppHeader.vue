@@ -38,7 +38,7 @@ const items = computed<NavigationMenuItem[]>(() => [
       </NuxtLink>
     </template>
     <template #right>
-      <nav class="mr-4 hidden items-center gap-1 lg:flex">
+      <nav class="mr-4 hidden items-center gap-2 lg:flex">
         <NuxtLink
           v-for="item in items"
           :to="item.to"

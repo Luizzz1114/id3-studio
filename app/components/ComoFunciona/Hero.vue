@@ -28,7 +28,7 @@
     </div>
     <div class="flex w-full flex-1 items-center justify-center lg:w-1/2">
       <img
-        src="/img/tocadiscos.svg"
+        src="/img/turntable.svg"
         alt=""
         aria-hidden="true"
         class="h-auto w-full max-w-65 object-contain sm:max-w-[320px] lg:max-w-95"
