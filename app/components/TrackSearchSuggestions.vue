@@ -55,12 +55,12 @@ function suggest(artist: string, track: string) {
     </div>
     <div class="flex flex-1 items-center justify-center">
       <img
-        src="/img/boombox.svg"
+        src="/img/turntable.svg"
         alt=""
         aria-hidden="true"
-        width="400"
-        height="400"
-        class="h-auto max-w-65 sm:max-w-xs md:max-w-sm lg:max-w-85"
+        width="360"
+        height="360"
+        class="h-auto max-w-65 sm:max-w-xs md:max-w-sm lg:max-w-80"
       />
     </div>
   </section>
