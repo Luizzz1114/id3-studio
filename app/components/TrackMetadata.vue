@@ -102,7 +102,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
       <div class="flex w-full flex-col gap-6 sm:flex-row">
         <figure class="m-0 flex w-full max-w-80 min-w-0 flex-col gap-4">
           <div class="shadow-3d relative m-0 aspect-square w-full border-2">
-            <span class="absolute inset-s-2 top-2 z-10 bg-indigo-500 px-1.5 py-0.5 text-xs font-medium text-white uppercase">Album cover</span>
+            <span class="bg-primary-500 absolute inset-s-2 top-2 z-10 px-1.5 py-0.5 text-xs font-medium text-white uppercase">Album cover</span>
             <img
               v-if="coverUrl"
               :src="coverUrl"
@@ -141,7 +141,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
           </figcaption>
         </figure>
         <div class="flex w-full min-w-0 flex-1 flex-col gap-4">
-          <h2 class="text-3d-md m-0 font-silkscreen  text-3xl font-bold hyphens-auto sm:text-4xl lg:text-5xl">
+          <h2 class="text-3d-md font-silkscreen m-0 text-3xl font-bold hyphens-auto sm:text-4xl lg:text-5xl">
             {{ title }}
           </h2>
           <dl class="m-0 flex flex-col gap-4">
@@ -178,7 +178,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
         <header class="flex items-center justify-between gap-4">
           <h3
             id="metadata-subheading"
-            class="m-0 font-silkscreen  text-xl font-bold"
+            class="font-silkscreen m-0 text-xl font-bold"
           >
             Metadatos
           </h3>
@@ -206,7 +206,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
       <header class="flex items-center justify-between gap-4">
         <h3
           id="lyrics-subheading"
-          class="m-0 font-silkscreen  text-xl font-bold"
+          class="font-silkscreen m-0 text-xl font-bold"
         >
           Letra
         </h3>

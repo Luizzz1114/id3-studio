@@ -33,7 +33,7 @@ export default defineAppConfig({
       slots: {
         item: 'border-b-2 border-neutral-700 dark:border-neutral-200',
         header: 'px-4 py-2',
-        body: 'p-4 bg-neutral-100 dark:bg-neutral-950',
+        body: 'p-4 bg-neutral-100 dark:bg-neutral-950 ',
         label: 'font-bold text-sm'
       }
     }

@@ -24,34 +24,59 @@ const faqItems = ref<AccordionItem[]>([
   }
 ])
 
-const glossaryItems = ref<AccordionItem[]>([
-  { label: 'TITLE', content: 'El título oficial de la pista o canción.' },
-  { label: 'ARTIST', content: 'Intérpretes de la pista (artista principal y colaboraciones).' },
-  { label: 'ALBUM', content: 'Nombre del álbum, EP o sencillo al que pertenece la pista.' },
-  { label: 'ALBUMARTIST', content: 'Artista principal responsable del álbum completo.' },
-  { label: 'YEAR', content: 'Fecha original en la que se lanzó comercialmente el track.' },
-  { label: 'TRACK', content: 'Posición de la pista dentro del álbum (formato: número de pista / total de pistas).' },
-  { label: 'DISCNUMBER', content: 'Número del disco. Útil para organizar álbumes dobles, vinilos o ediciones Deluxe.' },
-  { label: 'GENRE', content: 'Género musical primario categorizado por el catálogo oficial.' },
-  { label: 'BPM', content: 'Beats Per Minute (Pulsaciones por minuto). Indica la velocidad o el tempo de la canción.' },
-  { label: 'ISRC', content: 'Código Estándar Internacional de Grabación. Identificador mundial único para la pista de audio.' },
-  { label: 'COMPOSER', content: 'Créditos de los escritores, autores o compositores de la obra musical.' },
-  { label: 'LABEL', content: 'Sello discográfico responsable de la distribución de la canción.' },
-  { label: 'COPYRIGHT', content: 'Información legal sobre los derechos de autor y propiedad del fonograma.' },
-  { label: 'LENGTH', content: 'Duración total de la canción extraída de los servidores.' },
-  { label: 'UNSYNCEDLYRICS', content: 'Letra completa de la canción en texto plano, sin marcas de tiempo de sincronización.' }
-])
+const glossaryTerms = [
+  { label: 'TITLE', description: 'El título oficial de la obra o pista musical, incluyendo versiones o subtítulos específicos (ej. "Radio Edit", "Remix").' },
+  { label: 'ARTIST', description: 'Intérprete o intérpretes que ejecutan la pista. Incluye al artista principal y a los artistas invitados (featuring).' },
+  { label: 'ALBUM', description: 'El nombre de la colección a la que pertenece la pista, ya sea un álbum de estudio, un EP, un recopilatorio o un sencillo.' },
+  { label: 'ALBUMARTIST', description: 'El artista principal responsable de la obra completa. Crucial para agrupar correctamente álbumes con múltiples invitados o bandas sonoras.' },
+  { label: 'YEAR', description: 'El año o fecha oficial del primer lanzamiento comercial de la pista. Ayuda a contextualizar la obra cronológicamente.' },
+  { label: 'TRACK', description: 'El número de orden de la pista dentro del álbum. Frecuentemente se representa como una fracción (ej. "03/12" indicando la pista 03 de 12).' },
+  { label: 'DISCNUMBER', description: 'El número del volumen o disco físico/digital en lanzamientos múltiples (ej. "1/2" en un álbum doble o edición Deluxe).' },
+  { label: 'GENRE', description: 'La categoría estilística o género musical primario con el que se clasifica la obra en las bases de datos y tiendas digitales.' },
+  { label: 'BPM', description: 'Pulsaciones por minuto (Beats Per Minute). Valor numérico que indica el tempo de la pista, esencial para DJs y listas de reproducción.' },
+  { label: 'ISRC', description: 'Código Estándar Internacional de Grabación. Un identificador alfanumérico global, único y permanente para cada grabación sonora específica.' },
+  { label: 'COMPOSER', description: 'Los creadores intelectuales de la obra (compositores de la música y autores de la letra), que pueden ser distintos de quienes la interpretan.' },
+  { label: 'LABEL', description: 'El sello discográfico o compañía editora que posee los derechos de distribución y comercialización del fonograma.' },
+  { label: 'COPYRIGHT', description: 'Declaración legal que indica quién posee los derechos de autor de la grabación sonora (℗) y de la composición subyacente (©).' },
+  { label: 'LENGTH', description: 'La duración exacta de la pista de audio, expresada habitualmente en milisegundos o en formato de minutos y segundos.' },
+  { label: 'UNSYNCEDLYRICS', description: 'La letra completa de la canción en texto sin formato, sin marcas de tiempo que la sincronicen con la reproducción del audio.' }
+]
 </script>
 
 <template>
+  <section
+    aria-labelledby="glosary-title"
+    class="flex w-full flex-col gap-8 sm:gap-12"
+  >
+    <div class="flex flex-col items-start gap-4">
+      <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white">GLOSARIO</span>
+      <h2
+        id="glosary-title"
+        class="text-3d font-silkscreen text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
+      >
+        DICCIONARIO <br />DE METADATOS.
+      </h2>
+    </div>
+    <div class="shadow-3d grid w-full grid-cols-1 gap-0.5 border-2 bg-neutral-200 md:grid-cols-2 lg:grid-cols-3 dark:bg-neutral-700">
+      <div
+        v-for="term in glossaryTerms"
+        :key="term.label"
+        class="bg-default flex flex-col gap-2 p-5 md:last:col-span-2 lg:last:col-span-1"
+      >
+        <span class="font-silkscreen text-primary-500 dark:text-primary-400 text-xl font-bold">{{ term.label }}</span>
+        <p class="text-sm text-neutral-600 dark:text-neutral-300">{{ term.description }}</p>
+      </div>
+    </div>
+  </section>
+  <USeparator size="sm" />
   <section
     aria-labelledby="faq-title"
     class="flex w-full flex-col gap-8 sm:gap-12"
   >
     <div class="flex flex-col items-start gap-4">
-      <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white">FAQ</span>
+      <span class="bg-secondary-500 ml-2 px-2 py-0.5 text-xs text-white">FAQ</span>
       <h2
-        id="process-title"
+        id="faq-title"
         class="text-3d font-silkscreen text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
       >
         PREGUNTAS <br />FRECUENTES.

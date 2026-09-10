@@ -47,7 +47,7 @@ const engineSteps = [
       <div
         v-for="step in engineSteps"
         :key="step.id"
-        class="shadow-3d bg-default flex flex-col gap-4 border-2 p-4 sm:p-6"
+        class="shadow-3d bg-default flex flex-col gap-4 border-2 p-4 sm:p-6 md:last:col-span-2"
       >
         <div class="bg-secondary-500 grid size-8 shrink-0 place-items-center p-0.5 font-silkscreen  text-base text-white">
           {{ step.id }}
