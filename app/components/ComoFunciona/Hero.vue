@@ -9,7 +9,7 @@
         id="hero-title"
         class="m-0 flex flex-col justify-center"
       >
-        <span class="text-3d font-silkscreen  text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Cómo funciona</span>
+        <span class="text-3d font-silkscreen text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Cómo funciona</span>
       </h1>
       <div class="shadow-3d bg-default mt-2 flex w-full flex-col gap-4 border-2 p-4 text-sm">
         <p>
@@ -26,6 +26,13 @@
         </div>
       </div>
     </div>
-    <div class="flex-1"></div>
+    <div class="flex w-full flex-1 items-center justify-center lg:w-1/2">
+      <img
+        src="/img/tocadiscos.svg"
+        alt=""
+        aria-hidden="true"
+        class="h-auto w-full max-w-65 object-contain sm:max-w-[320px] lg:max-w-95"
+      />
+    </div>
   </section>
 </template>
