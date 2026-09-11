@@ -26,13 +26,7 @@ const items = computed<NavigationMenuItem[]>(() => [
         aria-label="ID3 Studio - Ir a página de inicio"
       >
         <div class="shadow-3d grid size-8 place-items-center border-2 bg-indigo-500 p-0.5">
-          <img
-            src="/favicon.svg"
-            alt=""
-            aria-hidden="true"
-            width="32"
-            height="32"
-          />
+          <IconsLogo class="text-white" />
         </div>
         <span class="font-silkscreen text-2xl font-bold">ID3 Studio</span>
       </NuxtLink>

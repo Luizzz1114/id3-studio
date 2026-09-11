@@ -7,13 +7,7 @@
           class="flex items-center gap-3 transition-opacity hover:opacity-90"
         >
           <div class="shadow-3d grid size-7 place-items-center border-2 bg-indigo-500 p-0.5">
-            <img
-              src="/favicon.svg"
-              alt=""
-              aria-hidden="true"
-              width="24"
-              height="24"
-            />
+            <IconsLogo class="text-white" />
           </div>
           <span class="font-silkscreen text-xl font-bold uppercase">ID3 Studio</span>
         </NuxtLink>
@@ -22,7 +16,7 @@
           Motor en línea / v1.0
         </div>
       </div>
-      <nav class="flex flex-col flex-wrap justify-center gap-2 text-sm font-bold text-neutral-500 uppercase dark:text-neutral-400">
+      <nav class="flex flex-col flex-wrap justify-center gap-2 text-sm font-bold text-neutral-600 uppercase dark:text-neutral-300">
         <a
           href="https://github.com/Luizzz1114/id3-studio"
           target="_blank"
@@ -52,7 +46,7 @@
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            class="text-neutral-500 transition-colors hover:text-indigo-600 dark:text-neutral-400 dark:hover:text-indigo-400"
+            class="text-neutral-600 transition-colors hover:text-indigo-600 dark:text-neutral-300 dark:hover:text-indigo-400"
           >
             <UIcon
               name="i-simple-icons-github"
@@ -64,7 +58,7 @@
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            class="text-neutral-500 transition-colors hover:text-indigo-600 dark:text-neutral-400 dark:hover:text-indigo-400"
+            class="text-neutral-600 transition-colors hover:text-indigo-600 dark:text-neutral-300 dark:hover:text-indigo-400"
           >
             <UIcon
               name="i-simple-icons-linkedin"
