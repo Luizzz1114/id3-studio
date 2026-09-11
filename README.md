@@ -24,8 +24,13 @@ ID3 Studio reúne información de varias fuentes para mostrar una vista clara de
 - portada del álbum
 - letra no sincronizada cuando está disponible
 - edición rápida de metadatos desde la interfaz
-- inyección de metadatos directamente en un archivo MP3
+- inyección de metadatos ID3 en un archivo MP3
+- sobrescritura del MP3 original desde el navegador cuando está disponible la File System Access API
 - descarga de una ficha TXT con los datos de la canción
+
+Los campos gestionados incluyen título, artista, álbum, artista del álbum, compositor,
+género, año, duración, número de pista, número de disco, BPM, sello, ISRC, copyright,
+letra y portada.
 
 ## Cómo funciona
 
@@ -34,15 +39,31 @@ ID3 Studio reúne información de varias fuentes para mostrar una vista clara de
 3. El servidor busca la canción en Deezer.
 4. Se obtienen detalles del álbum, artistas, copyright y letra.
 5. La interfaz muestra la información y permite editarla.
-6. Luego puedes:
-   - guardar la información localmente en un archivo TXT
-   - o inyectar esos metadatos en un MP3 seleccionado
+6. La interfaz permite editar los datos antes de exportarlos.
+7. Luego puedes:
+    - guardar la información localmente en un archivo TXT
+    - procesar una copia de un MP3 seleccionado y descargarla con los metadatos ID3
+    - sobrescribir directamente el MP3 original mediante el selector de archivos del navegador
+
+### Modos de inyección de audio
+
+- **Modo copia:** selecciona un MP3 y descarga un nuevo archivo procesado. Es la opción
+   compatible con cualquier navegador que permita seleccionar archivos.
+- **Modo directo:** selecciona un MP3 mediante el selector del sistema y guarda los
+   metadatos sobre el archivo original. Requiere un navegador compatible con
+   `showOpenFilePicker`, como versiones recientes de Chromium, y permisos para escribir el archivo.
+
+La portada se incorpora al MP3 cuando puede recuperarse desde la aplicación. Si no está
+disponible, el audio se procesa igualmente y se muestra una advertencia.
 
 ## Fuentes de datos
 
 - [Deezer API](https://developers.deezer.com/api): búsqueda, pista, álbum, artistas, portada y metadatos principales
 - [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/): copyright del álbum
 - [LRCLIB](https://lrclib.net/): letras no sincronizadas
+
+Las consultas pasan por los endpoints internos de Nuxt, por lo que las claves o credenciales
+de estas fuentes no se exponen en el cliente.
 
 ## Requisitos
 
@@ -80,9 +101,10 @@ pnpm typecheck  # comprueba los tipos de TypeScript
 ```text
 id3-studio/
 ├── app/
-│   ├── components/      # UI de búsqueda, resultados, edición y descarga
+│   ├── components/      # UI de búsqueda, resultados, edición, FAQ y descarga
 │   ├── composables/     # lógica de consulta y estado
-│   ├── pages/           # vista principal
+│   ├── pages/           # inicio, buscador y guía de uso
+│   ├── utils/            # exportación TXT e inyección de etiquetas ID3
 │   └── assets/css/      # estilos globales
 ├── server/
 │   ├── api/             # endpoints /api/metadata y /api/cover
@@ -92,6 +114,7 @@ id3-studio/
 │   └── types/           # tipos compartidos
 ├── package.json
 ├── nuxt.config.ts
+├── public/              # fuentes e imágenes públicas
 ├── LICENSE
 └── README.md
 ```
@@ -103,9 +126,12 @@ La app ya está funcionando como herramienta práctica para:
 - buscar metadatos de canciones
 - editar la información antes de usarla
 - inyectar etiquetas ID3 en MP3
+- sobrescribir el archivo original en navegadores compatibles
 - guardar una ficha TXT con los datos
+- consultar una guía de uso con proceso, glosario y preguntas frecuentes
 
-A futuro, se puede seguir mejorando la experiencia: más formatos de audio, validaciones avanzadas, exportación más flexible o mejoras visuales.
+Actualmente la inyección está orientada a archivos MP3. La compatibilidad con otros formatos,
+validaciones más avanzadas y opciones de exportación adicionales quedan como posibles mejoras.
 
 ## Licencia
 
