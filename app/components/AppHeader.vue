@@ -41,6 +41,7 @@ const items = computed<NavigationMenuItem[]>(() => [
       <nav class="mr-4 hidden items-center gap-2 lg:flex">
         <NuxtLink
           v-for="item in items"
+          :key="item.label"
           :to="item.to"
           class="border-transparent px-3 py-1.5 text-xs font-medium transition-all duration-200 hover:bg-indigo-400/25"
           exact-active-class="bg-indigo-500 text-white hover:bg-indigo-500/80"

@@ -24,8 +24,8 @@ const errorContent = computed(() => {
   switch (props.error.type) {
     case 404:
       return {
-        title: 'Canción no encontrada',
-        message: 'No se encontró la pista especificada. Compruebe los datos e intente nuevamente.'
+        title: 'Track no encontrado',
+        message: 'No se encontró la canción especificada. Compruebe los datos e intente nuevamente.'
       }
     case 500:
       return {

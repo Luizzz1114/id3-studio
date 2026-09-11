@@ -77,7 +77,7 @@ const handleTxtDownload = async () => {
             >
               Inyectar en un audio
             </h4>
-            <p class="m-0 text-xs text-neutral-500 dark:text-neutral-400">Selecciona un MP3 para escribirle estos metadatos.</p>
+            <p class="m-0 text-xs text-neutral-600 dark:text-neutral-300">Selecciona un MP3 para escribirle estos metadatos.</p>
           </div>
         </div>
         <div class="flex flex-1 items-end">
@@ -129,7 +129,7 @@ const handleTxtDownload = async () => {
             >
               Descargar ficha TXT
             </h4>
-            <p class="m-0 text-xs text-neutral-500 dark:text-neutral-400">Guarda todos los metadatos en un archivo de texto.</p>
+            <p class="m-0 text-xs text-neutral-600 dark:text-neutral-300">Guarda todos los metadatos en un archivo de texto.</p>
           </div>
         </div>
         <div class="flex flex-1 items-end">

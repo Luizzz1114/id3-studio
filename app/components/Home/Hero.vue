@@ -7,9 +7,9 @@
       <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white">MOTOR DE BÚSQUEDA EN TIEMPO REAL</span>
       <h1
         id="hero-title"
-        class="m-0 flex flex-col justify-center"
+        class="text-3d font-silkscreen m-0 flex flex-col justify-center text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]"
       >
-        <span class="text-3d font-silkscreen text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Descubre metadatos y etiqueta tu música.</span>
+        Descubre metadatos y etiqueta tu música.
       </h1>
       <div class="shadow-3d bg-default mt-2 flex w-full flex-col gap-4 border-2 p-4 text-sm">
         <p>¿Tu colección de música es un caos? Encuentra la información exacta de tus tracks y etiqueta tus archivos de audio fácilmente con un par de clics.</p>

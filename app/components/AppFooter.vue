@@ -25,7 +25,8 @@
       <nav class="flex flex-col flex-wrap justify-center gap-2 text-sm font-bold text-neutral-500 uppercase dark:text-neutral-400">
         <a
           href="https://github.com/Luizzz1114/id3-studio"
-          target="_black"
+          target="_blank"
+          rel="noopener noreferrer"
           class="border-b-2 border-neutral-200 pb-0.5 transition-colors hover:text-indigo-500 dark:border-neutral-800"
         >
           Código Fuente
@@ -33,6 +34,7 @@
         <a
           href="https://github.com/Luizzz1114/id3-studio/issues"
           target="_blank"
+          rel="noopener noreferrer"
           class="border-b-2 border-neutral-200 pb-0.5 transition-colors hover:text-indigo-500 dark:border-neutral-800"
         >
           Reportar Bug
@@ -48,6 +50,7 @@
           <a
             href="https://github.com/Luizzz1114"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="GitHub"
             class="text-neutral-500 transition-colors hover:text-indigo-600 dark:text-neutral-400 dark:hover:text-indigo-400"
           >
@@ -59,6 +62,7 @@
           <a
             href="https://www.linkedin.com/in/luis-cortesia/"
             target="_blank"
+            rel="noopener noreferrer"
             aria-label="LinkedIn"
             class="text-neutral-500 transition-colors hover:text-indigo-600 dark:text-neutral-400 dark:hover:text-indigo-400"
           >

@@ -32,9 +32,9 @@ const features = [
         <span class="bg-secondary-500 ml-2 px-2 py-0.5 text-xs text-white">MECÁNICA DEL SISTEMA</span>
         <h2
           id="features-title"
-          class="m-0 flex flex-col justify-center"
+          class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
         >
-          <span class="text-3d font-silkscreen text-4xl leading-none font-bold text-white uppercase sm:text-5xl">Proceso de <br />Etiquetado.</span>
+          <span class="">Proceso de <br />Etiquetado.</span>
         </h2>
       </div>
       <ul class="contents">
@@ -50,7 +50,7 @@ const features = [
             />
           </div>
           <h3 class="font-silkscreen text-xl font-bold uppercase">{{ feature.label }}</h3>
-          <p class="text-sm text-neutral-600 dark:text-neutral-300">{{ feature.description }}</p>
+          <p class="text-sm">{{ feature.description }}</p>
         </li>
       </ul>
     </div>
