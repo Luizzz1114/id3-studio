@@ -25,9 +25,9 @@ function suggest(artist: string, track: string) {
     <div class="flex flex-2 flex-col gap-6">
       <h2
         id="suggestions-title"
-        class="m-0 flex flex-col items-start"
+        class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
       >
-        <span class="text-3d font-silkscreen text-4xl leading-none font-bold sm:text-5xl">Sistema en espera... <br />Requiere input del usuario.</span>
+        Sistema en espera... <br />Requiere input del usuario.
       </h2>
       <div class="flex flex-col gap-6">
         <p class="m-0 text-sm">Ingresa el artista y la canción en los campos superiores para comenzar. Si prefieres probar el sistema rápidamente, elige una de estas sugerencias:</p>

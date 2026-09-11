@@ -31,12 +31,12 @@ const faqItems = ref<AccordionItem[]>([
     class="flex w-full flex-col gap-8 sm:gap-12"
   >
     <div class="flex flex-col items-start gap-4">
-      <span class="bg-secondary-500 ml-2 px-2 py-0.5 text-xs text-white">FAQ</span>
+      <span class="bg-secondary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">FAQ</span>
       <h2
         id="faq-title"
-        class="text-3d font-silkscreen text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
+        class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
       >
-        PREGUNTAS <br />FRECUENTES.
+        Pregutas <br />Frecuentes.
       </h2>
     </div>
     <div class="bg-default shadow-3d border-2">

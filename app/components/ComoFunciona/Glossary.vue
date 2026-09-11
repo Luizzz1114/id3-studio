@@ -24,12 +24,12 @@ const glossaryTerms = [
     class="flex w-full flex-col gap-8 sm:gap-12"
   >
     <div class="flex flex-col items-start gap-4">
-      <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white">GLOSARIO</span>
+      <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">Glosario</span>
       <h2
         id="glosary-title"
-        class="text-3d font-silkscreen text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
+        class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
       >
-        DICCIONARIO <br />DE METADATOS.
+        Diccionario <br />de Metadatos.
       </h2>
     </div>
     <div class="shadow-3d grid w-full grid-cols-1 gap-0.5 border-2 bg-neutral-200 md:grid-cols-2 lg:grid-cols-3 dark:bg-neutral-700">
@@ -39,7 +39,7 @@ const glossaryTerms = [
         class="bg-default flex flex-col gap-2 p-5 md:last:col-span-2 lg:last:col-span-1"
       >
         <dt class="font-silkscreen text-primary-500 dark:text-primary-400 text-xl font-bold">{{ term.label }}</dt>
-        <dd class="text-sm text-neutral-600 dark:text-neutral-300">{{ term.description }}</dd>
+        <dd class="text-sm">{{ term.description }}</dd>
       </div>
     </div>
   </section>

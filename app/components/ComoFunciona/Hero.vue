@@ -4,12 +4,12 @@
     class="flex w-full flex-col items-center justify-between gap-10 sm:gap-12 md:flex-row md:items-center"
   >
     <div class="flex w-full flex-1 flex-col items-start gap-6 lg:w-1/2">
-      <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white">DOCUMENTACIÓN TÉCNICA</span>
+      <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">Documentación Técnica</span>
       <h1
         id="hero-title"
-        class="m-0 flex flex-col justify-center"
+        class="text-3d font-silkscreen m-0 flex flex-col justify-center text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]"
       >
-        <span class="text-3d font-silkscreen text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Cómo funciona</span>
+        Cómo Funciona.
       </h1>
       <div class="shadow-3d bg-default mt-2 flex w-full flex-col gap-4 border-2 p-4 text-sm">
         <p>
