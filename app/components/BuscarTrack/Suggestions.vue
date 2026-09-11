@@ -57,6 +57,8 @@ function suggest(artist: string, track: string) {
         aria-hidden="true"
         width="360"
         height="360"
+        loading="lazy"
+        decoding="async"
         class="h-auto max-w-65 sm:max-w-xs md:max-w-sm lg:max-w-80"
       />
     </div>

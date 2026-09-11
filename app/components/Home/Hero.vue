@@ -38,6 +38,10 @@
         src="/img/computer.svg"
         alt=""
         aria-hidden="true"
+        width="400"
+        height="400"
+        fetchpriority="high"
+        decoding="async"
         class="h-auto w-full max-w-65 object-contain sm:max-w-[320px] lg:max-w-95"
       />
     </div>
