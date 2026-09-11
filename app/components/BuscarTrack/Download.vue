@@ -10,6 +10,41 @@ const props = withDefaults(defineProps<Props>(), {
 const notify = useAppToast()
 const selectedFiles = ref<File[]>([])
 const isInjecting = ref(false)
+const isInjectingDirect = ref(false)
+
+const isFileSystemSupported = computed(() => {
+  return typeof window !== 'undefined' && 'showOpenFilePicker' in window
+})
+
+const handleDirectInjection = async () => {
+  isInjectingDirect.value = true
+  try {
+    const [fileHandle] = await (window as any).showOpenFilePicker({
+      types: [
+        {
+          description: 'Archivos MP3',
+          accept: { 'audio/mpeg': ['.mp3'], 'audio/mp3': ['.mp3'] }
+        }
+      ],
+      multiple: false
+    })
+    const file = await fileHandle.getFile()
+    const { blob, coverOmitted } = await injectId3Tags(file, props.metadata)
+    if (coverOmitted) {
+      notify.warning('Carátula omitida', 'No se pudo inyectar la carátula al archivo.')
+    }
+    const writable = await fileHandle.createWritable()
+    await writable.write(blob)
+    await writable.close()
+    notify.success('Archivo actualizado', 'Metadatos guardados en el archivo seleccionado.')
+  } catch (error: any) {
+    if (error.name !== 'AbortError') {
+      notify.error('Error al guardar', 'No se pudo sobrescribir el archivo.')
+    }
+  } finally {
+    isInjectingDirect.value = false
+  }
+}
 
 const handleAudioInjection = async () => {
   const file = selectedFiles.value?.[0]
@@ -80,12 +115,41 @@ const handleTxtDownload = async () => {
             <p class="m-0 text-xs text-neutral-600 dark:text-neutral-300">Selecciona un MP3 para escribirle estos metadatos.</p>
           </div>
         </div>
-        <div class="flex flex-1 items-end">
+        <div class="flex flex-1 flex-col justify-end gap-6">
+          <div
+            v-if="isFileSystemSupported"
+            class="space-y-2"
+          >
+            <p class="text-xs font-semibold uppercase">Modo Directo</p>
+            <UButton
+              @click="handleDirectInjection"
+              icon="i-lucide-hard-drive-download"
+              label="Sobrescribir archivo original"
+              color="primary"
+              variant="solid"
+              class="h-8 w-full cursor-pointer justify-center"
+              :loading="isInjectingDirect"
+              :disabled="isInjecting"
+            />
+          </div>
+
+          <USeparator
+            v-if="isFileSystemSupported"
+            label="o"
+            size="sm"
+          />
+
           <UForm
             aria-label="Formulario para inyectar metadatos en archivo de audio"
             class="w-full space-y-4"
             @submit.prevent="handleAudioInjection"
           >
+            <p
+              v-if="isFileSystemSupported"
+              class="text-xs font-semibold uppercase"
+            >
+              Modo Copia
+            </p>
             <UFileUpload
               v-model="selectedFiles"
               position="inside"
@@ -103,7 +167,7 @@ const handleTxtDownload = async () => {
               color="primary"
               class="h-8 w-full cursor-pointer justify-center"
               :loading="isInjecting"
-              :disabled="!selectedFiles?.length || isInjecting"
+              :disabled="!selectedFiles?.length || isInjectingDirect || isInjecting"
             />
           </UForm>
         </div>
