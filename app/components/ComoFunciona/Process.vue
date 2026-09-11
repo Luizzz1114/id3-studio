@@ -37,24 +37,23 @@ const engineSteps = [
       <span class="bg-secondary-500 ml-2 px-2 py-0.5 text-xs text-white">SECUENCIA DE OPERACIÓN</span>
       <h2
         id="process-title"
-        class="text-3d font-silkscreen  text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
+        class="text-3d font-silkscreen text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
       >
         EL RECORRIDO <br />DEL MOTOR.
       </h2>
     </div>
-
-    <div class="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <div
+    <ol class="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      <li
         v-for="step in engineSteps"
         :key="step.id"
-        class="shadow-3d bg-default flex flex-col gap-4 border-2 p-4 sm:p-6 md:last:col-span-2"
+        class="shadow-3d bg-default flex flex-col gap-4 border-2 p-4 sm:gap-6 sm:p-6 md:last:col-span-2"
       >
-        <div class="bg-secondary-500 grid size-8 shrink-0 place-items-center p-0.5 font-silkscreen  text-base text-white">
+        <div class="bg-secondary-500 font-silkscreen grid size-8 shrink-0 place-items-center p-0.5 text-base text-white">
           {{ step.id }}
         </div>
-        <h3 class="font-silkscreen  text-xl font-bold uppercase">{{ step.label }}</h3>
+        <h3 class="font-silkscreen text-xl font-bold uppercase">{{ step.label }}</h3>
         <p class="text-sm text-neutral-600 dark:text-neutral-300">{{ step.description }}</p>
-      </div>
-    </div>
+      </li>
+    </ol>
   </section>
 </template>

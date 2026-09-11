@@ -50,7 +50,7 @@ function onReset() {
     <header class="flex items-center justify-between border-b-2 pb-4 sm:pb-6">
       <h2
         id="search-form-title"
-        class="m-0 font-silkscreen  text-xl font-bold"
+        class="font-silkscreen m-0 text-xl font-bold"
       >
         Buscar canción
       </h2>

@@ -4,6 +4,8 @@
     <USeparator size="sm" />
     <ComoFuncionaProcess />
     <USeparator size="sm" />
+    <ComoFuncionaGlossary />
+    <USeparator size="sm" />
     <ComoFuncionaFaq />
   </div>
 </template>

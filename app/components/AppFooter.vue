@@ -15,7 +15,7 @@
               height="24"
             />
           </div>
-          <span class="font-silkscreen  text-xl font-bold uppercase">ID3 Studio</span>
+          <span class="font-silkscreen text-xl font-bold uppercase">ID3 Studio</span>
         </NuxtLink>
         <div class="flex items-center gap-2 text-xs font-medium text-neutral-500 dark:text-neutral-400">
           <span class="size-2 animate-pulse rounded-full bg-green-500"></span>

@@ -27,10 +27,10 @@ const apis = [
     class="mx-auto flex w-full flex-wrap items-start justify-between gap-12 lg:items-center"
   >
     <div class="flex min-w-75 flex-1 flex-col items-start gap-4">
-      <span class="bg-primary-500 ml-1 px-2 py-0.5 text-xs text-white">FUENTES DE DATOS EXTERNAS</span>
+      <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white">FUENTES DE DATOS EXTERNAS</span>
       <h2
         id="credits-title"
-        class="text-3d-md m-0 font-silkscreen  text-3xl leading-tight font-bold text-pretty md:text-4xl lg:text-5xl"
+        class="text-3d-md font-silkscreen m-0 text-3xl leading-tight font-bold text-pretty md:text-4xl lg:text-5xl"
       >
         Información de metadatos y letras extraída gracias a:
       </h2>
@@ -56,7 +56,7 @@ const apis = [
           />
         </div>
         <div class="flex min-w-0 flex-1 flex-col">
-          <span class="truncate font-silkscreen  text-xl font-bold tracking-wider uppercase">
+          <span class="font-silkscreen truncate text-xl font-bold tracking-wider uppercase">
             {{ api.name }}
           </span>
           <span class="truncate text-xs text-neutral-600 dark:text-neutral-300">

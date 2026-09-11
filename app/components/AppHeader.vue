@@ -8,7 +8,7 @@ const items = computed<NavigationMenuItem[]>(() => [
   },
   {
     label: 'Buscar track',
-    to: '/app'
+    to: '/buscar-track'
   },
   {
     label: 'Cómo funciona',
@@ -34,7 +34,7 @@ const items = computed<NavigationMenuItem[]>(() => [
             height="32"
           />
         </div>
-        <span class="font-silkscreen  text-2xl font-bold">ID3 Studio</span>
+        <span class="font-silkscreen text-2xl font-bold">ID3 Studio</span>
       </NuxtLink>
     </template>
     <template #right>

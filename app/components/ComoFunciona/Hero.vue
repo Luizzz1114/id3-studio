@@ -18,7 +18,7 @@
         </p>
         <div class="m-0 flex flex-wrap gap-4 p-0">
           <UButton
-            to="/app"
+            to="/buscar-track"
             label="Probar una búsqueda"
             trailing-icon="i-lucide-arrow-up-right"
             class="flex h-8 cursor-pointer justify-center sm:w-auto"

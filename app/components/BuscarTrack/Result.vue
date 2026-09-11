@@ -182,7 +182,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
           >
             Metadatos
           </h3>
-          <MetadataEditSlideover
+          <BuscarTrackEditSlideover
             :data="data"
             @update:data="emit('update:data', $event)"
           />
@@ -216,8 +216,4 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
       </div>
     </aside>
   </article>
-  <DownloadMetadata
-    v-if="!loading"
-    :metadata="data"
-  />
 </template>

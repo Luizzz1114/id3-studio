@@ -24,12 +24,10 @@ function handleClearError() {
           id="app-title"
           class="m-0 flex flex-1 flex-col justify-center"
         >
-          <span class="text-3d font-silkscreen  text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Busca,</span>
-          <span class="text-3d font-silkscreen  text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Descubre,</span>
-          <span class="text-3d font-silkscreen  text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Etiqueta.</span>
+          <span class="text-3d font-silkscreen text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]">Busca, <br />Descubre, <br />Etiqueta.</span>
         </h1>
       </div>
-      <TrackSearchForm
+      <BuscarTrackForm
         ref="searchFormRef"
         :loading="loading"
         @submit="fetchMetadata"
@@ -40,22 +38,26 @@ function handleClearError() {
     <section
       id="consulta"
       aria-live="polite"
-      aria-label="Resultados de la consulta"
       class="flex flex-col gap-12 sm:gap-16 lg:gap-20"
     >
-      <TrackMetadata
-        v-if="loading || result"
-        :loading="loading"
-        :data="result ?? undefined"
-        @update:data="result = $event"
-      />
-      <TrackSearchError
+      <template v-if="loading || result">
+        <BuscarTrackResult
+          :loading="loading"
+          :data="result ?? undefined"
+          @update:data="result = $event"
+        />
+        <BuscarTrackDownload
+          v-if="!loading && result"
+          :metadata="result"
+        />
+      </template>
+      <BuscarTrackError
         v-else-if="errorData"
         :error="errorData"
         @retry="fetchMetadata(lastQuery)"
         @clear="handleClearError"
       />
-      <TrackSearchSuggestions
+      <BuscarTrackSuggestions
         v-else
         @select="handleSuggestion"
       />

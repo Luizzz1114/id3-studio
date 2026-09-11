@@ -53,7 +53,7 @@ const errorContent = computed(() => {
       <header class="flex flex-col justify-center">
         <h2
           id="error-title"
-          class="text-3d-md m-0 font-silkscreen  text-4xl leading-none font-bold hyphens-auto sm:text-5xl"
+          class="text-3d-md font-silkscreen m-0 text-4xl leading-none font-bold hyphens-auto sm:text-5xl"
         >
           {{ errorContent.title }}
         </h2>
