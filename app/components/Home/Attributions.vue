@@ -24,13 +24,13 @@ const apis = [
 <template>
   <section
     aria-labelledby="credits-title"
-    class="mx-auto flex w-full flex-wrap items-start justify-between gap-12 lg:items-center"
+    class="mx-auto flex w-full flex-wrap items-start justify-between gap-10 sm:gap-12 lg:items-center"
   >
     <div class="flex min-w-75 flex-1 flex-col items-start gap-4">
       <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">Fuentes de Datos externas</span>
       <h2
         id="credits-title"
-        class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
+        class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-pretty hyphens-auto text-white uppercase sm:text-5xl"
       >
         Información de metadatos y letras extraída gracias a:
       </h2>

@@ -49,7 +49,7 @@ const faqItems = ref<AccordionItem[]>([
       <span class="bg-secondary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">FAQ</span>
       <h2
         id="faq-title"
-        class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
+        class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-pretty hyphens-auto text-white uppercase sm:text-5xl"
       >
         Pregutas <br />Frecuentes.
       </h2>

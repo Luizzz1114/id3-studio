@@ -141,7 +141,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
           </figcaption>
         </figure>
         <div class="flex w-full min-w-0 flex-1 flex-col gap-4">
-          <h2 class="text-3d-md font-silkscreen m-0 text-3xl font-bold hyphens-auto sm:text-4xl lg:text-5xl">
+          <h2 class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-pretty hyphens-auto text-white uppercase sm:text-5xl">
             {{ title }}
           </h2>
           <dl class="m-0 flex flex-col gap-4">

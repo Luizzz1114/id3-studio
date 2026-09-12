@@ -20,12 +20,12 @@ function suggest(artist: string, track: string) {
 <template>
   <section
     aria-labelledby="suggestions-title"
-    class="shadow-3d bg-default flex w-full flex-col gap-4 border-2 p-4 sm:gap-6 sm:p-6 md:flex-row"
+    class="shadow-3d bg-default flex w-full flex-col gap-4 border-2 p-4 sm:gap-6 sm:p-6 lg:flex-row"
   >
     <div class="flex flex-2 flex-col gap-6">
       <h2
         id="suggestions-title"
-        class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-white uppercase sm:text-5xl"
+        class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-pretty hyphens-auto text-white uppercase sm:text-5xl"
       >
         Sistema en espera... <br />Requiere input del usuario.
       </h2>

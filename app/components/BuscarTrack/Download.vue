@@ -85,7 +85,7 @@ const handleTxtDownload = async () => {
     <header class="flex flex-col gap-4">
       <h3
         id="actions-title"
-        class="text-3d-md font-silkscreen m-0 text-3xl leading-tight font-bold text-pretty hyphens-auto sm:text-4xl sm:hyphens-none lg:text-5xl"
+        class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-pretty hyphens-auto text-white uppercase sm:text-5xl"
       >
         Elige cómo quieres llevarte la información de este track.
       </h3>
