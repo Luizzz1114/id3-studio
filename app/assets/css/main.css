@@ -95,8 +95,24 @@ textarea {
     4px 4px 0px var(--color-secondary-500);
 }
 
+.text-3d-responsive {
+  color: var(--color-neutral-800);
+  text-shadow:
+    2px 2px 0px var(--color-primary-500),
+    4px 4px 0px var(--color-secondary-500);
+}
+
+@media (min-width: 64rem) {
+  .text-3d-responsive {
+    text-shadow:
+      3px 3px 0px var(--color-primary-500),
+      6px 6px 0px var(--color-secondary-500);
+  }
+}
+
 .dark .text-3d,
-.dark .text-3d-md {
+.dark .text-3d-md,
+.dark .text-3d-responsive {
   color: var(--color-neutral-200);
 }
 

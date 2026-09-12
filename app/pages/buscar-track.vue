@@ -23,7 +23,7 @@ function handleClearError() {
           <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">Buscador</span>
           <h1
             id="browser-title"
-            class="text-3d font-silkscreen m-0 flex flex-col justify-center text-[45px] leading-none font-bold text-pretty sm:text-5xl lg:text-6xl xl:text-7xl"
+            class="text-3d-responsive font-silkscreen m-0 flex flex-col justify-center text-[45px] leading-none font-bold text-pretty sm:text-5xl lg:text-6xl xl:text-7xl"
           >
             Busca, <br />Descubre, <br />Etiqueta.
           </h1>
