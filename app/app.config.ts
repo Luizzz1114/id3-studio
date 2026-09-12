@@ -21,7 +21,7 @@ export default defineAppConfig({
     header: {
       slots: {
         root: 'bg-default border-b-2 border-neutral-700 dark:border-neutral-200',
-        content: 'fixed bottom-4 left-4 right-4 h-auto z-50 bg-white dark:bg-gray-900 border-2 border-neutral-900 dark:border-white shadow-3d rounded-none flex flex-col overflow-hidden lg:hidden'
+        content: 'fixed bottom-4 left-4 right-4 h-auto z-50 bg-default border-2 b shadow-3d rounded-none flex flex-col overflow-hidden lg:hidden'
       }
     },
     separator: {
