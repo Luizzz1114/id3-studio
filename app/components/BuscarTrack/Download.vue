@@ -80,7 +80,7 @@ const handleTxtDownload = async () => {
 <template>
   <section
     aria-labelledby="actions-title"
-    class="flex w-full min-w-0 flex-1 flex-col gap-10 text-sm sm:gap-12"
+    class="flex w-full min-w-0 flex-1 flex-col gap-8 text-sm sm:gap-12"
   >
     <header class="flex flex-col gap-4">
       <h3

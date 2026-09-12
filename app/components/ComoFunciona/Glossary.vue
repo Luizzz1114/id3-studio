@@ -36,7 +36,7 @@ const glossaryTerms = [
       <div
         v-for="term in glossaryTerms"
         :key="term.label"
-        class="bg-default flex flex-col gap-2 p-5 md:last:col-span-2 lg:last:col-span-1"
+        class="bg-default flex flex-col gap-2 p-4 sm:p-6 md:last:col-span-2 lg:last:col-span-1"
       >
         <dt class="font-silkscreen text-primary-500 dark:text-primary-400 text-xl font-bold">{{ term.label }}</dt>
         <dd class="text-sm">{{ term.description }}</dd>

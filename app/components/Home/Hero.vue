@@ -11,11 +11,11 @@
       >
         Descubre Metadatos y Etiqueta tu Música.
       </h1>
-      <div class="shadow-3d bg-default mt-2 flex w-full flex-col gap-4 border-2 p-4 text-sm">
+      <div class="shadow-3d bg-default mt-2 flex w-full flex-col gap-4 border-2 p-4 text-sm sm:gap-6 sm:p-6">
         <p>¿Tu colección de música es un caos? Encuentra la información exacta de tus tracks y etiqueta tus archivos de audio fácilmente con un par de clics.</p>
         <nav
           aria-label="Enlaces principales"
-          class="m-0 flex flex-wrap gap-4 p-0"
+          class="m-0 flex flex-wrap gap-4 p-0 sm:gap-6"
         >
           <UButton
             to="/buscar-track"

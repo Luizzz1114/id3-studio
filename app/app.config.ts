@@ -32,8 +32,8 @@ export default defineAppConfig({
     accordion: {
       slots: {
         item: 'border-b-2 border-neutral-700 dark:border-neutral-200',
-        header: 'px-4 py-2',
-        body: 'p-4 bg-neutral-100 dark:bg-neutral-950 ',
+        header: 'px-4 sm:px-6 py-2',
+        body: 'p-4 sm:p-6 bg-neutral-100 dark:bg-neutral-950 ',
         label: 'font-bold text-sm'
       }
     }

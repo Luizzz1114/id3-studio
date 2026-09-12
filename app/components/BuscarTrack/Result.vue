@@ -50,7 +50,7 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
 <template>
   <div
     v-if="loading"
-    class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-4 sm:p-6 lg:flex-row"
+    class="shadow-3d bg-default flex w-full flex-1 flex-col gap-6 border-2 p-4 text-sm sm:p-6 lg:flex-row"
   >
     <div class="flex flex-1 flex-col gap-6">
       <div class="flex w-full flex-col gap-6 sm:flex-row">
