@@ -24,7 +24,7 @@ const apis = [
 <template>
   <section
     aria-labelledby="credits-title"
-    class="mx-auto flex w-full flex-wrap items-start justify-between gap-10 sm:gap-12 lg:items-center"
+    class="mx-auto flex w-full flex-col flex-wrap justify-between gap-10 sm:gap-12 md:flex-row md:items-center"
   >
     <div class="flex min-w-75 flex-1 flex-col items-start gap-4">
       <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">Fuentes de Datos externas</span>

@@ -16,23 +16,28 @@ function handleClearError() {
   <div class="mx-auto flex w-full max-w-7xl min-w-0 flex-col gap-12 px-4 pt-10 pb-20 sm:gap-16 sm:px-6 lg:gap-20 lg:px-8 lg:pt-16 lg:pb-28">
     <section
       aria-labelledby="browser-title"
-      class="mx-auto flex w-full flex-wrap items-start justify-between gap-10 sm:gap-12 lg:items-center"
+      class="flex w-full flex-col items-center justify-between gap-10 sm:gap-12 md:flex-row md:items-center md:gap-8 lg:gap-10"
     >
-      <div class="flex w-full flex-1 flex-col items-start gap-6 lg:w-1/2">
-        <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">Buscador</span>
-        <h1
-          id="browser-title"
-          class="text-3d font-silkscreen m-0 flex flex-col justify-center text-[45px] leading-none font-bold text-pretty sm:text-6xl lg:text-[76px]"
-        >
-          Busca, <br />Descubre, <br />Etiqueta.
-        </h1>
+      <div class="flex min-w-0 w-full flex-1 flex-col items-start gap-10 sm:gap-12">
+        <div class="flex min-w-0 w-full flex-col items-start gap-6">
+          <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">Buscador</span>
+          <h1
+            id="browser-title"
+            class="text-3d font-silkscreen m-0 flex flex-col justify-center text-[45px] leading-none font-bold text-pretty sm:text-5xl lg:text-6xl xl:text-7xl"
+          >
+            Busca, <br />Descubre, <br />Etiqueta.
+          </h1>
+        </div>
       </div>
-      <BuscarTrackForm
-        ref="searchFormRef"
-        :loading="loading"
-        @submit="fetchMetadata"
-        @reset="resetData"
-      />
+      <div class="flex min-w-0 w-full flex-1 items-center justify-center">
+        <BuscarTrackForm
+          ref="searchFormRef"
+          :loading="loading"
+          class="w-full"
+          @submit="fetchMetadata"
+          @reset="resetData"
+        />
+      </div>
     </section>
     <USeparator size="sm" />
     <section
