@@ -38,11 +38,11 @@ export const getTrackMetadata = async (artist: string, track: string) => {
   const trackFormatted = `${trackPos}/${trackTotal}`
 
   const discPos = dzTrack.disk_number || 1
-  const primaryGenre = dzAlbum.genres?.data?.[0]?.name || 'Unknown'
+  const primaryGenre = dzAlbum.genres?.data?.[0]?.name || ''
 
   const parsedItunesAlbum = typeof itunesAlbum === 'string' ? JSON.parse(itunesAlbum) : itunesAlbum
 
-  let finalComposer = 'Unknown'
+  let finalComposer = ''
   if (dzTrack.contributors) {
     const composersArray = dzTrack.contributors.filter((c: any) => ['Composer', 'Writer', 'Author'].includes(c.role)).map((c: any) => c.name)
 

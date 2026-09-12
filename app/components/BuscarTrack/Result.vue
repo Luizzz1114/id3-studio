@@ -30,7 +30,7 @@ const metadata = computed<MetadataRecord[]>(() => {
     { label: 'TRACK', value: data.TRACK ?? null },
     { label: 'YEAR', value: data.YEAR ?? null }
   ]
-  return entries.filter((item) => item.value != null && item.value !== '')
+  return entries
 })
 
 const normalizeYear = (value: string | number | null | undefined) => {
@@ -194,7 +194,12 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
             class="flex min-w-0 flex-col border-b-2 border-neutral-200 pb-2 dark:border-neutral-800"
           >
             <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">{{ campo.label }}</dt>
-            <dd class="m-0 text-sm font-medium hyphens-auto">{{ campo.value }}</dd>
+            <dd
+              class="m-0 text-sm font-medium hyphens-auto"
+              :class="{ 'font-normal text-neutral-300 dark:text-neutral-600': !campo.value }"
+            >
+              {{ campo.value || 'No disponible' }}
+            </dd>
           </div>
         </dl>
       </section>
