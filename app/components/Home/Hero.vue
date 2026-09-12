@@ -3,8 +3,8 @@
     aria-labelledby="hero-title"
     class="flex w-full flex-col items-center justify-between gap-10 sm:gap-12 md:flex-row md:items-center md:gap-8 lg:gap-10"
   >
-    <div class="flex min-w-0 w-full flex-1 flex-col items-start gap-10 sm:gap-12">
-      <div class="flex min-w-0 w-full flex-col items-start gap-6">
+    <div class="flex w-full min-w-0 flex-1 flex-col items-start gap-10 sm:gap-12">
+      <div class="flex w-full min-w-0 flex-col items-start gap-6">
         <span class="bg-primary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">Motor de Búsqueda en Tiempo Real</span>
         <h1
           id="hero-title"

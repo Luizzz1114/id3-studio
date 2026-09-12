@@ -68,7 +68,16 @@ const handleSave = () => {
         class="shadow-3d bg-default flex h-full w-full max-w-lg flex-col gap-6 border-2 p-4 sm:p-6"
       >
         <header class="flex items-center justify-between border-b-2 pb-4 sm:pb-6">
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-4 sm:gap-6">
+            <div
+              aria-hidden="true"
+              class="shadow-3d bg-primary-500 grid size-8 shrink-0 place-items-center border-2 border-neutral-700 p-0.5 text-white dark:border-neutral-200"
+            >
+              <UIcon
+                name="i-lucide-edit"
+                class="size-5"
+              />
+            </div>
             <h3
               id="edit-metadata-title"
               class="font-silkscreen m-0 text-xl font-bold"
