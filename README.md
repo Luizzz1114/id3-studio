@@ -24,13 +24,11 @@ ID3 Studio reúne información de varias fuentes para mostrar una vista clara de
 - portada del álbum
 - letra no sincronizada cuando está disponible
 - edición rápida de metadatos desde la interfaz
-- inyección de metadatos ID3 en un archivo MP3
+- guardado de metadatos ID3 en archivos de audio (MP3, FLAC, M4A)
 - sobrescritura del MP3 original desde el navegador cuando está disponible la File System Access API
 - descarga de una ficha TXT con los datos de la canción
 
-Los campos gestionados incluyen título, artista, álbum, artista del álbum, compositor,
-género, año, duración, número de pista, número de disco, BPM, sello, ISRC, copyright,
-letra y portada.
+Los campos gestionados incluyen título, artista, álbum, artista del álbum, compositor, género, año, duración, número de pista, número de disco, BPM, sello, ISRC, copyright, letra y portada.
 
 ## Cómo funciona
 
@@ -41,20 +39,16 @@ letra y portada.
 5. La interfaz muestra la información y permite editarla.
 6. La interfaz permite editar los datos antes de exportarlos.
 7. Luego puedes:
-    - guardar la información localmente en un archivo TXT
-    - procesar una copia de un MP3 seleccionado y descargarla con los metadatos ID3
-    - sobrescribir directamente el MP3 original mediante el selector de archivos del navegador
+   - guardar la información localmente en un archivo TXT
+   - procesar una copia de un archivo de audio (MP3, FLAC, M4A) seleccionado y descargarla con los metadatos ID3
+   - sobrescribir directamente el archivo original mediante el selector de archivos del navegador
 
-### Modos de inyección de audio
+### Modos de guardado de etiquetas
 
-- **Modo copia:** selecciona un MP3 y descarga un nuevo archivo procesado. Es la opción
-   compatible con cualquier navegador que permita seleccionar archivos.
-- **Modo directo:** selecciona un MP3 mediante el selector del sistema y guarda los
-   metadatos sobre el archivo original. Requiere un navegador compatible con
-   `showOpenFilePicker`, como versiones recientes de Chromium, y permisos para escribir el archivo.
+- **Modo copia:** selecciona un archivo de audio (MP3, FLAC, M4A) y descarga un nuevo archivo procesado. Es la opción compatible con cualquier navegador que permita seleccionar archivos.
+- **Modo directo:** selecciona un archivo de audio mediante el selector del sistema y guarda los metadatos sobre el archivo original. Requiere un navegador compatible con `showOpenFilePicker`, como versiones recientes de Chromium, y permisos para escribir el archivo.
 
-La portada se incorpora al MP3 cuando puede recuperarse desde la aplicación. Si no está
-disponible, el audio se procesa igualmente y se muestra una advertencia.
+La portada se incorpora al archivo de audio cuando puede recuperarse desde la aplicación. Si no está disponible, el audio se procesa igualmente y se muestra una advertencia.
 
 ## Fuentes de datos
 
@@ -62,8 +56,7 @@ disponible, el audio se procesa igualmente y se muestra una advertencia.
 - [iTunes Search API](https://developer.apple.com/library/archive/documentation/AudioVideo/Conceptual/iTuneSearchAPI/): copyright del álbum
 - [LRCLIB](https://lrclib.net/): letras no sincronizadas
 
-Las consultas pasan por los endpoints internos de Nuxt, por lo que las claves o credenciales
-de estas fuentes no se exponen en el cliente.
+Las consultas pasan por los endpoints internos de Nuxt, por lo que las claves o credenciales de estas fuentes no se exponen en el cliente.
 
 ## Requisitos
 
@@ -101,20 +94,20 @@ pnpm typecheck  # comprueba los tipos de TypeScript
 ```text
 id3-studio/
 ├── app/
-│   ├── components/      # UI de búsqueda, resultados, edición, FAQ y descarga
-│   ├── composables/     # lógica de consulta y estado
-│   ├── pages/           # inicio, buscador y guía de uso
-│   ├── utils/            # exportación TXT e inyección de etiquetas ID3
-│   └── assets/css/      # estilos globales
+│   ├── components/      # Interfaz visual
+│   ├── composables/     # Lógica reactiva para consultas y estado
+│   ├── pages/           # Vistas principales
+│   ├── utils/           # Funciones para generar TXT y guardar etiquetas ID3
+│   └── assets/css/      # Estilos globales y tema visual
 ├── server/
-│   ├── api/             # endpoints /api/metadata y /api/cover
-│   └── utils/           # lógica de negocio y consultas externas
+│   ├── api/             # Endpoints del backend
+│   └── utils/           # Integración y consultas a Deezer, iTunes y LRCLIB
 ├── shared/
-│   ├── schemas/         # validación de entrada
-│   └── types/           # tipos compartidos
-├── package.json
-├── nuxt.config.ts
-├── public/              # fuentes e imágenes públicas
+│   ├── schemas/         # Validación de datos con Zod
+│   └── types/           # Definiciones de tipos en TypeScript
+├── package.json         # Dependencias y scripts del proyecto
+├── nuxt.config.ts       # Configuración de Nuxt 3
+├── public/              # Archivos estáticos, fuentes e imágenes
 ├── LICENSE
 └── README.md
 ```
@@ -125,13 +118,11 @@ La app ya está funcionando como herramienta práctica para:
 
 - buscar metadatos de canciones
 - editar la información antes de usarla
-- inyectar etiquetas ID3 en MP3
+- guardar etiquetas ID3 en archivos de audio (MP3, FLAC, M4A)
 - sobrescribir el archivo original en navegadores compatibles
 - guardar una ficha TXT con los datos
-- consultar una guía de uso con proceso, glosario y preguntas frecuentes
 
-Actualmente la inyección está orientada a archivos MP3. La compatibilidad con otros formatos,
-validaciones más avanzadas y opciones de exportación adicionales quedan como posibles mejoras.
+La herramienta procesa y guarda metadatos de forma segura localmente en el navegador para los formatos compatibles (MP3, FLAC, M4A).
 
 ## Licencia
 

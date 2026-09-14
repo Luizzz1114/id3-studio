@@ -7,8 +7,8 @@ const engineSteps = [
   },
   {
     id: '02',
-    label: 'Extracción de Huella',
-    description: 'Escaneo inicial en Deezer para la coincidencia exacta. Obtenemos la huella primaria (IDs únicos) y capturamos la portada en máxima resolución.'
+    label: 'Búsqueda Principal',
+    description: 'Escaneo inicial en Deezer para la coincidencia exacta. Obtenemos los identificadores únicos y capturamos la portada en máxima resolución.'
   },
   {
     id: '03',
@@ -23,7 +23,7 @@ const engineSteps = [
   {
     id: '05',
     label: 'Ensamblaje',
-    description: 'La información se empaqueta en una única estructura estandarizada. Recibes un reporte con 15 campos esenciales, listo para inyectar.'
+    description: 'La información se empaqueta en una única estructura estandarizada. Recibes un reporte con 15 campos esenciales, listo para guardar en tu archivo.'
   }
 ]
 </script>

@@ -15,8 +15,8 @@
       </div>
       <div class="shadow-3d bg-default mt-2 flex w-full flex-col gap-4 border-2 p-4 text-sm sm:gap-6 sm:p-6">
         <p>
-          A partir de una consulta simple (artista y canción), nuestro motor valida, extrae y cruza información de tres bases de datos distintas en milisegundos. No dependemos de un solo catálogo;
-          construimos la ficha perfecta combinando la mejor información disponible para entregar un paquete de metadatos ID3 estandarizado y listo para inyectar.
+          A partir de una búsqueda simple (artista y canción), nuestro motor valida, extrae y cruza información de tres bases de datos distintas en milisegundos. No dependemos de un solo catálogo;
+          construimos la ficha perfecta combinando la mejor información disponible para entregar un paquete de datos estandarizado y listo para guardar.
         </p>
         <div class="m-0 flex flex-wrap gap-4 p-0 sm:gap-6">
           <UButton
