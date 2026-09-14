@@ -32,7 +32,7 @@ const apis = [
         id="credits-title"
         class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-pretty hyphens-auto text-white uppercase sm:text-5xl"
       >
-        Información de metadatos y letras extraída gracias a:
+        Carátulas, información y letras obtenidas gracias a:
       </h2>
     </div>
     <ul
