@@ -27,10 +27,10 @@ function suggest(artist: string, track: string) {
         id="suggestions-title"
         class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-pretty hyphens-auto text-white uppercase sm:text-5xl"
       >
-        Sistema en espera... <br />Requiere input del usuario.
+        Sistema Listo... <br />Esperando tu búsqueda.
       </h2>
       <div class="flex flex-col gap-6">
-        <p class="m-0 text-sm">Ingresa el artista y la canción en los campos superiores para comenzar. Si prefieres probar el sistema rápidamente, elige una de estas sugerencias:</p>
+        <p class="m-0 text-sm">Escribe el artista y la canción en los campos de arriba para comenzar. Si solo quieres ver cómo funciona la herramienta, prueba con uno de estos ejemplos:</p>
         <ul
           aria-label="Sugerencias de canciones rápidas"
           class="m-0 flex list-none flex-wrap gap-4 p-0"

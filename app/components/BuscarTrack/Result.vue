@@ -189,8 +189,8 @@ const lyrics = computed(() => (props.data?.UNSYNCEDLYRICS as string) || 'Letra n
         </header>
         <dl class="grid grid-cols-1 gap-x-8 gap-y-4 sm:grid-cols-2 xl:grid-cols-3">
           <div
-            v-for="(campo, index) in metadata"
-            :key="index"
+            v-for="campo in metadata"
+            :key="campo.label"
             class="flex min-w-0 flex-col border-b-2 border-neutral-200 pb-2 dark:border-neutral-800"
           >
             <dt class="text-xs text-neutral-500 uppercase dark:text-neutral-400">{{ campo.label }}</dt>

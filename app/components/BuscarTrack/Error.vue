@@ -16,7 +16,7 @@ const emit = defineEmits<{
 const errorContent = computed(() => {
   const defaultError = {
     title: 'Algo salió mal...',
-    message: props.error?.message || 'Ocurrió un error inesperado, intente de nuevo mas tarde.'
+    message: props.error?.message || 'Ocurrió un error inesperado, intente de nuevo más tarde.'
   }
 
   if (!props.error) return defaultError

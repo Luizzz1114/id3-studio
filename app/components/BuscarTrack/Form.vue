@@ -58,7 +58,7 @@ function onReset() {
     <UForm
       ref="form"
       role="search"
-      aria-label="Buscador de pistas y metadatos"
+      aria-label="Buscador de datos, carátula y letras de canciones"
       :schema="schema"
       :state="state"
       class="flex flex-col gap-4 sm:gap-6"

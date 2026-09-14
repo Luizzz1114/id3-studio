@@ -22,8 +22,14 @@ const handleDirectInjection = async () => {
     const [fileHandle] = await (window as any).showOpenFilePicker({
       types: [
         {
-          description: 'Archivos MP3',
-          accept: { 'audio/mpeg': ['.mp3'], 'audio/mp3': ['.mp3'] }
+          description: 'Archivos de audio (MP3, FLAC, M4A)',
+          accept: { 
+            'audio/mpeg': ['.mp3'], 
+            'audio/mp3': ['.mp3'],
+            'audio/flac': ['.flac'],
+            'audio/mp4': ['.m4a'],
+            'audio/x-m4a': ['.m4a']
+          }
         }
       ],
       multiple: false
@@ -110,9 +116,9 @@ const handleTxtDownload = async () => {
               id="inject-title"
               class="font-silkscreen m-0 text-base font-bold"
             >
-              Inyectar en un audio
+              Guardar en un audio
             </h4>
-            <p class="m-0 text-xs text-neutral-600 dark:text-neutral-300">Selecciona un MP3 para escribirle estos metadatos.</p>
+            <p class="m-0 text-xs text-neutral-600 dark:text-neutral-300">Selecciona un archivo de audio para guardarle estos datos.</p>
           </div>
         </div>
         <div class="flex flex-1 flex-col justify-end gap-6">
@@ -140,7 +146,7 @@ const handleTxtDownload = async () => {
           />
 
           <UForm
-            aria-label="Formulario para inyectar metadatos en archivo de audio"
+            aria-label="Formulario para guardar metadatos en archivo de audio"
             class="w-full space-y-4"
             @submit.prevent="handleAudioInjection"
           >
@@ -156,8 +162,9 @@ const handleTxtDownload = async () => {
               layout="list"
               size="md"
               multiple
-              accept="audio/mp3,audio/mpeg"
+              accept=".mp3,.flac,.m4a,audio/mp3,audio/mpeg,audio/flac,audio/mp4"
               label="Elegir audio"
+               description="MP3, FLAC o M4A"
               class="w-full cursor-pointer"
             />
             <UButton

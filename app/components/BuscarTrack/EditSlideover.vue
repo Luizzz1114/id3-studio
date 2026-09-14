@@ -52,11 +52,11 @@ const handleSave = () => {
     :ui="{ content: 'max-w-lg' }"
   >
     <UButton
-      label="Editar"
+      label="Corregir datos"
       icon="i-lucide-square-pen"
       variant="ghost"
       color="neutral"
-      class="cursor-pointer"
+      class="h-8 cursor-pointer"
       aria-label="Abrir panel de edición de metadatos"
       @click="isOpen = true"
     />
