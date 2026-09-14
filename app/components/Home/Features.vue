@@ -5,18 +5,18 @@ import IconSearch from '~/components/Icons/IconSearch.vue'
 
 const features = [
   {
-    label: 'Consulta de datos',
-    description: 'Escribe el artista y el nombre de la canción. El sistema se encargará de consultar la información en las bases de datos de fuentes oficiales.',
+    label: 'Búsqueda de canción',
+    description: 'Escribe el artista y el nombre de la canción. El sistema se encargará de encontrar toda la información en las bases de datos oficiales.',
     icon: IconSearch
   },
   {
-    label: 'Lectura y Organización',
-    description: 'El sistema extrae la carátula en alta resolución, los metadatos y la letra completa. Toda la estructura de datos expuesta en una lectura limpia.',
+    label: 'Resultados claros',
+    description: 'El sistema encuentra la carátula en alta resolución, los detalles del álbum y la letra completa para que revises todo fácilmente.',
     icon: IconDoc
   },
   {
-    label: 'Inyeccción o Descarga',
-    description: 'Aplica las etiquetas ID3 y la imagen directamente al archivo de audio, o exporta un reporte en texto plano para documentar.',
+    label: 'Guardar o Descargar',
+    description: 'Guarda la información y la imagen directamente en tu archivo de audio, o descarga un reporte en texto plano si solo buscas leerlo.',
     icon: IconDownload
   }
 ]

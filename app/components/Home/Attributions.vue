@@ -2,13 +2,13 @@
 const apis = [
   {
     name: 'Deezer API',
-    description: 'Metadatos de audio',
+    description: 'Base de datos musical',
     img: '/img/deezer-logo.png',
     url: 'https://developers.deezer.com/api'
   },
   {
     name: 'iTunes API',
-    description: 'Metadatos de audio',
+    description: 'Base de datos musical',
     img: '/img/itunes-logo.png',
     url: 'https://performance-partners.apple.com/search-api'
   },
