@@ -25,7 +25,7 @@ ID3 Studio reúne información de varias fuentes para mostrar una vista clara de
 - letra no sincronizada cuando está disponible
 - edición rápida de metadatos desde la interfaz
 - guardado de metadatos ID3 en archivos de audio (MP3, FLAC, M4A)
-- sobrescritura del MP3 original desde el navegador cuando está disponible la File System Access API
+- sobrescritura del archivo de audio original desde el navegador cuando está disponible la File System Access API
 - descarga de una ficha TXT con los datos de la canción
 
 Los campos gestionados incluyen título, artista, álbum, artista del álbum, compositor, género, año, duración, número de pista, número de disco, BPM, sello, ISRC, copyright, letra y portada.
