@@ -28,7 +28,7 @@ const features = [
     class="shadow-3d grid w-full grid-cols-1 gap-0.5 border-2 bg-neutral-200 md:grid-cols-2 dark:bg-neutral-700"
   >
     <div class="bg-default flex flex-col items-start justify-center gap-6 px-4 py-8 sm:px-6">
-      <span class="bg-secondary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">Mecánica del Sistema</span>
+      <span class="bg-secondary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">Características</span>
       <h2
         id="features-title"
         class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-pretty hyphens-auto text-white uppercase sm:text-5xl"

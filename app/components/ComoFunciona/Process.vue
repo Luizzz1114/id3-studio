@@ -34,7 +34,7 @@ const engineSteps = [
     class="flex w-full flex-col gap-8 sm:gap-12"
   >
     <div class="flex flex-col items-start gap-4">
-      <span class="bg-secondary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">Secuencia de Operación</span>
+      <span class="bg-secondary-500 ml-2 px-2 py-0.5 text-xs text-white uppercase">El Proceso</span>
       <h2
         id="process-title"
         class="text-3d-md font-silkscreen m-0 flex flex-col justify-center text-4xl leading-none font-bold text-pretty hyphens-auto text-white uppercase sm:text-5xl"
