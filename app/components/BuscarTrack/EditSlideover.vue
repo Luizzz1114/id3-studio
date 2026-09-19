@@ -52,7 +52,7 @@ const handleSave = () => {
     :ui="{ content: 'max-w-lg' }"
   >
     <UButton
-      label="Corregir datos"
+      label="Editar"
       icon="i-lucide-square-pen"
       variant="ghost"
       color="neutral"
